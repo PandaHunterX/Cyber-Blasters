@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1b02trcyeing"]
+[gd_scene load_steps=4 format=3 uid="uid://d1b02trcyeing"]
 
 [ext_resource type="PackedScene" uid="uid://bcne1d3p0amrk" path="res://scenes/background.tscn" id="1_joo2j"]
 [ext_resource type="PackedScene" uid="uid://dvqe5yrmnj22t" path="res://scenes/player.tscn" id="3_re4dx"]
+[ext_resource type="PackedScene" uid="uid://cy2ytach2fwsu" path="res://scenes/enemy_weak.tscn" id="3_w88dg"]
 
 [node name="Game" type="Node"]
 
@@ -9,3 +10,6 @@
 
 [node name="Player" parent="." instance=ExtResource("3_re4dx")]
 position = Vector2(316, 765)
+
+[node name="enemyweak" parent="." instance=ExtResource("3_w88dg")]
+position = Vector2(1549, 901)
