@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+const JUMP_VELOCITY = -400.0
 @onready var ap = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var melee = $meleehitbox
@@ -17,7 +17,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not isdead:
 		var horizontal_direction = Input.get_axis("move_right", "move_left")
-		velocity.x = 300 * horizontal_direction
+		velocity.x = 300 * horizontal_direction	
+	  var isLeft = velocity.x < 0
+	  sprite.flip_h = isLeft
 		move_and_slide()
 		update_animations(horizontal_direction)
 	
@@ -25,6 +27,14 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and notmoving and not isdead:
 		ap.play("attack")
 		$AnimationCooldown.start()
+	var horizontal_direction = Input.get_axis("left", "right")
+	velocity.x = 200 * horizontal_direction
+	
+
+	
+	move_and_slide()
+	update_animations(horizontal_direction)
+	
 	
 func update_animations(horizontal_direction):
 	if not isdead:

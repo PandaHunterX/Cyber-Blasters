@@ -9,10 +9,11 @@
 [ext_resource type="Script" path="res://scripts/playerMelee.gd" id="7_joafu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74jxk"]
-size = Vector2(87, 287.625)
 
+size = Vector2(87, 287.625)
 [sub_resource type="Animation" id="Animation_hi6gc"]
 length = 0.001
+
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -132,6 +133,7 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+
 "times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
@@ -153,6 +155,14 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_e14dx"]
 resource_name = "damaged"
 length = 0.05
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_57oel"]
+resource_name = "attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -200,6 +210,10 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_4p3od"]
@@ -391,6 +405,7 @@ color = Color(0.340339, 0.340339, 0.340339, 1)
 bg_color = Color(0.937255, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 1
 position = Vector2(330, 724)
 script = ExtResource("1_iv0u3")
 
