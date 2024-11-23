@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcsfd1j0g632x"]
+
+[sub_resource type="GDScript" id="GDScript_mmwud"]
+script/source = "#extends Node2D
+#
+#var target: Node2D
+#var weak_enemy = preload(\"res://scenes/enemy_weak.tscn\")
+#@onready var target_scene = preload(\"res://scenes/player.tscn\")
+#
+#func _ready() -> void:
+	#target = target_scene.instantiate() as Node2D
+	#$WeakEnemySpawner.start()
+	## Initially spawn weak enemies based on weakenemy count
+#
+#func _on_weak_enemy_spawner_timeout() -> void:
+	#spawn_weak_enemy()
+#
+#func spawn_weak_enemy() -> void:
+	#
+	#var weak = weak_enemy.instantiate()
+	#add_child(weak)
+"
+
+[node name="Spawner" type="Node2D"]
+script = SubResource("GDScript_mmwud")
+
+[node name="WeakEnemySpawner" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="WeakEnemySpawner" to="." method="_on_weak_enemy_spawner_timeout"]
