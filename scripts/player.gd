@@ -6,16 +6,14 @@ const JUMP_VELOCITY = -400.0
 func _physics_process(delta):
 		
 	var horizontal_direction = Input.get_axis("left", "right")
-	velocity.x = 300 * horizontal_direction
+	velocity.x = 200 * horizontal_direction
 	
-
-		
-	move_and_slide()
-	update_animations(horizontal_direction)
 	
 	var isLeft = velocity.x < 0
 	sprite.flip_h = isLeft
 	
+	move_and_slide()
+	update_animations(horizontal_direction)
 	
 	
 func update_animations(horizontal_direction):

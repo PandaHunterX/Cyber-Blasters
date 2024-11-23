@@ -279,10 +279,12 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 1
 position = Vector2(330, 724)
 script = ExtResource("1_iv0u3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(49, -48)
 scale = Vector2(4.82921, 8.74996)
 texture = ExtResource("2_d6wr0")
@@ -300,3 +302,7 @@ autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(639, -176)
+limit_left = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
