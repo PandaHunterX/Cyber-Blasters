@@ -12,6 +12,7 @@ var isdead = false
 
 func _ready() -> void:
 	$meleehitbox/CollisionShape2D.disabled = true
+	$HealthBar.value = health
 		
 func _physics_process(delta: float) -> void:
 	if not isdead:
@@ -38,8 +39,8 @@ func update_animations(horizontal_direction):
 
 func weak_hit():
 	health -= 100
+	$HealthBar.value = health
 	is_hit = true
-	print(health)
 	ap.play("damaged")
 	$AnimationCooldown.start()
 	player_health()
@@ -52,4 +53,4 @@ func  player_health():
 
 func _on_animation_cooldown_timeout() -> void:
 	update_animations(horizontal_direction)
-	$AnimationCooldown.stop() # Replace with function body.
+	$AnimationCooldown.stop() 

@@ -1,15 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1b02trcyeing"]
+[gd_scene load_steps=6 format=3 uid="uid://d1b02trcyeing"]
 
+[ext_resource type="Script" path="res://game.gd" id="1_h21nm"]
 [ext_resource type="PackedScene" uid="uid://bcne1d3p0amrk" path="res://scenes/background.tscn" id="1_joo2j"]
 [ext_resource type="PackedScene" uid="uid://dvqe5yrmnj22t" path="res://scenes/player.tscn" id="3_re4dx"]
 [ext_resource type="PackedScene" uid="uid://cy2ytach2fwsu" path="res://scenes/enemy_weak.tscn" id="3_w88dg"]
 
+[sub_resource type="Curve2D" id="Curve2D_w3axu"]
+
 [node name="Game" type="Node"]
+script = ExtResource("1_h21nm")
 
 [node name="Parallax2D" parent="." instance=ExtResource("1_joo2j")]
 
 [node name="Player" parent="." instance=ExtResource("3_re4dx")]
 position = Vector2(316, 765)
 
+[node name="Path2D" type="Path2D" parent="Player"]
+curve = SubResource("Curve2D_w3axu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+
+[node name="Marker2D" type="Marker2D" parent="Player/Path2D/PathFollow2D"]
+position = Vector2(1650, 142)
+
 [node name="enemyweak" parent="." instance=ExtResource("3_w88dg")]
 position = Vector2(1549, 901)
+
+[node name="Respawn" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Respawn" to="." method="_on_respawn_timeout"]
