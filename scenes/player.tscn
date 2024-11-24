@@ -76,7 +76,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/path = NodePath("HitBox:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -144,7 +144,7 @@ tracks/4/path = NodePath("meleehitbox/CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
+"times": PackedFloat32Array(0, 0.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -152,7 +152,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_e14dx"]
 resource_name = "damaged"
-length = 0.45
+length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -255,7 +255,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/path = NodePath("HitBox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -395,7 +395,7 @@ scale = Vector2(4.82921, 8.74996)
 texture = ExtResource("2_fbi88")
 hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(-60, 1)
 shape = SubResource("RectangleShape2D_74jxk")
 
@@ -416,4 +416,8 @@ script = ExtResource("7_joafu")
 position = Vector2(64, -38)
 shape = SubResource("RectangleShape2D_pwefy")
 
+[node name="AnimationCooldown" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="meleehitbox" to="meleehitbox" method="_on_body_entered"]
+[connection signal="timeout" from="AnimationCooldown" to="." method="_on_animation_cooldown_timeout"]

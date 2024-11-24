@@ -62,7 +62,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/path = NodePath("Hitbox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -74,7 +74,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerHit/CollisionShape2D:disabled")
+tracks/5/path = NodePath("PlayerHit/AttackHitbox:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -138,14 +138,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerHit/CollisionShape2D:disabled")
+tracks/4/path = NodePath("PlayerHit/AttackHitbox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.233333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_cun12"]
@@ -202,7 +202,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/path = NodePath("Hitbox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -325,20 +325,11 @@ _data = {
 "walk": SubResource("Animation_wfofy")
 }
 
-[sub_resource type="GDScript" id="GDScript_dpar8"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if body.has_method(\"weak_hit\"):
-		body.weak_hit()# Replace with function body.
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0q00"]
-size = Vector2(126, 292)
+size = Vector2(145.984, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic76v"]
+size = Vector2(167.964, 292)
 
 [node name="enemyweak" type="CharacterBody2D"]
 script = ExtResource("1_gs8k5")
@@ -350,7 +341,7 @@ texture = ExtResource("1_oww6y")
 flip_h = true
 hframes = 13
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(141.5, -133)
 shape = SubResource("RectangleShape2D_nws1g")
 
@@ -359,14 +350,31 @@ libraries = {
 "": SubResource("AnimationLibrary_ps563")
 }
 
-[node name="PlayerHit" type="Area2D" parent="."]
+[node name="PlayerDetction" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 3
-script = SubResource("GDScript_dpar8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHit"]
-position = Vector2(23, -136)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetction"]
+position = Vector2(13.008, -119.025)
+rotation = -0.00509106
 shape = SubResource("RectangleShape2D_n0q00")
 
+[node name="PlayerHit" type="Area2D" parent="."]
+
+[node name="AttackHitbox" type="CollisionShape2D" parent="PlayerHit"]
+position = Vector2(23.9979, -136.068)
+rotation = 0.00523029
+shape = SubResource("RectangleShape2D_ic76v")
+debug_color = Color(0.805115, 0.190371, 0.899778, 0.42)
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="Death" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="PlayerDetction" to="." method="_on_player_detction_body_entered"]
+[connection signal="body_exited" from="PlayerDetction" to="." method="_on_player_detction_body_exited"]
 [connection signal="body_entered" from="PlayerHit" to="." method="_on_player_hit_body_entered"]
-[connection signal="body_entered" from="PlayerHit" to="PlayerHit" method="_on_body_entered"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="Death" to="." method="_on_death_timeout"]
