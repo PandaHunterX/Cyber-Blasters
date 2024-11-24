@@ -371,6 +371,7 @@ debug_color = Color(0.805115, 0.190371, 0.899778, 0.42)
 wait_time = 0.7
 
 [node name="Death" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="PlayerDetction" to="." method="_on_player_detction_body_entered"]
 [connection signal="body_exited" from="PlayerDetction" to="." method="_on_player_detction_body_exited"]

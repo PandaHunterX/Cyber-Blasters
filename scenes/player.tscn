@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvqe5yrmnj22t"]
+[gd_scene load_steps=20 format=3 uid="uid://dvqe5yrmnj22t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_iv0u3"]
 [ext_resource type="Texture2D" uid="uid://dhpcgay1yd7ac" path="res://assets/main character/Cyborg_idle.png" id="2_d6wr0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://p5nwibw7bl4i" path="res://assets/main character/Cyborg_attack1.png" id="4_hpghe"]
 [ext_resource type="Texture2D" uid="uid://cjvpdlbletswg" path="res://assets/main character/Cyborg_death.png" id="5_3kpce"]
 [ext_resource type="Script" path="res://scripts/playerMelee.gd" id="7_joafu"]
+[ext_resource type="PackedScene" uid="uid://bpyw4xh44vyhs" path="res://scenes/weapon_system.tscn" id="8_uwpar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74jxk"]
 size = Vector2(87, 287.625)
@@ -401,6 +402,10 @@ scale = Vector2(4.82921, 8.74996)
 texture = ExtResource("2_fbi88")
 hframes = 2
 
+[node name="WeaponSystem" parent="Sprite2D" instance=ExtResource("8_uwpar")]
+position = Vector2(2.07074, 1.82858)
+scale = Vector2(0.207073, 0.114286)
+
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(-60, 1)
 shape = SubResource("RectangleShape2D_74jxk")
@@ -422,9 +427,6 @@ script = ExtResource("7_joafu")
 position = Vector2(67, -28)
 shape = SubResource("RectangleShape2D_pwefy")
 
-[node name="AnimationCooldown" type="Timer" parent="."]
-wait_time = 0.2
-
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -206.0
 offset_top = -701.0
@@ -435,6 +437,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_r0ikr")
 max_value = 1000.0
 value = 1000.0
 show_percentage = false
+
+[node name="AnimationCooldown" type="Timer" parent="."]
+wait_time = 0.2
 
 [connection signal="body_entered" from="meleehitbox" to="meleehitbox" method="_on_body_entered"]
 [connection signal="timeout" from="AnimationCooldown" to="." method="_on_animation_cooldown_timeout"]
