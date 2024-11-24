@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvqe5yrmnj22t"]
+[gd_scene load_steps=19 format=3 uid="uid://dvqe5yrmnj22t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_iv0u3"]
 [ext_resource type="Texture2D" uid="uid://dhpcgay1yd7ac" path="res://assets/main character/Cyborg_idle.png" id="2_d6wr0"]
@@ -384,6 +384,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwefy"]
 size = Vector2(159, 91)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_efxq0"]
+color = Color(0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0ikr"]
+bg_color = Color(0.937255, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(330, 724)
@@ -413,11 +419,22 @@ collision_layer = 0
 script = ExtResource("7_joafu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="meleehitbox"]
-position = Vector2(64, -38)
+position = Vector2(67, -28)
 shape = SubResource("RectangleShape2D_pwefy")
 
 [node name="AnimationCooldown" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -206.0
+offset_top = -701.0
+offset_right = 425.0
+offset_bottom = -631.0
+theme_override_styles/background = SubResource("StyleBoxLine_efxq0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r0ikr")
+max_value = 1000.0
+value = 1000.0
+show_percentage = false
 
 [connection signal="body_entered" from="meleehitbox" to="meleehitbox" method="_on_body_entered"]
 [connection signal="timeout" from="AnimationCooldown" to="." method="_on_animation_cooldown_timeout"]

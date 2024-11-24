@@ -24,7 +24,7 @@ func _physics_process(delta):
 func move_enemy():
 	if target:  # Ensure target exists
 		# Calculate horizontal direction only
-		var direction_x = (target.position.x - position.x)
+		var direction_x = (target.global_position.x - global_position.x)
 		direction_x = direction_x / abs(direction_x) if direction_x != 0 else 0  # Normalize direction
 		velocity.x = direction_x * speed
 		velocity.y = 0  # Ensure no vertical movement
