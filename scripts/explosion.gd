@@ -3,7 +3,7 @@ extends Node2D
 var speed = 1500
 var onhit = false
 
-func free() -> void:
+func _ready() -> void:
 	$"Grenade Hit/GrenadeHitbox".disabled = true
 	
 func _physics_process(delta: float) -> void:
@@ -14,7 +14,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_enemy_detection_body_entered(body: Node2D) -> void:
 	if body.has_method("explosive_hit"):
-		body.explosive_hit()
 		onhit = true
 		$AnimationPlayer.play("Explosion")
 		$ExplosionTimer.start()
@@ -22,3 +21,8 @@ func _on_enemy_detection_body_entered(body: Node2D) -> void:
 
 func _on_explosion_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_grenade_hit_body_entered(body: Node2D) -> void:
+	if body.has_method("explosive_hit"):
+		body.explosive_hit()

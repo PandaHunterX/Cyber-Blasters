@@ -427,19 +427,21 @@ script = ExtResource("7_joafu")
 position = Vector2(67, -28)
 shape = SubResource("RectangleShape2D_pwefy")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -206.0
-offset_top = -701.0
-offset_right = 425.0
-offset_bottom = -631.0
+[node name="AnimationCooldown" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 124.0
+offset_top = 23.0
+offset_right = 755.0
+offset_bottom = 93.0
 theme_override_styles/background = SubResource("StyleBoxLine_efxq0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r0ikr")
 max_value = 1000.0
 value = 1000.0
 show_percentage = false
-
-[node name="AnimationCooldown" type="Timer" parent="."]
-wait_time = 0.2
 
 [connection signal="body_entered" from="meleehitbox" to="meleehitbox" method="_on_body_entered"]
 [connection signal="timeout" from="AnimationCooldown" to="." method="_on_animation_cooldown_timeout"]

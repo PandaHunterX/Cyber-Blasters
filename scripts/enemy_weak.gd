@@ -39,22 +39,14 @@ func melee_hit():
 	$AttackCooldown.start()
 	print(health)  # Start cooldown to reset hit
 
-func pistol_hit():
-	health -= 150
+func bullet_hit():
+	health -= 50
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
 	$AttackCooldown.start()
 	print("pistol hit:")
 	print(health)  # Start cooldown to reset hit
-
-func smg_hit():
-	health -= 50
-	speed -= 10
-	is_hit = true  # Set hit flag to true
-	$AnimationPlayer.play("hit")
-	enemy_health()
-	$AttackCooldown.start()  # Start cooldown to reset hit
 
 func laser_hit():
 	health -= 250
@@ -73,10 +65,12 @@ func explosive_hit():
 
 func enemy_health():
 	if health <= 0:
-		$PlayerDetction/CollisionShape2D.disabled = true
+		$PlayerDetction/CollisionShape2D.set_deferred("disabled", true)
 		$AnimationPlayer.play("death")
 		$AttackCooldown.stop()
-		$Death.start()
+		await $AnimationPlayer.animation_finished
+		set_physics_process(false)
+		queue_free()
 	
 func _on_player_hit_body_entered(body: Node2D) -> void:
 	if body.has_method("weak_hit"):
@@ -85,10 +79,11 @@ func _on_player_hit_body_entered(body: Node2D) -> void:
 		
 
 func _on_player_detction_body_entered(body: Node2D) -> void:
-	player_detected = true
+	if body.name == "Player":
+		player_detected = true
 	if body.has_method("weak_hit") and attack_ready and player_detected:
 		attack()
-		
+
 func _on_attack_cooldown_timeout() -> void:
 	is_hit = false
 	if player_detected:
@@ -107,8 +102,3 @@ func _on_player_detction_body_exited(body: Node2D) -> void:
 	player_detected = false
 	$AttackCooldown.stop()
 	move_enemy() 
-
-
-func _on_death_timeout() -> void:
-	$Death.stop()
-	queue_free()

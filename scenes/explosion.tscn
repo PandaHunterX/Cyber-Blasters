@@ -40,10 +40,10 @@ tracks/1/path = NodePath("Grenade Hit/GrenadeHitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.133333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_xxyuj"]
@@ -112,4 +112,5 @@ debug_color = Color(0.612686, 0.371389, 0.97783, 0.42)
 wait_time = 0.4
 
 [connection signal="body_entered" from="Enemy Detection" to="." method="_on_enemy_detection_body_entered"]
+[connection signal="body_entered" from="Grenade Hit" to="." method="_on_grenade_hit_body_entered"]
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]

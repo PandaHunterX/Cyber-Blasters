@@ -332,6 +332,7 @@ size = Vector2(145.984, 114)
 size = Vector2(167.964, 292)
 
 [node name="enemyweak" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_gs8k5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -370,11 +371,7 @@ debug_color = Color(0.805115, 0.190371, 0.899778, 0.42)
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.7
 
-[node name="Death" type="Timer" parent="."]
-wait_time = 0.5
-
 [connection signal="body_entered" from="PlayerDetction" to="." method="_on_player_detction_body_entered"]
 [connection signal="body_exited" from="PlayerDetction" to="." method="_on_player_detction_body_exited"]
 [connection signal="body_entered" from="PlayerHit" to="." method="_on_player_hit_body_entered"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
-[connection signal="timeout" from="Death" to="." method="_on_death_timeout"]
