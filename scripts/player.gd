@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var melee = $meleehitbox
 @onready var weapon = find_child("Weapon")
+@onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 
 var notmoving = true
 var is_hit = false
@@ -15,7 +16,7 @@ var weapon_equip = false
 
 func _ready() -> void:
 	$meleehitbox/CollisionShape2D.disabled = true
-	$HealthBar.value = health
+	health_bar.value = health
 	weapon.texture = null
 		
 func _physics_process(delta: float) -> void:
@@ -32,11 +33,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and notmoving and not isdead and not weapon_equip:
 		ap.play("attack")
 		$AnimationCooldown.start()
-	elif event.is_action_pressed("pistol"):
+	elif event.is_action_pressed("pistol") or event.is_action_pressed("smg") or event.is_action_pressed("laser_rifle") or event.is_action_pressed("grenade_launcher"):
 		weapon_equip = true
 	elif event.is_action_pressed("melee"):
 		weapon_equip = false
-		
 func update_animations(horizontal_direction):
 	if not isdead:
 		if horizontal_direction == 0:
@@ -50,7 +50,7 @@ func update_animations(horizontal_direction):
 
 func weak_hit():
 	health -= 100
-	$HealthBar.value = health
+	health_bar.value = health
 	is_hit = true
 	print(health)
 	ap.play("damaged")
