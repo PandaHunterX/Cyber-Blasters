@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://1eiawil14myx"]
+
+[ext_resource type="Script" path="res://ingame_interface.gd" id="1_wtixd"]
+[ext_resource type="Texture2D" uid="uid://dri4wxcrpjjhg" path="res://assets/weapons/AK_full.png" id="2_va673"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_b0qwp"]
+color = Color(0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sruer"]
+bg_color = Color(0.937255, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6npd"]
+bg_color = Color(0.113725, 0.647059, 0.890196, 0.101961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cenq1"]
+bg_color = Color(0.0363013, 0.239566, 0.541154, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wtixd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1296.0
+offset_top = 15.0
+offset_right = 1905.0
+offset_bottom = 123.0
+color = Color(1, 1, 1, 0.105882)
+
+[node name="Score" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 452.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 64
+text = "SCORE:"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 23.0
+offset_right = 755.0
+offset_bottom = 93.0
+theme_override_styles/background = SubResource("StyleBoxLine_b0qwp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sruer")
+value = 100.0
+show_percentage = false
+
+[node name="PowerupBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 99.0
+offset_right = 756.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxFlat_l6npd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cenq1")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 927.0
+offset_right = 863.0
+offset_bottom = 1053.0
+color = Color(1, 1, 1, 0.211765)
+
+[node name="Weapon" type="TextureRect" parent="ColorRect2"]
+layout_mode = 2
+offset_left = 21.0
+offset_top = -10.0
+offset_right = 201.0
+offset_bottom = 141.0
+texture = ExtResource("2_va673")
+expand_mode = 1
+
+[node name="Ammo" type="Label" parent="ColorRect2"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 15.0
+offset_right = 763.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Ammo: 
+"

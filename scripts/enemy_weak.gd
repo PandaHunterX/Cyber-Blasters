@@ -32,24 +32,29 @@ func move_enemy():
 	move_and_slide()
 
 func melee_hit():
-	health -= 200
+	health -= 200 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
-	$AttackCooldown.start()
-	print(health)  # Start cooldown to reset hit
+	$AttackCooldown.start()  # Start cooldown to reset hit
 
-func bullet_hit():
-	health -= 50
+func pistol_hit():
+	health -= 50 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
-	$AttackCooldown.start()
-	print("pistol hit:")
-	print(health)  # Start cooldown to reset hit
+	$AttackCooldown.start() # Start cooldown to reset hit
 
+func smg_hit():
+	health -= 30 * Global.damage_buff
+	speed -= 5
+	is_hit = true  # Set hit flag to true
+	$AnimationPlayer.play("hit")
+	enemy_health()
+	$AttackCooldown.start() # Start cooldown to reset hit
+	
 func laser_hit():
-	health -= 250
+	health -= 250 * Global.damage_buff
 	speed -= 50
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
@@ -57,7 +62,7 @@ func laser_hit():
 	$AttackCooldown.start()  # Start cooldown to reset hit
 
 func explosive_hit():
-	health -= 1000
+	health -= 1000 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
@@ -66,16 +71,20 @@ func explosive_hit():
 func enemy_health():
 	if health <= 0:
 		$PlayerDetction/CollisionShape2D.set_deferred("disabled", true)
+		set_physics_process(false)
+		$AnimationPlayer.stop()
 		$AnimationPlayer.play("death")
 		$AttackCooldown.stop()
+		Global.add_ammo()
+		Global.score += 100
+		if not Global.power_activate:
+			Global.powerup_refill += 5
 		await $AnimationPlayer.animation_finished
-		set_physics_process(false)
 		queue_free()
 	
 func _on_player_hit_body_entered(body: Node2D) -> void:
 	if body.has_method("weak_hit"):
 		body.weak_hit()
-		pass
 		
 
 func _on_player_detction_body_entered(body: Node2D) -> void:

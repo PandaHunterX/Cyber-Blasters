@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dvqe5yrmnj22t"]
+[gd_scene load_steps=18 format=3 uid="uid://dvqe5yrmnj22t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_iv0u3"]
 [ext_resource type="Texture2D" uid="uid://dhpcgay1yd7ac" path="res://assets/main character/Cyborg_idle.png" id="2_d6wr0"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bwhmhqm2g08v1" path="res://assets/main character/Cyborg_run.png" id="3_fxmvc"]
 [ext_resource type="Texture2D" uid="uid://p5nwibw7bl4i" path="res://assets/main character/Cyborg_attack1.png" id="4_hpghe"]
 [ext_resource type="Texture2D" uid="uid://cjvpdlbletswg" path="res://assets/main character/Cyborg_death.png" id="5_3kpce"]
-[ext_resource type="Script" path="res://scripts/playerMelee.gd" id="7_joafu"]
+[ext_resource type="PackedScene" uid="uid://1eiawil14myx" path="res://game_interface.tscn" id="8_6dwr8"]
 [ext_resource type="PackedScene" uid="uid://bpyw4xh44vyhs" path="res://scenes/weapon_system.tscn" id="8_uwpar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74jxk"]
@@ -385,12 +385,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwefy"]
 size = Vector2(159, 91)
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_efxq0"]
-color = Color(0.340339, 0.340339, 0.340339, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0ikr"]
-bg_color = Color(0.937255, 0, 0, 1)
-
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(330, 724)
@@ -421,7 +415,6 @@ position = Vector2(639, -176)
 
 [node name="meleehitbox" type="Area2D" parent="."]
 collision_layer = 0
-script = ExtResource("7_joafu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="meleehitbox"]
 position = Vector2(67, -28)
@@ -430,18 +423,13 @@ shape = SubResource("RectangleShape2D_pwefy")
 [node name="AnimationCooldown" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="PowerupDuration" type="Timer" parent="."]
+wait_time = 5.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 124.0
-offset_top = 23.0
-offset_right = 755.0
-offset_bottom = 93.0
-theme_override_styles/background = SubResource("StyleBoxLine_efxq0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_r0ikr")
-max_value = 1000.0
-value = 1000.0
-show_percentage = false
+[node name="Control" parent="CanvasLayer" instance=ExtResource("8_6dwr8")]
 
-[connection signal="body_entered" from="meleehitbox" to="meleehitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="meleehitbox" to="." method="_on_meleehitbox_body_entered"]
 [connection signal="timeout" from="AnimationCooldown" to="." method="_on_animation_cooldown_timeout"]
+[connection signal="timeout" from="PowerupDuration" to="." method="_on_powerup_duration_timeout"]
