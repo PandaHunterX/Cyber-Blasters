@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://udp8wjqxtmw0"]
+
+[ext_resource type="Script" path="res://scripts/laser.gd" id="1_air1d"]
+[ext_resource type="Texture2D" uid="uid://0olvjt3d8op0" path="res://assets/bullets/Laser.png" id="2_nv4e0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb6af"]
+size = Vector2(474, 29)
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_air1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(167, 1)
+scale = Vector2(2.87849, 0.982072)
+texture = ExtResource("2_nv4e0")
+
+[node name="Laser" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser"]
+position = Vector2(132, 0.5)
+shape = SubResource("RectangleShape2D_nb6af")
+
+[node name="LaserTime" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="Laser" to="." method="_on_laser_body_entered"]
+[connection signal="timeout" from="LaserTime" to="." method="_on_laser_time_timeout"]

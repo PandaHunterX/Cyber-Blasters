@@ -27,6 +27,6 @@ position = Vector2(1650, 142)
 position = Vector2(1549, 901)
 
 [node name="Respawn" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 
 [connection signal="timeout" from="Respawn" to="." method="_on_respawn_timeout"]
