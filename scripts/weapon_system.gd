@@ -4,20 +4,10 @@ extends Node2D
 @onready var laserbullet = preload("res://scenes/laser.tscn")
 @onready var grenadebullet = preload("res://scenes/explosion.tscn")
 
-const pistol = preload("res://assets/weapons/pistol_full.png")
-const smg = preload("res://assets/weapons/Assault rifle_full.png")
-const laser_rifle = preload("res://assets/weapons/AK_full.png")
-const grenade_launcher = preload("res://assets/weapons/Shootgun_full.png")
-
 var can_shoot = true
 var is_shooting = false
 var shoot_timer = 0
-
-var melee_equip = true
-var basic_weapon_equip = false
-var laser_rifle_equip = false
-var grenad_launcher_equip = false
-
+var can_change = true
 
 func _ready() -> void:
 	$WeaponCooldown.wait_time = 0.2
@@ -31,71 +21,85 @@ func _process(delta: float) -> void:
 			shoot_timer += delta
 			shoot_timer = 0
 		else:
+			can_change = false
 			is_shooting = true
 			shoot_timer = 0
 	if Input.is_action_just_released("fire"):
 		is_shooting = false
+		can_change = true
 		
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("melee"):
+	if event.is_action_pressed("melee") and can_change:
 		$Weapon.texture = null
-		melee_equip = true
-		basic_weapon_equip = false
-		laser_rifle_equip = false
-		grenad_launcher_equip = false
+		Global.melee_equip = true
+		Global.pistol_equip = false
+		Global.smg_equip = false
+		Global.laser_rifle_equip = false
+		Global.grenad_launcher_equip = false
 		can_shoot = false
-	elif event.is_action_pressed("pistol"):
-		$Weapon.texture = pistol
-		basic_weapon_equip = true
-		$WeaponCooldown.wait_time = 0.8
+	elif event.is_action_pressed("pistol") and can_change:
+		$Weapon.texture = Global.pistol
+		Global.melee_equip = false
+		Global.pistol_equip = true
+		Global.smg_equip = false
+		Global.laser_rifle_equip = false
+		Global.grenad_launcher_equip = false
+		$WeaponCooldown.wait_time = 0.8 / Global.fire_rate_buff
 		can_shoot = true
-	elif event.is_action_pressed("smg"):
-		$Weapon.texture = smg
-		$WeaponCooldown.wait_time = 0.2
-		basic_weapon_equip = true
+	elif event.is_action_pressed("smg") and can_change:
+		$Weapon.texture = Global.smg
+		$WeaponCooldown.wait_time = 0.2 / Global.fire_rate_buff
+		Global.melee_equip = false
+		Global.pistol_equip = false
+		Global.smg_equip = true
+		Global.laser_rifle_equip = false
+		Global.grenad_launcher_equip = false
 		can_shoot = true
-	elif  event.is_action_pressed("laser_rifle"):
-		$Weapon.texture = laser_rifle
-		$WeaponCooldown.wait_time = 1.5
-		melee_equip = false
-		basic_weapon_equip = false
-		laser_rifle_equip = true
-		grenad_launcher_equip = false
+	elif  event.is_action_pressed("laser_rifle") and can_change:
+		$Weapon.texture = Global.laser_rifle
+		$WeaponCooldown.wait_time = 1.6 / Global.fire_rate_buff
+		Global.melee_equip = false
+		Global.pistol_equip = false
+		Global.smg_equip = false
+		Global.laser_rifle_equip = true
+		Global.grenad_launcher_equip = false
 		can_shoot = true
-	elif event.is_action_pressed("grenade_launcher"):
-		$Weapon.texture = grenade_launcher
-		$WeaponCooldown.wait_time = 2
-		melee_equip = false
-		basic_weapon_equip = false
-		laser_rifle_equip = false
-		grenad_launcher_equip = true
+	elif event.is_action_pressed("grenade_launcher") and can_change:
+		$Weapon.texture = Global.grenade_launcher
+		$WeaponCooldown.wait_time = 2 / Global.fire_rate_buff
+		Global.melee_equip = false
+		Global.pistol_equip = false
+		Global.smg_equip = false
+		Global.laser_rifle_equip = false
+		Global.grenad_launcher_equip = true
 		can_shoot = true
-	elif event.is_action_pressed("pistol") or event.is_action_pressed("smg"):
-		melee_equip = false
-		basic_weapon_equip = false
-		laser_rifle_equip = false
-		grenad_launcher_equip = false
 		
 func basic_fire():
-	if can_shoot and is_shooting and basic_weapon_equip:
+	if can_shoot and is_shooting and ((Global.pistol_equip and Global.pistol_bullets >= 1) or (Global.smg_equip and Global.smg_bullets >= 1)):
 		var bul = bullet.instantiate()
 		add_child(bul)
 		$WeaponCooldown.start()
 		can_shoot = false
+		if Global.pistol_equip:
+			Global.pistol_bullets -= 1
+		elif Global.smg_equip:
+			Global.smg_bullets -= 1
 		
 func laser_fire():
-	if can_shoot and is_shooting and laser_rifle_equip:
+	if can_shoot and is_shooting and Global.laser_rifle_equip and Global.laser_bullets >= 1:
 		var laserbul = laserbullet.instantiate()
 		add_child(laserbul)
 		$WeaponCooldown.start()
 		can_shoot = false
+		Global.laser_bullets -= 1
 
 func grenade_fire():
-	if can_shoot and is_shooting and grenad_launcher_equip:
+	if can_shoot and is_shooting and Global.grenad_launcher_equip and Global.explosive_bullets >= 1:
 		var grenadebul = grenadebullet.instantiate()
 		add_child(grenadebul)
 		$WeaponCooldown.start()
 		can_shoot = false
+		Global.explosive_bullets -= 1
 		
 func _on_weapon_cooldown_timeout() -> void:
 	can_shoot = true

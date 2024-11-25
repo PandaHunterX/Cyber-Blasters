@@ -8,6 +8,9 @@ func _physics_process(delta: float) -> void:
 		
 
 func _on_bullet_hitbox_body_entered(body: Node2D) -> void:
-	if body.has_method("bullet_hit"):
-		body.bullet_hit()
+	if body.has_method("pistol_hit") and Global.pistol_equip:
+		body.pistol_hit()
+		queue_free()
+	elif body.has_method("smg_hit") and Global.smg_equip:
+		body.smg_hit()
 		queue_free()
