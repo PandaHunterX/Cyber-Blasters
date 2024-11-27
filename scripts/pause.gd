@@ -4,7 +4,7 @@ var is_paused:bool = false:
 	set = set_paused
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and not Global.player_isdead:
 		is_paused = !is_paused
 
 func set_paused(value: bool) -> void:

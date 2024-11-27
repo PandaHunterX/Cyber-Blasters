@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://1eiawil14myx"]
+[gd_scene load_steps=11 format=3 uid="uid://1eiawil14myx"]
 
 [ext_resource type="Script" path="res://ingame_interface.gd" id="1_wtixd"]
 [ext_resource type="Texture2D" uid="uid://dri4wxcrpjjhg" path="res://assets/weapons/AK_full.png" id="2_va673"]
+[ext_resource type="Texture2D" uid="uid://d111uegdhq1tf" path="res://assets/weapons/fist.png" id="3_0wy4k"]
+[ext_resource type="Texture2D" uid="uid://brpetv03fpaxq" path="res://assets/weapons/pistol_full.png" id="4_tltl0"]
+[ext_resource type="Texture2D" uid="uid://dapqtv8n3yuvx" path="res://assets/weapons/Assault rifle_full.png" id="5_enc5c"]
+[ext_resource type="Texture2D" uid="uid://bqbvvswv3haa" path="res://assets/weapons/Shootgun_full.png" id="6_u6i5l"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_b0qwp"]
 color = Color(0.340339, 0.340339, 0.340339, 1)
@@ -29,7 +33,7 @@ layout_mode = 0
 offset_left = 1296.0
 offset_top = 15.0
 offset_right = 1905.0
-offset_bottom = 123.0
+offset_bottom = 108.0
 color = Color(1, 1, 1, 0.105882)
 
 [node name="Score" type="Label" parent="ColorRect"]
@@ -38,23 +42,24 @@ offset_left = 6.0
 offset_top = 7.0
 offset_right = 452.0
 offset_bottom = 95.0
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 60
 text = "SCORE:"
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 1300.0
-offset_top = 136.0
-offset_right = 1909.0
-offset_bottom = 244.0
+offset_left = 1296.0
+offset_top = 121.0
+offset_right = 1905.0
+offset_bottom = 196.0
 color = Color(1, 1, 1, 0.105882)
 
 [node name="Distance" type="Label" parent="ColorRect3"]
 layout_mode = 0
-offset_left = 12.0
-offset_right = 575.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 64
+offset_left = 13.0
+offset_top = 3.0
+offset_right = 576.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 48
 text = "DISTANCE:"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -105,3 +110,194 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "Ammo: 
 "
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1638.0
+offset_top = 212.0
+offset_right = 1898.0
+offset_bottom = 586.0
+color = Color(0, 0.930042, 0.952927, 0.521569)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect4"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -182.0
+offset_right = 9.0
+offset_bottom = 234.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Melee" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/Melee"]
+layout_mode = 2
+texture = ExtResource("3_0wy4k")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/Melee/TextureRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 42.0
+grow_vertical = 0
+color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="Label" type="Label" parent="ColorRect4/VBoxContainer/Melee/TextureRect/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 45.0
+offset_bottom = 19.0
+text = "TAB"
+
+[node name="Label" type="Label" parent="ColorRect4/VBoxContainer/Melee"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "∞"
+
+[node name="Pistol" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/Pistol"]
+layout_mode = 2
+texture = ExtResource("4_tltl0")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/Pistol/TextureRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 20.0
+grow_vertical = 0
+color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="Label" type="Label" parent="ColorRect4/VBoxContainer/Pistol/TextureRect/ColorRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -4.0
+offset_right = 17.0
+offset_bottom = 19.0
+text = "1"
+
+[node name="Pistol Ammo" type="Label" parent="ColorRect4/VBoxContainer/Pistol"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "∞"
+
+[node name="SMG" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/SMG"]
+layout_mode = 2
+texture = ExtResource("5_enc5c")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/SMG/TextureRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 21.0
+grow_vertical = 0
+color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="Label" type="Label" parent="ColorRect4/VBoxContainer/SMG/TextureRect/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 45.0
+offset_bottom = 19.0
+text = "2"
+
+[node name="SMG Ammo" type="Label" parent="ColorRect4/VBoxContainer/SMG"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "∞"
+
+[node name="Laser Rifle" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/Laser Rifle"]
+layout_mode = 2
+texture = ExtResource("2_va673")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/Laser Rifle/TextureRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 23.0
+grow_vertical = 0
+color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="Label" type="Label" parent="ColorRect4/VBoxContainer/Laser Rifle/TextureRect/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 21.0
+offset_bottom = 19.0
+text = "3"
+
+[node name="Laser Ammo" type="Label" parent="ColorRect4/VBoxContainer/Laser Rifle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "∞"
+
+[node name="Grenade Launcher" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/Grenade Launcher"]
+layout_mode = 2
+texture = ExtResource("6_u6i5l")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/Grenade Launcher/TextureRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 24.0
+grow_vertical = 0
+color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="Label" type="Label" parent="ColorRect4/VBoxContainer/Grenade Launcher/TextureRect/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 22.0
+offset_bottom = 19.0
+text = "4"
+
+[node name="Grenade Ammo" type="Label" parent="ColorRect4/VBoxContainer/Grenade Launcher"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "∞"
