@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1b02trcyeing"]
+[gd_scene load_steps=8 format=3 uid="uid://d1b02trcyeing"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5h3mg"]
 [ext_resource type="PackedScene" uid="uid://bcne1d3p0amrk" path="res://scenes/background.tscn" id="2_kpss6"]
 [ext_resource type="PackedScene" uid="uid://dvqe5yrmnj22t" path="res://scenes/player.tscn" id="3_wedu7"]
 [ext_resource type="PackedScene" uid="uid://cy2ytach2fwsu" path="res://scenes/enemy_weak.tscn" id="4_vjkqh"]
 [ext_resource type="PackedScene" uid="uid://c1yfdfrmpulxv" path="res://scenes/pause.tscn" id="5_iknmg"]
+[ext_resource type="PackedScene" uid="uid://fngnr2xexaol" path="res://scenes/respawn_menu.tscn" id="6_uhd64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgt6t"]
 size = Vector2(102, 1058)
@@ -13,10 +14,10 @@ size = Vector2(102, 1058)
 script = ExtResource("1_5h3mg")
 
 [node name="Player" parent="." instance=ExtResource("3_wedu7")]
-position = Vector2(316, 765)
+position = Vector2(371, 761)
 
 [node name="Spawner" type="Marker2D" parent="Player"]
-position = Vector2(2017, 135)
+position = Vector2(2586, 140)
 
 [node name="Parallax2D" parent="." instance=ExtResource("2_kpss6")]
 
@@ -26,6 +27,13 @@ position = Vector2(2017, 135)
 layer = 2
 
 [node name="Pause" parent="CanvasLayer" instance=ExtResource("5_iknmg")]
+
+[node name="Respawn Menu" parent="CanvasLayer" instance=ExtResource("6_uhd64")]
+visible = false
+offset_left = 3.0
+offset_top = -4.0
+offset_right = 3.0
+offset_bottom = -4.0
 
 [node name="enemyweak" parent="." instance=ExtResource("4_vjkqh")]
 position = Vector2(1663, 899)

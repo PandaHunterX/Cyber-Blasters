@@ -32,6 +32,7 @@ func move_enemy():
 	move_and_slide()
 
 func melee_hit():
+	$PlayerHit/AttackHitbox.disabled = true
 	health -= 50 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
@@ -70,14 +71,15 @@ func explosive_hit():
 
 func enemy_health():
 	if health <= 0:
-		$PlayerDetction/CollisionShape2D.set_deferred("disabled", true)
+		$PlayerDetction/CollisionShape2D.disabled = true
+		$Hitbox.disabled = true
+		$PlayerHit/AttackHitbox.disabled = true
 		set_physics_process(false)
-		$AnimationPlayer.stop()
 		$AnimationPlayer.play("death")
 		$AttackCooldown.stop()
 		Global.add_ammo()
 		Global.score += 100
-		if not Global.power_activate and Global.powerup_refill < 100:
+		if not Global.power_activate and Global.powerup_refill <= 100:
 			Global.powerup_refill += 5
 		await $AnimationPlayer.animation_finished
 		queue_free()
@@ -95,6 +97,7 @@ func _on_player_detction_body_entered(body: Node2D) -> void:
 
 func _on_attack_cooldown_timeout() -> void:
 	is_hit = false
+	$PlayerHit/AttackHitbox.disabled = true
 	if player_detected:
 		attack()
 	else:
@@ -104,10 +107,11 @@ func attack():
 	attack_ready = false
 	$AnimationPlayer.play("attack")
 	$AttackCooldown.start()
-		
+	$PlayerHit/AttackHitbox.disabled = true
 
 func _on_player_detction_body_exited(body: Node2D) -> void:
 	attack_ready = true
 	player_detected = false
 	$AttackCooldown.stop()
+	$PlayerHit/AttackHitbox.disabled = true
 	move_enemy() 

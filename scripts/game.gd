@@ -9,6 +9,7 @@ func _ready() -> void:
 	$DifficultyTimer.start()
 
 func _physics_process(delta: float) -> void:
+
 		# Ensure the boundary only updates when the player is moving right
 	if $Player.velocity.x > 0:
 		$Boundary.position.x = $Player.global_position.x - 300
@@ -22,7 +23,7 @@ func spawn_weak_enemy() -> void:
 		for i in range(num_enemies):
 			var weak = weak_enemy.instantiate()
 		# Randomize the position only along the X-axis
-			var random_x_offset = Global.rng.randi_range(-300, 300)
+			var random_x_offset = Global.rng.randi_range(-600, 600)
 			weak.position = $Player/Spawner.global_position + Vector2(random_x_offset, 0)
 			add_child(weak)
 		

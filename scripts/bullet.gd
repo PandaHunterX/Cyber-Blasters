@@ -5,7 +5,8 @@ var speed = 1000
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 		position.x += speed * delta
-		
+		if position.x >= 1600:
+			queue_free()
 
 func _on_bullet_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("pistol_hit") and Global.pistol_equip:

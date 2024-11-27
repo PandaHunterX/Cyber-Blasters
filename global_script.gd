@@ -5,15 +5,46 @@ var max_player_health = 100
 var player_health = 100
 var player_speed = 300
 var player_isdead = false
+var player_respawn = false
+var powerup_refill = 0
+
+
+#Scoring System
 var score = 0
-var powerup_refill = 100
+var highest_score = 0
 var distance_traveled: float = 0.0
+var current_distance_traveled = ""
+var longest_distance_num = 0
+var longest_distance = ""
+
 
 func distance_calculation(player_position: float, previous_position: float, delta: float) -> float:
 	var distance = abs(player_position - previous_position) * delta     # Calculate the horizontal distance and normalize by delta
 	distance_traveled += distance
 	return player_position
 
+func distance():
+	if not player_isdead:
+		if distance_traveled >= 1000:
+			var kilometers = distance_traveled / 1000
+			current_distance_traveled = str(snapped(kilometers,0.01)) + "km"
+		else:
+			current_distance_traveled = str(round(distance_traveled)) + "m"
+
+func set_score_record():
+	if score > highest_score:
+		highest_score = score
+	if distance_traveled > longest_distance_num:
+		longest_distance_num = distance_traveled
+		longest_distance = current_distance_traveled
+		
+func player_reset():
+	score = 0
+	distance_traveled = 0.0
+	current_distance_traveled = "0m"
+	player_health = max_player_health
+	powerup_refill = 0
+	
 #RNG System
 var rng = RandomNumberGenerator.new()
 
@@ -44,14 +75,19 @@ const smg = preload("res://assets/weapons/Assault rifle_full.png")
 const laser_rifle = preload("res://assets/weapons/AK_full.png")
 const grenade_launcher = preload("res://assets/weapons/Shootgun_full.png")
 
+var pistol_unlock = false
+var smg_unlock = false
+var laser_rifle_unlock = false
+var grenade_launcher_unlock = false
+
 var pistol_bullets = 0
-var smg_bullets = 60
+var smg_bullets = 0
 var laser_bullets = 0
 var explosive_bullets = 0
 
-var pistol_limit = 60
-var smg_limit = 240
-var laser_limit = 30
+var pistol_limit = 30
+var smg_limit = 120
+var laser_limit = 12
 var explosive_limit = 5
 
 var melee_equip = true
@@ -72,13 +108,13 @@ func ammo_limit():
 
 func add_ammo():
 	var drop_rate = rng.randi_range(1, 100) # Generate a random number between 1 and 100 for weighted probabilities
-	if pistol_bullets < pistol_limit and drop_rate <= 25: # 25% chance
+	if pistol_bullets < pistol_limit and drop_rate <= 25 and pistol_unlock: # 25% chance
 		pistol_bullets += 10
-	elif smg_bullets < smg_limit and drop_rate > 25 and drop_rate <= 40: # 15% chance
+	elif smg_bullets < smg_limit and drop_rate > 25 and drop_rate <= 40 and smg_unlock: # 15% chance
 		smg_bullets += 30
-	elif laser_bullets < laser_limit and drop_rate > 40 and drop_rate <= 47: # 7% chance
+	elif laser_bullets < laser_limit and drop_rate > 40 and drop_rate <= 50 and laser_rifle_unlock: # 7% chance
 		laser_bullets += 2
-	elif explosive_bullets < explosive_limit and drop_rate > 47 and drop_rate <= 48: # 1% chance
+	elif explosive_bullets < explosive_limit and drop_rate > 50 and drop_rate <= 54 and grenade_launcher_unlock: # 1% chance
 		explosive_bullets += 1
 	
 	ammo_limit()

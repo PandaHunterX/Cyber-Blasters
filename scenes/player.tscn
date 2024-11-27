@@ -387,7 +387,7 @@ size = Vector2(159, 91)
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(330, 724)
+position = Vector2(368, 716)
 script = ExtResource("1_iv0u3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -405,7 +405,7 @@ position = Vector2(-60, 1)
 shape = SubResource("RectangleShape2D_74jxk")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-position = Vector2(629, -178)
+position = Vector2(587, -173)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -423,6 +423,7 @@ shape = SubResource("RectangleShape2D_pwefy")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("8_6dwr8")]
+metadata/_edit_use_anchors_ = true
 
 [node name="PowerupDuration" type="Timer" parent="."]
 wait_time = 5.0

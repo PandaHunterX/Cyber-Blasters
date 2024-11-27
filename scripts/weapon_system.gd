@@ -13,6 +13,7 @@ func _ready() -> void:
 	$WeaponCooldown.wait_time = 0.2
 	
 func _process(delta: float) -> void:
+	weapon_unlock()
 	basic_fire()
 	laser_fire()
 	grenade_fire()
@@ -28,6 +29,16 @@ func _process(delta: float) -> void:
 		is_shooting = false
 		can_change = true
 		
+	if Global.player_respawn:
+		Global.player_respawn = false
+		$Weapon.texture = null
+		Global.melee_equip = true
+		Global.pistol_equip = false
+		Global.smg_equip = false
+		Global.laser_rifle_equip = false
+		Global.grenad_launcher_equip = false
+		can_shoot = false
+		
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee") and can_change:
 		$Weapon.texture = null
@@ -37,7 +48,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.laser_rifle_equip = false
 		Global.grenad_launcher_equip = false
 		can_shoot = false
-	elif event.is_action_pressed("pistol") and can_change:
+	elif event.is_action_pressed("pistol") and can_change and Global.pistol_unlock:
 		$Weapon.texture = Global.pistol
 		$WeaponCooldown.wait_time = Global.pistol_fire_rate
 		Global.melee_equip = false
@@ -46,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.laser_rifle_equip = false
 		Global.grenad_launcher_equip = false
 		can_shoot = true
-	elif event.is_action_pressed("smg") and can_change:
+	elif event.is_action_pressed("smg") and can_change and Global.smg_unlock:
 		$Weapon.texture = Global.smg
 		$WeaponCooldown.wait_time = Global.smg_fire_rate
 		Global.melee_equip = false
@@ -55,7 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.laser_rifle_equip = false
 		Global.grenad_launcher_equip = false
 		can_shoot = true
-	elif  event.is_action_pressed("laser_rifle") and can_change:
+	elif  event.is_action_pressed("laser_rifle") and can_change and Global.laser_rifle_unlock:
 		$Weapon.texture = Global.laser_rifle
 		$WeaponCooldown.wait_time = Global.laser_fire_rate
 		Global.melee_equip = false
@@ -64,7 +75,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Global.laser_rifle_equip = true
 		Global.grenad_launcher_equip = false
 		can_shoot = true
-	elif event.is_action_pressed("grenade_launcher") and can_change:
+	elif event.is_action_pressed("grenade_launcher") and can_change and Global.grenade_launcher_unlock:
 		$Weapon.texture = Global.grenade_launcher
 		$WeaponCooldown.wait_time = Global.explosive_fire_rate
 		Global.melee_equip = false
@@ -103,3 +114,21 @@ func grenade_fire():
 		
 func _on_weapon_cooldown_timeout() -> void:
 	can_shoot = true
+
+func weapon_unlock():
+	if Global.score >= 500:
+		if not Global.pistol_unlock:
+			Global.pistol_bullets += 10
+		Global.pistol_unlock = true
+	if Global.score >= 1000:
+		if not Global.smg_unlock:
+			Global.smg_bullets += 30
+		Global.smg_unlock = true
+	if Global.score >= 2000:
+		if not Global.laser_rifle_unlock:
+			Global.laser_bullets += 2
+		Global.laser_rifle_unlock = true
+	if Global.score >= 5000:
+		if not Global.grenade_launcher_unlock:
+			Global.explosive_bullets += 1
+		Global.grenade_launcher_unlock = true

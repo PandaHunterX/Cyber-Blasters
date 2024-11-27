@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpyw4xh44vyhs"]
+[gd_scene load_steps=3 format=3 uid="uid://bpyw4xh44vyhs"]
 
 [ext_resource type="Script" path="res://scripts/weapon_system.gd" id="1_aw7gr"]
 [ext_resource type="Texture2D" uid="uid://dri4wxcrpjjhg" path="res://assets/weapons/AK_full.png" id="1_nmmv6"]
-
-[sub_resource type="Curve2D" id="Curve2D_jl88n"]
 
 [node name="WeaponSystem" type="Node2D"]
 script = ExtResource("1_aw7gr")
@@ -16,12 +14,7 @@ texture = ExtResource("1_nmmv6")
 [node name="WeaponCooldown" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_jl88n")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-
-[node name="Marker2D" type="Marker2D" parent="Path2D/PathFollow2D"]
-position = Vector2(10, -15)
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(85, -20)
 
 [connection signal="timeout" from="WeaponCooldown" to="." method="_on_weapon_cooldown_timeout"]
