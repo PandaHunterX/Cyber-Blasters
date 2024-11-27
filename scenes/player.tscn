@@ -404,14 +404,14 @@ scale = Vector2(0.207073, 0.114286)
 position = Vector2(-60, 1)
 shape = SubResource("RectangleShape2D_74jxk")
 
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(629, -178)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_fkni2")
 }
 autoplay = "idle"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(639, -176)
 
 [node name="meleehitbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -420,16 +420,12 @@ collision_layer = 0
 position = Vector2(67, -28)
 shape = SubResource("RectangleShape2D_pwefy")
 
-[node name="AnimationCooldown" type="Timer" parent="."]
-wait_time = 0.2
-
-[node name="PowerupDuration" type="Timer" parent="."]
-wait_time = 5.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("8_6dwr8")]
 
+[node name="PowerupDuration" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="meleehitbox" to="." method="_on_meleehitbox_body_entered"]
-[connection signal="timeout" from="AnimationCooldown" to="." method="_on_animation_cooldown_timeout"]
 [connection signal="timeout" from="PowerupDuration" to="." method="_on_powerup_duration_timeout"]

@@ -39,16 +39,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		can_shoot = false
 	elif event.is_action_pressed("pistol") and can_change:
 		$Weapon.texture = Global.pistol
+		$WeaponCooldown.wait_time = Global.pistol_fire_rate
 		Global.melee_equip = false
 		Global.pistol_equip = true
 		Global.smg_equip = false
 		Global.laser_rifle_equip = false
 		Global.grenad_launcher_equip = false
-		$WeaponCooldown.wait_time = 0.8 / Global.fire_rate_buff
 		can_shoot = true
 	elif event.is_action_pressed("smg") and can_change:
 		$Weapon.texture = Global.smg
-		$WeaponCooldown.wait_time = 0.2 / Global.fire_rate_buff
+		$WeaponCooldown.wait_time = Global.smg_fire_rate
 		Global.melee_equip = false
 		Global.pistol_equip = false
 		Global.smg_equip = true
@@ -57,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		can_shoot = true
 	elif  event.is_action_pressed("laser_rifle") and can_change:
 		$Weapon.texture = Global.laser_rifle
-		$WeaponCooldown.wait_time = 1.6 / Global.fire_rate_buff
+		$WeaponCooldown.wait_time = Global.laser_fire_rate
 		Global.melee_equip = false
 		Global.pistol_equip = false
 		Global.smg_equip = false
@@ -66,7 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		can_shoot = true
 	elif event.is_action_pressed("grenade_launcher") and can_change:
 		$Weapon.texture = Global.grenade_launcher
-		$WeaponCooldown.wait_time = 2 / Global.fire_rate_buff
+		$WeaponCooldown.wait_time = Global.explosive_fire_rate
 		Global.melee_equip = false
 		Global.pistol_equip = false
 		Global.smg_equip = false

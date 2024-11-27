@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var target_scene = preload("res://scenes/player.tscn")
 @onready var player_detection = $PlayerHit
 
-var health = 500
+var health = 100
 var target: Node2D
 var speed = 150
 var is_hit = false  # Flag to check if the character is hit
@@ -32,21 +32,21 @@ func move_enemy():
 	move_and_slide()
 
 func melee_hit():
-	health -= 200 * Global.damage_buff
+	health -= 50 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
 	$AttackCooldown.start()  # Start cooldown to reset hit
 
 func pistol_hit():
-	health -= 50 * Global.damage_buff
+	health -= 25 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
 	$AttackCooldown.start() # Start cooldown to reset hit
 
 func smg_hit():
-	health -= 30 * Global.damage_buff
+	health -= 15 * Global.damage_buff
 	speed -= 5
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
@@ -54,7 +54,7 @@ func smg_hit():
 	$AttackCooldown.start() # Start cooldown to reset hit
 	
 func laser_hit():
-	health -= 250 * Global.damage_buff
+	health -= 75 * Global.damage_buff
 	speed -= 50
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
@@ -62,7 +62,7 @@ func laser_hit():
 	$AttackCooldown.start()  # Start cooldown to reset hit
 
 func explosive_hit():
-	health -= 1000 * Global.damage_buff
+	health -= 150 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
@@ -77,7 +77,7 @@ func enemy_health():
 		$AttackCooldown.stop()
 		Global.add_ammo()
 		Global.score += 100
-		if not Global.power_activate:
+		if not Global.power_activate and Global.powerup_refill < 100:
 			Global.powerup_refill += 5
 		await $AnimationPlayer.animation_finished
 		queue_free()

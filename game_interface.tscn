@@ -41,6 +41,22 @@ offset_bottom = 95.0
 theme_override_font_sizes/font_size = 64
 text = "SCORE:"
 
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1300.0
+offset_top = 136.0
+offset_right = 1909.0
+offset_bottom = 244.0
+color = Color(1, 1, 1, 0.105882)
+
+[node name="Distance" type="Label" parent="ColorRect3"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 575.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 64
+text = "DISTANCE:"
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 0
 offset_left = 124.0

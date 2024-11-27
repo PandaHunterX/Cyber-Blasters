@@ -6,26 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://cy2ytach2fwsu" path="res://scenes/enemy_weak.tscn" id="4_vjkqh"]
 [ext_resource type="PackedScene" uid="uid://c1yfdfrmpulxv" path="res://scenes/pause.tscn" id="5_iknmg"]
 
-[sub_resource type="Curve2D" id="Curve2D_w3axu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgt6t"]
+size = Vector2(102, 1058)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_5h3mg")
 
-[node name="Parallax2D" parent="." instance=ExtResource("2_kpss6")]
-
 [node name="Player" parent="." instance=ExtResource("3_wedu7")]
 position = Vector2(316, 765)
 
-[node name="Path2D" type="Path2D" parent="Player"]
-curve = SubResource("Curve2D_w3axu")
+[node name="Spawner" type="Marker2D" parent="Player"]
+position = Vector2(2017, 135)
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
-
-[node name="Spawner" type="Marker2D" parent="Player/Path2D/PathFollow2D"]
-position = Vector2(1650, 142)
+[node name="Parallax2D" parent="." instance=ExtResource("2_kpss6")]
 
 [node name="Respawn" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -35,4 +30,14 @@ layer = 2
 [node name="enemyweak" parent="." instance=ExtResource("4_vjkqh")]
 position = Vector2(1663, 899)
 
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(-51, 526)
+shape = SubResource("RectangleShape2D_jgt6t")
+
 [connection signal="timeout" from="Respawn" to="." method="_on_respawn_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]

@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 	$ColorRect/Score.text = "Score: " + str(Global.score)
 	$HealthBar.value = Global.player_health
 	$PowerupBar.value = Global.powerup_refill
+	distance()
 	weapons()
 	
 func weapons():
@@ -30,3 +31,10 @@ func weapons():
 	elif  Global.melee_equip:
 		weapon.texture = Global.melee
 		ammo.text = "Ammo: ∞"
+
+func distance():
+	if Global.distance_traveled >= 1000:
+		var kilometers = Global.distance_traveled / 1000
+		$ColorRect3/Distance.text = "Distance: " + str(snapped(kilometers,0.01)) + "km"
+	else:
+		$ColorRect3/Distance.text = "Distance: " + str(round(Global.distance_traveled)) + "m"
