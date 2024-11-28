@@ -11,7 +11,8 @@ var camera_left_padding = 300
 
 var starting_point: float
 var camera_point = null
-var notmoving = true
+var idle = true
+var can_attack = true
 var horizontal_direction = null
 var weapon_equip = false
 var previous_position: float
@@ -38,18 +39,16 @@ func _physics_process(delta: float) -> void:
 		#Movement
 		horizontal_direction = Input.get_axis("left", "right")
 		velocity.x = (Global.player_speed * Global.speed_buff) * horizontal_direction
-		var isLeft = velocity.x < 0
-		sprite.flip_h = isLeft
-		weapon.flip_h = isLeft
 		move_and_slide()
 		update_animations(horizontal_direction)
 	
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") and notmoving and not isdead and not weapon_equip:
+	if event.is_action_pressed("attack") and not isdead and not weapon_equip and can_attack:
 		ap.play("attack")
+		idle = false
 		await ap.animation_finished
 		$meleehitbox/CollisionShape2D.disabled = true
-		notmoving = false
+		idle = true
 	elif event.is_action_pressed("pistol") or event.is_action_pressed("smg") or event.is_action_pressed("laser_rifle") or event.is_action_pressed("grenade_launcher"):
 		weapon_equip = true
 	elif event.is_action_pressed("melee"):
@@ -59,23 +58,29 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		$PowerupDuration.start()
 		
 func update_animations(horizontal_direction):
-	if not Global.player_isdead:
+	if not Global.player_isdead and idle:
 		if horizontal_direction == 0:
-			if notmoving == false:
+			can_attack = true
+			if Global.pistol_equip:
+				ap.play("idle_pistol")
+			if Global.smg_equip or Global.laser_rifle_equip or Global.grenad_launcher_equip:
+				ap.play("idle_rifle")
+			if not weapon_equip:
 				ap.play("idle")
-				notmoving = true
 		else:
-			if notmoving == true:
-				ap.play("run")
-				notmoving = false
+			can_attack = false
+			if Global.pistol_equip:
+				ap.play("walk_pistol")
+			elif Global.smg_equip or Global.laser_rifle_equip or Global.grenad_launcher_equip:
+				ap.play("walk_rifle")
+			else:
+				ap.play("walk")
 
 func weak_hit():
 	Global.player_health -= 5
 	ap.play("damaged")
-	await ap.animation_finished
-	notmoving = true
+	idle = true
 	$AnimationPlayer.stop()
-	ap.play("idle")
 	player_health()
 	
 func  player_health():
@@ -106,7 +111,7 @@ func respawn():
 		isdead = false
 		Global.player_isdead = false
 		ap.play("idle")  # Reset animation to idle
-		notmoving = true  # Ensure the character state is ready for movement
+		idle = true  # Ensure the character state is ready for movement
 		
 func _on_meleehitbox_body_entered(body: Node2D) -> void:
 		if body.has_method("melee_hit"):

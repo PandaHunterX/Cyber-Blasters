@@ -70,10 +70,10 @@ func increase_weak_level():
 
 #Weapon System
 const melee = preload("res://assets/weapons/fist.png")
-const pistol = preload("res://assets/weapons/pistol_full.png")
-const smg = preload("res://assets/weapons/Assault rifle_full.png")
-const laser_rifle = preload("res://assets/weapons/AK_full.png")
-const grenade_launcher = preload("res://assets/weapons/Shootgun_full.png")
+const pistol = preload("res://assets/weapons/weapon_pistol.png")
+const smg = preload("res://assets/weapons/weapon_assault_rifle.png")
+const laser_rifle = preload("res://assets/weapons/weapon_laser.png")
+const grenade_launcher = preload("res://assets/weapons/weapon_grenade.png")
 
 var pistol_unlock = false
 var smg_unlock = false

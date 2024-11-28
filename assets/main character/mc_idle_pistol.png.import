@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kbhu8cyfb8mf"
-path="res://.godot/imported/Skeleton Dead.png-a091d5177dde306e8efe2f3a08a22d75.ctex"
+uid="uid://cdm7fnn2ul0ab"
+path="res://.godot/imported/mc_idle_pistol.png-34305bc970e568fdba5270e97a66e7bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy1/Skeleton Dead.png"
-dest_files=["res://.godot/imported/Skeleton Dead.png-a091d5177dde306e8efe2f3a08a22d75.ctex"]
+source_file="res://assets/main character/mc_idle_pistol.png"
+dest_files=["res://.godot/imported/mc_idle_pistol.png-34305bc970e568fdba5270e97a66e7bc.ctex"]
 
 [params]
 
