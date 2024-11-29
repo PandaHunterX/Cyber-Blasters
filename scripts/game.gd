@@ -2,11 +2,20 @@ extends Node
 
 @onready var weak_enemy = preload("res://scenes/enemy_weak.tscn")
 @onready var player_position = preload("res://scenes/player.tscn")
+@onready var dead_body = preload("res://scenes/dead_body.tscn")
 
-	
+var body_ready =  false
+
 func _ready() -> void:
 	$Respawn.start()
 	$DifficultyTimer.start()
+	
+func _process(delta: float) -> void:
+	if Global.player_drop_body:
+		var body = dead_body.instantiate()
+		body.position = $Player.global_position
+		add_child(body)
+		Global.player_drop_body = false
 
 func _physics_process(delta: float) -> void:
 

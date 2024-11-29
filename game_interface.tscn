@@ -73,6 +73,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_sruer")
 value = 100.0
 show_percentage = false
 
+[node name="Health" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 12.0
+offset_right = 373.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 32
+text = "100/100"
+
 [node name="PowerupBar" type="ProgressBar" parent="."]
 layout_mode = 0
 offset_left = 124.0

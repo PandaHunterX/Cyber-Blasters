@@ -51,7 +51,8 @@ func pistol_hit():
 
 func smg_hit():
 	health -= 15 * Global.damage_buff
-	speed -= 5
+	if speed >= 100:
+		speed -= 5
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
@@ -103,8 +104,6 @@ func _on_attack_cooldown_timeout() -> void:
 	$PlayerHit/AttackHitbox.disabled = true
 	if player_detected:
 		attack()
-	else:
-		move_enemy()
 
 func attack():
 	attack_ready = false

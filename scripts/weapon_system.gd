@@ -40,7 +40,9 @@ func _process(delta: float) -> void:
 		can_shoot = false
 		
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("melee") and can_change:
+	if not can_change:
+		pass
+	elif event.is_action_pressed("melee") and can_change:
 		$Weapon.texture = null
 		Global.melee_equip = true
 		Global.pistol_equip = false
@@ -102,6 +104,7 @@ func basic_fire():
 func laser_fire():
 	if can_shoot and is_shooting and Global.laser_rifle_equip and Global.laser_bullets >= 1:
 		var laserbul = laserbullet.instantiate()
+		laserbul.position = $Rifle.position
 		add_child(laserbul)
 		$WeaponCooldown.start()
 		can_shoot = false

@@ -45,6 +45,18 @@ func player_reset():
 	player_health = max_player_health
 	powerup_refill = 0
 	
+
+#Level up System
+var player_level = 0
+var player_drop_body = false
+
+func level_up():
+	player_level += 1
+	if player_level <= 10:
+		max_player_health += max_player_health * 0.1
+		player_speed += player_speed * 0.05
+	player_health = max_player_health
+	
 #RNG System
 var rng = RandomNumberGenerator.new()
 

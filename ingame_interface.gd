@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 	$HealthBar.value = Global.player_health
 	$PowerupBar.value = Global.powerup_refill
 	$ColorRect3/Distance.text = "Distance: " + Global.current_distance_traveled
+	$HealthBar/Health.text = str(Global.player_health) + "/" + str(Global.max_player_health)
 	Global.distance()
 	weapons()
 	weapon_ui()
