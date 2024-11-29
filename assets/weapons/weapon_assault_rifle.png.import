@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ulokpugn8d3"
-path="res://.godot/imported/Skeleton Hit.png-68daabb8e31fee8e821d73fe92ac2a76.ctex"
+uid="uid://cgboaraw0l0tb"
+path="res://.godot/imported/weapon_assault_rifle.png-2b81fef28d27688e9d25869a39c80034.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy1/Skeleton Hit.png"
-dest_files=["res://.godot/imported/Skeleton Hit.png-68daabb8e31fee8e821d73fe92ac2a76.ctex"]
+source_file="res://assets/weapons/weapon_assault_rifle.png"
+dest_files=["res://.godot/imported/weapon_assault_rifle.png-2b81fef28d27688e9d25869a39c80034.ctex"]
 
 [params]
 

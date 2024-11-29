@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwhmhqm2g08v1"
-path="res://.godot/imported/Cyborg_run.png-f8963ae607a647de4c89e595240b9afa.ctex"
+uid="uid://ccbcxgr3lkghu"
+path="res://.godot/imported/enemy_weak_walk.png-da7571f1d0305f7a9d0ee93b7ca0c4fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/main character/Cyborg_run.png"
-dest_files=["res://.godot/imported/Cyborg_run.png-f8963ae607a647de4c89e595240b9afa.ctex"]
+source_file="res://assets/enemy1/enemy_weak_walk.png"
+dest_files=["res://.godot/imported/enemy_weak_walk.png-da7571f1d0305f7a9d0ee93b7ca0c4fa.ctex"]
 
 [params]
 

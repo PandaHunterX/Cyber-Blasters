@@ -88,13 +88,16 @@ func _unhandled_input(event: InputEvent) -> void:
 func basic_fire():
 	if can_shoot and is_shooting and ((Global.pistol_equip and Global.pistol_bullets >= 1) or (Global.smg_equip and Global.smg_bullets >= 1)):
 		var bul = bullet.instantiate()
-		add_child(bul)
 		$WeaponCooldown.start()
 		can_shoot = false
 		if Global.pistol_equip:
+			bul.position = $Pistol.position
 			Global.pistol_bullets -= 1
+			add_child(bul)
 		elif Global.smg_equip:
+			bul.position = $Rifle.position
 			Global.smg_bullets -= 1
+			add_child(bul)
 		
 func laser_fire():
 	if can_shoot and is_shooting and Global.laser_rifle_equip and Global.laser_bullets >= 1:

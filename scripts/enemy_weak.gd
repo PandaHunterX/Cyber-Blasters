@@ -15,14 +15,17 @@ func _ready():
 	target = target_scene.instantiate() as Node2D
 	$PlayerHit/AttackHitbox.disabled = true
 
+
 func _physics_process(delta):
+	if health <= 0:
+		$Hitbox.disabled = true
 	if not is_hit and not player_detected:
 		move_enemy()
 	else:
 		velocity = Vector2.ZERO 
 		
 func move_enemy():
-	if target:  # Ensure target exists
+	if target and not health <= 0:  # Ensure target exists
 		# Calculate horizontal direction only
 		var direction_x = (target.global_position.x - global_position.x)
 		direction_x = direction_x / abs(direction_x) if direction_x != 0 else 0  # Normalize direction
@@ -36,9 +39,9 @@ func melee_hit():
 	health -= 50 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
-	enemy_health()
 	$AttackCooldown.start()  # Start cooldown to reset hit
-
+	enemy_health()
+	
 func pistol_hit():
 	health -= 25 * Global.damage_buff
 	is_hit = true  # Set hit flag to true
@@ -71,10 +74,10 @@ func explosive_hit():
 
 func enemy_health():
 	if health <= 0:
+		_physics_process(false)
 		$PlayerDetction/CollisionShape2D.disabled = true
 		$Hitbox.disabled = true
 		$PlayerHit/AttackHitbox.disabled = true
-		set_physics_process(false)
 		$AnimationPlayer.play("death")
 		$AttackCooldown.stop()
 		Global.add_ammo()

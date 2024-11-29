@@ -17,7 +17,7 @@ script = ExtResource("1_5h3mg")
 position = Vector2(371, 761)
 
 [node name="Spawner" type="Marker2D" parent="Player"]
-position = Vector2(2586, 140)
+position = Vector2(2588, 157)
 
 [node name="Parallax2D" parent="." instance=ExtResource("2_kpss6")]
 
@@ -36,7 +36,7 @@ offset_right = 3.0
 offset_bottom = -4.0
 
 [node name="enemyweak" parent="." instance=ExtResource("4_vjkqh")]
-position = Vector2(1663, 899)
+position = Vector2(1660, 923)
 
 [node name="DifficultyTimer" type="Timer" parent="."]
 wait_time = 30.0

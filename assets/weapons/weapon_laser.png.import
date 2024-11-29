@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjvpdlbletswg"
-path="res://.godot/imported/Cyborg_death.png-f1f9baf9ce84436de314dc4a6680ec69.ctex"
+uid="uid://dw6uhcokhd7g2"
+path="res://.godot/imported/weapon_laser.png-9d3e74fa8c86e4b868e013ca833aa2b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/main character/Cyborg_death.png"
-dest_files=["res://.godot/imported/Cyborg_death.png-f1f9baf9ce84436de314dc4a6680ec69.ctex"]
+source_file="res://assets/weapons/weapon_laser.png"
+dest_files=["res://.godot/imported/weapon_laser.png-9d3e74fa8c86e4b868e013ca833aa2b5.ctex"]
 
 [params]
 

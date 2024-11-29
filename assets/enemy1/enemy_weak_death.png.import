@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhpcgay1yd7ac"
-path="res://.godot/imported/Cyborg_idle.png-5848c0ad81026e8eae47185a0efd1d3f.ctex"
+uid="uid://5be3iubsqfh1"
+path="res://.godot/imported/enemy_weak_death.png-a9961ced5c74590f10f177d2ef960ef2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/main character/Cyborg_idle.png"
-dest_files=["res://.godot/imported/Cyborg_idle.png-5848c0ad81026e8eae47185a0efd1d3f.ctex"]
+source_file="res://assets/enemy1/enemy_weak_death.png"
+dest_files=["res://.godot/imported/enemy_weak_death.png-a9961ced5c74590f10f177d2ef960ef2.ctex"]
 
 [params]
 

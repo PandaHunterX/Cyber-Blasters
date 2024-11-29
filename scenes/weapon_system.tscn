@@ -1,20 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpyw4xh44vyhs"]
 
 [ext_resource type="Script" path="res://scripts/weapon_system.gd" id="1_aw7gr"]
-[ext_resource type="Texture2D" uid="uid://dri4wxcrpjjhg" path="res://assets/weapons/AK_full.png" id="1_nmmv6"]
+[ext_resource type="Texture2D" uid="uid://ds61n2p7o3i4e" path="res://assets/weapons/weapon_grenade.png" id="2_me5tx"]
 
 [node name="WeaponSystem" type="Node2D"]
 script = ExtResource("1_aw7gr")
 
 [node name="Weapon" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.511719, 0.511719)
-texture = ExtResource("1_nmmv6")
+position = Vector2(-139, 42)
+scale = Vector2(0.306152, 0.304199)
+texture = ExtResource("2_me5tx")
 
 [node name="WeaponCooldown" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(85, -20)
+[node name="Rifle" type="Marker2D" parent="."]
+position = Vector2(-23, -30)
+
+[node name="Pistol" type="Marker2D" parent="."]
+position = Vector2(-1, -57)
 
 [connection signal="timeout" from="WeaponCooldown" to="." method="_on_weapon_cooldown_timeout"]
