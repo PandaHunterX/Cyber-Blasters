@@ -8,5 +8,10 @@ func _ready() -> void:
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://game.tscn")
-	Global.player_reset()
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	Global.player_isdead = false
+	Global.player_respawn = true
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()

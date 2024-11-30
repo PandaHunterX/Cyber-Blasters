@@ -87,10 +87,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "RESPAWN"
 
+[node name="Main Menu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
 [node name="Quit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
