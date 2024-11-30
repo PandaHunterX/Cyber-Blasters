@@ -27,24 +27,17 @@ offset_bottom = 579.0
 theme_override_font_sizes/font_size = 64
 text = "Load Game"
 
-[node name="Exit" type="Button" parent="CanvasLayer/ColorRect"]
-offset_left = 892.0
-offset_top = 731.0
-offset_right = 1031.0
-offset_bottom = 827.0
-theme_override_font_sizes/font_size = 64
-text = "EXIT"
-
 [node name="Play" type="Button" parent="CanvasLayer/ColorRect"]
+process_mode = 3
 layout_mode = 1
-offset_left = 862.0
-offset_top = 355.0
-offset_right = 1024.0
-offset_bottom = 451.0
+offset_left = 887.0
+offset_top = 353.0
+offset_right = 1049.0
+offset_bottom = 449.0
 theme_override_font_sizes/font_size = 64
 text = "PLAY"
 
-[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
+[node name="New Game" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
 offset_left = 785.0
 offset_top = 603.0
@@ -52,3 +45,15 @@ offset_right = 1140.0
 offset_bottom = 699.0
 theme_override_font_sizes/font_size = 64
 text = "NEW GAME"
+
+[node name="Exit" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 892.0
+offset_top = 731.0
+offset_right = 1031.0
+offset_bottom = 827.0
+theme_override_font_sizes/font_size = 64
+text = "EXIT"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Exit" to="." method="_on_exit_pressed"]
