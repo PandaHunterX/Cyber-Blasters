@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dvqe5yrmnj22t"]
+[gd_scene load_steps=31 format=3 uid="uid://dvqe5yrmnj22t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_iv0u3"]
 [ext_resource type="Texture2D" uid="uid://2wi5kth1e6oa" path="res://assets/main character/mc_idle.png" id="2_8ahtr"]
@@ -12,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://ctejk8apae0l8" path="res://assets/main character/mc_idle_rifle.png" id="9_y5j5j"]
 [ext_resource type="Texture2D" uid="uid://r05v16i27v1l" path="res://assets/main character/mc_walk_pistol.png" id="10_hqbf5"]
 [ext_resource type="Texture2D" uid="uid://dgi4kqba7ooy3" path="res://assets/main character/mc_walk_rifle.png" id="11_uogsk"]
+[ext_resource type="AudioStream" uid="uid://dlpmd3nmhpwfp" path="res://assets/sounds/punch.mp3" id="13_xdue7"]
+[ext_resource type="AudioStream" uid="uid://cycn2ejh0o52f" path="res://assets/sounds/player_hit.mp3" id="14_i6gjr"]
+[ext_resource type="AudioStream" uid="uid://bl70k70y1fra4" path="res://assets/sounds/robot_death.wav" id="15_nhcny"]
+[ext_resource type="AudioStream" uid="uid://c4d46awray44e" path="res://assets/sounds/power_up.mp3" id="16_mawwx"]
+[ext_resource type="AudioStream" uid="uid://cgoxt7866an1x" path="res://assets/sounds/power_ready_sound.mp3" id="17_vm3qu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74jxk"]
 size = Vector2(81, 332)
@@ -627,6 +632,23 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PowerupDuration" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Punch Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_xdue7")
+
+[node name="Player Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_i6gjr")
+volume_db = -15.848
+
+[node name="Player Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_nhcny")
+
+[node name="Power Up Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_mawwx")
+
+[node name="Power Up Ready" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_vm3qu")
+volume_db = 2.115
 
 [connection signal="body_entered" from="meleehitbox" to="." method="_on_meleehitbox_body_entered"]
 [connection signal="timeout" from="PowerupDuration" to="." method="_on_powerup_duration_timeout"]

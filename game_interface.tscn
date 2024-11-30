@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://1eiawil14myx"]
+[gd_scene load_steps=12 format=3 uid="uid://1eiawil14myx"]
 
 [ext_resource type="Script" path="res://ingame_interface.gd" id="1_wtixd"]
 [ext_resource type="Texture2D" uid="uid://dri4wxcrpjjhg" path="res://assets/weapons/AK_full.png" id="2_va673"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brpetv03fpaxq" path="res://assets/weapons/pistol_full.png" id="4_tltl0"]
 [ext_resource type="Texture2D" uid="uid://dapqtv8n3yuvx" path="res://assets/weapons/Assault rifle_full.png" id="5_enc5c"]
 [ext_resource type="Texture2D" uid="uid://bqbvvswv3haa" path="res://assets/weapons/Shootgun_full.png" id="6_u6i5l"]
+[ext_resource type="Texture2D" uid="uid://be0sknlb2158y" path="res://assets/main character/player_avatar.png" id="7_htd3m"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_b0qwp"]
 color = Color(0.340339, 0.340339, 0.340339, 1)
@@ -64,21 +65,30 @@ text = "DISTANCE:"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 23.0
-offset_right = 755.0
-offset_bottom = 93.0
+offset_left = 258.0
+offset_top = 16.0
+offset_right = 889.0
+offset_bottom = 86.0
 theme_override_styles/background = SubResource("StyleBoxLine_b0qwp")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sruer")
 value = 100.0
 show_percentage = false
 
+[node name="Health" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 12.0
+offset_right = 373.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 32
+text = "100/100"
+
 [node name="PowerupBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 99.0
-offset_right = 756.0
-offset_bottom = 126.0
+offset_left = 254.0
+offset_top = 98.0
+offset_right = 889.0
+offset_bottom = 132.0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/background = SubResource("StyleBoxFlat_l6npd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cenq1")
@@ -301,3 +311,29 @@ text = "4"
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "∞"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 269.0
+offset_bottom = 261.0
+texture = ExtResource("7_htd3m")
+expand_mode = 1
+
+[node name="ColorRect5" type="ColorRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 206.0
+offset_right = 247.0
+offset_bottom = 235.0
+color = Color(0.223103, 0.223103, 0.223103, 1)
+
+[node name="Player_Level" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 202.0
+offset_right = 208.0
+offset_bottom = 236.0
+theme_override_font_sizes/font_size = 24
+text = "Lvl"

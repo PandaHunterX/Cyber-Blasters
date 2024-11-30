@@ -1,11 +1,20 @@
 extends Node2D
 
+@onready var level_up_sound: AudioStreamPlayer2D = $"Level up Sound"
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+		$"Dead Body Respawn".start()
+		$Detection/CollisionShape2D.disabled = true
+	
+func _on_detection_body_entered(body: Node2D) -> void:
+	if body.has_method("level_up"):
+		level_up_sound.play()
+		body.level_up()
+		$Detection/CollisionShape2D.disabled = true
+		await level_up_sound.finished
+		queue_free()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_dead_body_respawn_timeout() -> void:
+	$Detection/CollisionShape2D.disabled = false
+	$"Dead Body Respawn".stop()

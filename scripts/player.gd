@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var melee = $meleehitbox
 @onready var weapon = find_child("Weapon")
 @onready var camera = $PlayerCamera
+@onready var player_hit: AudioStreamPlayer2D = $"Player Hit"
 
 var camera_left_padding = 300
 
@@ -13,10 +14,17 @@ var starting_point: float
 var camera_point = null
 var idle = true
 var can_attack = true
+var is_hit = false
 var horizontal_direction = null
 var weapon_equip = false
 var previous_position: float
 var isdead = Global.player_isdead
+
+@onready var punch_sound: AudioStreamPlayer2D = $"Punch Sound"
+@onready var player_death: AudioStreamPlayer2D = $"Player Death"
+@onready var power_up_sound: AudioStreamPlayer2D = $"Power Up Sound"
+@onready var power_up_ready: AudioStreamPlayer2D = $"Power Up Ready"
+
 
 func _ready() -> void:
 	$meleehitbox/CollisionShape2D.disabled = true
@@ -27,7 +35,13 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	respawn()
-	
+	if Global.pistol_equip or Global.smg_equip  or Global.laser_rifle_equip  or Global.grenad_launcher_equip:
+		weapon_equip = true
+	if Global.melee_equip:
+		weapon_equip = false
+	if Global.powerup_refill == 100:
+		power_up_ready.play()
+		
 func _physics_process(delta: float) -> void:
 	if (position.x - camera_left_padding) > camera.limit_left:
 		camera.limit_left = position.x - camera_left_padding
@@ -44,21 +58,21 @@ func _physics_process(delta: float) -> void:
 	
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not isdead and not weapon_equip and can_attack:
+		punch_sound.play()
 		ap.play("attack")
 		idle = false
+		can_attack = false
 		await ap.animation_finished
+		can_attack = true
 		$meleehitbox/CollisionShape2D.disabled = true
 		idle = true
-	elif event.is_action_pressed("pistol") or event.is_action_pressed("smg") or event.is_action_pressed("laser_rifle") or event.is_action_pressed("grenade_launcher"):
-		weapon_equip = true
-	elif event.is_action_pressed("melee"):
-		weapon_equip = false
 	elif event.is_action_pressed("power_up") and Global.powerup_refill >= 100:
+		power_up_sound.play()
 		Global.powerup()
 		$PowerupDuration.start()
 		
 func update_animations(horizontal_direction):
-	if not Global.player_isdead and idle:
+	if not Global.player_isdead and idle and not is_hit:
 		if horizontal_direction == 0:
 			can_attack = true
 			if Global.pistol_equip:
@@ -77,25 +91,61 @@ func update_animations(horizontal_direction):
 				ap.play("walk")
 
 func weak_hit():
-	Global.player_health -= 5
+	player_hit.play()
+	is_hit = true
+	if not Global.power_activate:
+		Global.player_health -= 5
 	ap.play("damaged")
+	await ap.animation_finished
+	is_hit = false
 	idle = true
 	$AnimationPlayer.stop()
 	player_health()
 	
-func  player_health():
+func fast_hit():
+	player_hit.play()
+	is_hit = true
+	if not Global.power_activate:
+		Global.player_health -= 2
+	ap.play("damaged")
+	await ap.animation_finished
+	is_hit = false
+	idle = true
+	$AnimationPlayer.stop()
+	player_health()
+	
+func hard_hit():
+	player_hit.play()
+	is_hit = true
+	if not Global.power_activate:
+		Global.player_health -= 10 + Global.hard_enemy_dmg
+	ap.play("damaged")
+	await ap.animation_finished
+	is_hit = false
+	idle = true
+	$AnimationPlayer.stop()
+	player_health()
+	
+func player_health():
 	if Global.player_health <= 0:
+		Global.prev_pistol_bullet = Global.pistol_bullets
+		Global.prev_smg_bullet = Global.smg_bullets
+		Global.prev_laser_bullet = Global.laser_bullets
+		Global.prev_grenade_bullet = Global.explosive_bullets
+		player_death.play()
 		isdead = true
 		weapon.texture = null
 		ap.play("death")
 		await ap.animation_finished
 		Global.player_isdead = true
+		Global.player_drop_body = true
 		Global.set_score_record()
-		
+
 func respawn():
 	if Global.player_respawn:
-		
 		Global.player_reset()
+		print(Global.player_health)
+		print(Global.max_player_health)
 		weapon_equip = false
 		
 		# Reset position and physics state
@@ -113,10 +163,15 @@ func respawn():
 		ap.play("idle")  # Reset animation to idle
 		idle = true  # Ensure the character state is ready for movement
 		
+		print(Global.player_respawn)
+		print(Global.player_isdead)
+
+func level_up():
+	Global.level_up()
+
 func _on_meleehitbox_body_entered(body: Node2D) -> void:
 		if body.has_method("melee_hit"):
 			body.melee_hit()
-
 
 func _on_powerup_duration_timeout() -> void:
 	Global.normal()
