@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var target_scene = preload("res://scenes/player.tscn")
 @onready var player_detection = $PlayerHit
+@onready var hit: AudioStreamPlayer2D = $Hit
+@onready var death: AudioStreamPlayer2D = $Death
 
 var health = 100
 var target: Node2D
@@ -15,6 +17,11 @@ func _ready():
 	target = target_scene.instantiate() as Node2D
 	$PlayerHit/AttackHitbox.disabled = true
 
+func _process(delta: float) -> void:
+	if health <= 0:
+		$PlayerDetction/CollisionShape2D.disabled = true
+		$Hitbox.disabled = true
+		$PlayerHit/AttackHitbox.disabled = true
 
 func _physics_process(delta):
 	if health <= 0:
@@ -25,32 +32,38 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO 
 		
 func move_enemy():
-	if target and not health <= 0:  # Ensure target exists
-		# Calculate horizontal direction only
+	if target and not health <= 0 and not is_hit:  # Ensure target exists, enemy is alive, and not hit
 		var direction_x = (target.global_position.x - global_position.x)
 		direction_x = direction_x / abs(direction_x) if direction_x != 0 else 0  # Normalize direction
 		velocity.x = direction_x * speed
 		velocity.y = 0  # Ensure no vertical movement
 		$AnimationPlayer.play("walk")
+	else:
+		velocity = Vector2.ZERO  # Stop moving if conditions are not met
 	move_and_slide()
 
 func melee_hit():
-	$PlayerHit/AttackHitbox.disabled = true
-	health -= 50 * Global.damage_buff
-	is_hit = true  # Set hit flag to true
-	$AnimationPlayer.play("hit")
-	$AttackCooldown.start()  # Start cooldown to reset hit
-	enemy_health()
+	hit.play()
+	if health > 0:
+		$PlayerHit/AttackHitbox.disabled = true
+		health -= Global.meelee_damage * Global.damage_buff
+		is_hit = true
+		$AnimationPlayer.play("hit")
+		$AttackCooldown.start()
+		await $AnimationPlayer.animation_finished
+		enemy_health()
 	
 func pistol_hit():
-	health -= 25 * Global.damage_buff
+	hit.play()
+	health -= Global.pistol_damage * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
 	$AttackCooldown.start() # Start cooldown to reset hit
 
 func smg_hit():
-	health -= 15 * Global.damage_buff
+	hit.play()
+	health -= (Global.smg_damage * 1.5) * Global.damage_buff
 	if speed >= 100:
 		speed -= 5
 	is_hit = true  # Set hit flag to true
@@ -59,15 +72,18 @@ func smg_hit():
 	$AttackCooldown.start() # Start cooldown to reset hit
 	
 func laser_hit():
-	health -= 75 * Global.damage_buff
-	speed -= 50
+	hit.play()
+	health -= Global.laser_damage * Global.damage_buff
+	if speed >= 100:
+		speed -= 50
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
 	$AttackCooldown.start()  # Start cooldown to reset hit
 
 func explosive_hit():
-	health -= 150 * Global.damage_buff
+	hit.play()
+	health -= Global.grenade_damage * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()
@@ -75,17 +91,16 @@ func explosive_hit():
 
 func enemy_health():
 	if health <= 0:
-		_physics_process(false)
-		$PlayerDetction/CollisionShape2D.disabled = true
-		$Hitbox.disabled = true
-		$PlayerHit/AttackHitbox.disabled = true
-		$AnimationPlayer.play("death")
+		death.play()
+		velocity = Vector2.ZERO  # Stop movement
 		$AttackCooldown.stop()
+		$AnimationPlayer.play("death")
 		Global.add_ammo()
 		Global.score += 100
 		if not Global.power_activate and Global.powerup_refill <= 100:
 			Global.powerup_refill += 5
 		await $AnimationPlayer.animation_finished
+		await death.finished
 		queue_free()
 	
 func _on_player_hit_body_entered(body: Node2D) -> void:
@@ -108,12 +123,13 @@ func _on_attack_cooldown_timeout() -> void:
 func attack():
 	attack_ready = false
 	$AnimationPlayer.play("attack")
+	await $AnimationPlayer.animation_finished
 	$AttackCooldown.start()
 	$PlayerHit/AttackHitbox.disabled = true
 
 func _on_player_detction_body_exited(body: Node2D) -> void:
-	attack_ready = true
-	player_detected = false
-	$AttackCooldown.stop()
-	$PlayerHit/AttackHitbox.disabled = true
-	move_enemy() 
+	if body.name == "Player":
+		attack_ready = true
+		player_detected = false
+		$AttackCooldown.stop()
+		$PlayerHit/AttackHitbox.disabled = true

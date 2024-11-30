@@ -11,13 +11,13 @@ func _physics_process(delta: float) -> void:
 		position.x += speed * delta
 	else :
 		position.x = position.x
+		$"Enemy Detection/Detection".disabled = true
 
 func _on_enemy_detection_body_entered(body: Node2D) -> void:
 	if body.has_method("explosive_hit"):
 		onhit = true
 		$AnimationPlayer.play("Explosion")
 		$ExplosionTimer.start()
-
 
 func _on_explosion_timer_timeout() -> void:
 	queue_free()

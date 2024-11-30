@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bk1hx0kj81771"]
+[gd_scene load_steps=21 format=3 uid="uid://bk1hx0kj81771"]
 
 [ext_resource type="Texture2D" uid="uid://flyqb5cxm6s1" path="res://assets/bullets/grenade1.png" id="1_ex5kf"]
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_lp3wv"]
@@ -14,13 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://bsynkwaausvq0" path="res://assets/explosions/10.png" id="11_sn6cn"]
 [ext_resource type="Texture2D" uid="uid://bhio1adqeh3sm" path="res://assets/explosions/11.png" id="12_r1sak"]
 [ext_resource type="Texture2D" uid="uid://bf0l7qktchcay" path="res://assets/explosions/12.png" id="13_k1msa"]
+[ext_resource type="AudioStream" uid="uid://bjiooon3630pv" path="res://assets/sounds/explosion.mp3" id="15_nxsdq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w15ai"]
 radius = 63.0079
 
 [sub_resource type="Animation" id="Animation_6k2jb"]
 resource_name = "Explosion"
-length = 0.4
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,6 +46,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion Sound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_nxsdq")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_xxyuj"]
 length = 0.001
@@ -109,7 +125,9 @@ shape = SubResource("CircleShape2D_y07ft")
 debug_color = Color(0.612686, 0.371389, 0.97783, 0.42)
 
 [node name="ExplosionTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 1.5
+
+[node name="Explosion Sound" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="Enemy Detection" to="." method="_on_enemy_detection_body_entered"]
 [connection signal="body_entered" from="Grenade Hit" to="." method="_on_grenade_hit_body_entered"]

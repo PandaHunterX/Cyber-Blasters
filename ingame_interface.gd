@@ -11,6 +11,7 @@ extends Control
 @onready var laser_bullets = $"ColorRect4/VBoxContainer/Laser Rifle/Laser Ammo"
 @onready var grenade_bullets = $"ColorRect4/VBoxContainer/Grenade Launcher/Grenade Ammo"
 
+@onready var player_level: Label = $TextureRect/Player_Level
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,6 +20,7 @@ func _process(delta: float) -> void:
 	$PowerupBar.value = Global.powerup_refill
 	$ColorRect3/Distance.text = "Distance: " + Global.current_distance_traveled
 	$HealthBar/Health.text = str(Global.player_health) + "/" + str(Global.max_player_health)
+	player_level.text = "Lvl: " + str(Global.player_level)
 	Global.distance()
 	weapons()
 	weapon_ui()

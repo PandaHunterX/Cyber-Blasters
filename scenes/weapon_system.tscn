@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpyw4xh44vyhs"]
+[gd_scene load_steps=9 format=3 uid="uid://bpyw4xh44vyhs"]
 
 [ext_resource type="Script" path="res://scripts/weapon_system.gd" id="1_aw7gr"]
 [ext_resource type="Texture2D" uid="uid://dw6uhcokhd7g2" path="res://assets/weapons/weapon_laser.png" id="2_kkqpc"]
+[ext_resource type="AudioStream" uid="uid://dej53gloh8dy5" path="res://assets/sounds/pistol_bullet.mp3" id="3_yyxct"]
+[ext_resource type="AudioStream" uid="uid://cao3aunbcv70" path="res://assets/sounds/smg_bullet.mp3" id="4_ixjoo"]
+[ext_resource type="AudioStream" uid="uid://ca5cyww6mmtpv" path="res://assets/sounds/laser.mp3" id="5_6ckur"]
+[ext_resource type="AudioStream" uid="uid://d0p8wty10kb1p" path="res://assets/sounds/grenade_launcher.mp3" id="6_ccn16"]
+[ext_resource type="AudioStream" uid="uid://dd6mv2e23hxqj" path="res://assets/sounds/change_weapon.wav" id="7_ly4si"]
+[ext_resource type="AudioStream" uid="uid://mt1vyc6odmcu" path="res://assets/sounds/no_ammo_sound.mp3" id="8_i4adu"]
 
 [node name="WeaponSystem" type="Node2D"]
 script = ExtResource("1_aw7gr")
@@ -19,5 +25,24 @@ position = Vector2(-23, -30)
 
 [node name="Pistol" type="Marker2D" parent="."]
 position = Vector2(-1, -57)
+
+[node name="Pistol Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yyxct")
+
+[node name="Smg Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ixjoo")
+
+[node name="Laser Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_6ckur")
+
+[node name="Grenade Launcher Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ccn16")
+
+[node name="Change Weapon Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ly4si")
+
+[node name="No Ammo Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_i4adu")
+volume_db = 14.095
 
 [connection signal="timeout" from="WeaponCooldown" to="." method="_on_weapon_cooldown_timeout"]

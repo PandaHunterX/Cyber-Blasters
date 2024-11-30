@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfty5d7yjjvx4"]
+[gd_scene load_steps=5 format=3 uid="uid://dfty5d7yjjvx4"]
 
 [ext_resource type="Script" path="res://scripts/dead_body.gd" id="1_ujiof"]
 [ext_resource type="Texture2D" uid="uid://f6wccoyyufn7" path="res://assets/main character/mc_death.png" id="2_m8epm"]
+[ext_resource type="AudioStream" uid="uid://c2kc3xg2tmr5r" path="res://assets/sounds/level_up.mp3" id="3_oojfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0h0y"]
 size = Vector2(217, 112.5)
@@ -26,6 +27,9 @@ frame = 5
 
 [node name="Dead Body Respawn" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="Level up Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_oojfp")
 
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
 [connection signal="timeout" from="Dead Body Respawn" to="." method="_on_dead_body_respawn_timeout"]

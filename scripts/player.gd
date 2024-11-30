@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var melee = $meleehitbox
 @onready var weapon = find_child("Weapon")
 @onready var camera = $PlayerCamera
+@onready var player_hit: AudioStreamPlayer2D = $"Player Hit"
 
 var camera_left_padding = 300
 
@@ -18,6 +19,11 @@ var horizontal_direction = null
 var weapon_equip = false
 var previous_position: float
 var isdead = Global.player_isdead
+
+@onready var punch_sound: AudioStreamPlayer2D = $"Punch Sound"
+@onready var player_death: AudioStreamPlayer2D = $"Player Death"
+@onready var power_up_sound: AudioStreamPlayer2D = $"Power Up Sound"
+
 
 func _ready() -> void:
 	$meleehitbox/CollisionShape2D.disabled = true
@@ -49,12 +55,16 @@ func _physics_process(delta: float) -> void:
 	
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not isdead and not weapon_equip and can_attack:
+		punch_sound.play()
 		ap.play("attack")
 		idle = false
+		can_attack = false
 		await ap.animation_finished
+		can_attack = true
 		$meleehitbox/CollisionShape2D.disabled = true
 		idle = true
 	elif event.is_action_pressed("power_up") and Global.powerup_refill >= 100:
+		power_up_sound.play()
 		Global.powerup()
 		$PowerupDuration.start()
 		
@@ -78,6 +88,7 @@ func update_animations(horizontal_direction):
 				ap.play("walk")
 
 func weak_hit():
+	player_hit.play()
 	is_hit = true
 	if not Global.power_activate:
 		Global.player_health -= 5
@@ -88,8 +99,33 @@ func weak_hit():
 	$AnimationPlayer.stop()
 	player_health()
 	
+func fast_hit():
+	player_hit.play()
+	is_hit = true
+	if not Global.power_activate:
+		Global.player_health -= 2
+	ap.play("damaged")
+	await ap.animation_finished
+	is_hit = false
+	idle = true
+	$AnimationPlayer.stop()
+	player_health()
+	
+func hard_hit():
+	player_hit.play()
+	is_hit = true
+	if not Global.power_activate:
+		Global.player_health -= 10 + Global.hard_enemy_dmg
+	ap.play("damaged")
+	await ap.animation_finished
+	is_hit = false
+	idle = true
+	$AnimationPlayer.stop()
+	player_health()
+	
 func player_health():
 	if Global.player_health <= 0:
+		player_death.play()
 		isdead = true
 		weapon.texture = null
 		ap.play("death")
