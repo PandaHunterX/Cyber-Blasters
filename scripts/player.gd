@@ -23,6 +23,7 @@ var isdead = Global.player_isdead
 @onready var punch_sound: AudioStreamPlayer2D = $"Punch Sound"
 @onready var player_death: AudioStreamPlayer2D = $"Player Death"
 @onready var power_up_sound: AudioStreamPlayer2D = $"Power Up Sound"
+@onready var power_up_ready: AudioStreamPlayer2D = $"Power Up Ready"
 
 
 func _ready() -> void:
@@ -38,6 +39,8 @@ func _process(delta: float) -> void:
 		weapon_equip = true
 	if Global.melee_equip:
 		weapon_equip = false
+	if Global.powerup_refill == 100:
+		power_up_ready.play()
 		
 func _physics_process(delta: float) -> void:
 	if (position.x - camera_left_padding) > camera.limit_left:
@@ -125,6 +128,10 @@ func hard_hit():
 	
 func player_health():
 	if Global.player_health <= 0:
+		Global.prev_pistol_bullet = Global.pistol_bullets
+		Global.prev_smg_bullet = Global.smg_bullets
+		Global.prev_laser_bullet = Global.laser_bullets
+		Global.prev_grenade_bullet = Global.explosive_bullets
 		player_death.play()
 		isdead = true
 		weapon.texture = null

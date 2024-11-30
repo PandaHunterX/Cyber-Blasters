@@ -8,7 +8,7 @@ var player_isdead = false
 var player_respawn = false
 var powerup_refill = 0
 
-var meelee_damage = 100
+var meelee_damage = 50
 var pistol_damage = 50
 var smg_damage = 15
 var laser_damage = 25
@@ -93,16 +93,30 @@ func player_reset():
 var player_level = 0
 var player_drop_body = false
 
+var prev_pistol_bullet = 0
+var prev_smg_bullet = 0
+var prev_laser_bullet = 0
+var prev_grenade_bullet = 0
+
 func level_up():
 	player_level += 1
 	if player_level <= 10:
-		max_player_health += +20
-		player_speed += player_speed * 0.2
+		max_player_health += 20
+		player_speed += 10
 	player_health = max_player_health
 	pistol_limit += 20
 	smg_limit += 60
 	laser_limit += 6
 	explosive_limit += 2
+	pistol_bullets += prev_pistol_bullet
+	smg_bullets += prev_smg_bullet
+	laser_bullets += prev_laser_bullet
+	explosive_bullets += prev_grenade_bullet
+	prev_pistol_bullet = 0
+	prev_smg_bullet = 0
+	prev_laser_bullet = 0
+	prev_grenade_bullet = 0
+	ammo_limit()
 
 	
 #RNG System
@@ -184,6 +198,41 @@ var smg_equip = false
 var laser_rifle_equip = false
 var grenad_launcher_equip = false
 
+func melee_equip_func():
+	melee_equip = true
+	pistol_equip = false
+	smg_equip = false
+	laser_rifle_equip = false
+	grenad_launcher_equip = false
+	
+func pistol_equip_func():
+	melee_equip = false
+	pistol_equip = true
+	smg_equip = false
+	laser_rifle_equip = false
+	grenad_launcher_equip = false
+	
+func smg_equip_func():
+	melee_equip = false
+	pistol_equip = false
+	smg_equip = true
+	laser_rifle_equip = false
+	grenad_launcher_equip = false
+	
+func laser_equip_func():
+	melee_equip = false
+	pistol_equip = false
+	smg_equip = false
+	laser_rifle_equip = true
+	grenad_launcher_equip = false
+	
+func grenad_equip_func():
+	melee_equip = false
+	pistol_equip = false
+	smg_equip = false
+	laser_rifle_equip = false
+	grenad_launcher_equip = true
+	
 func ammo_limit():
 	if pistol_bullets > pistol_limit:
 		pistol_bullets = pistol_limit
@@ -241,18 +290,12 @@ var power_activate = false
 func powerup():
 	speed_buff = 2
 	damage_buff = 2
-	fire_rate_buff += 1.0
 	power_activate = true
 	powerup_refill = 0
 	if player_health < max_player_health  * 0.8:
 		player_health += max_player_health * 0.2
 	else:
 		player_health = max_player_health
-
-var pistol_fire_rate = 0.8 / fire_rate_buff
-var smg_fire_rate = 0.2 / fire_rate_buff
-var laser_fire_rate = 1.6 / fire_rate_buff
-var explosive_fire_rate = 2 / fire_rate_buff
 
 func normal():
 	speed_buff = 1

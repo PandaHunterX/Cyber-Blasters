@@ -39,11 +39,7 @@ func _process(delta: float) -> void:
 	if Global.player_respawn:
 		Global.player_respawn = false
 		$Weapon.texture = null
-		Global.melee_equip = true
-		Global.pistol_equip = false
-		Global.smg_equip = false
-		Global.laser_rifle_equip = false
-		Global.grenad_launcher_equip = false
+		Global.melee_equip_func()
 		can_shoot = false
 		
 func _unhandled_input(event: InputEvent) -> void:
@@ -53,55 +49,35 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not Global.melee_equip:
 			change_weapon_sound.play()
 		$Weapon.texture = null
-		Global.melee_equip = true
-		Global.pistol_equip = false
-		Global.smg_equip = false
-		Global.laser_rifle_equip = false
-		Global.grenad_launcher_equip = false
+		Global.melee_equip_func()
 		can_shoot = false
 	elif event.is_action_pressed("pistol") and can_change and Global.pistol_unlock:
 		if not Global.pistol_equip:
 			change_weapon_sound.play()
 		$Weapon.texture = Global.pistol
-		$WeaponCooldown.wait_time = Global.pistol_fire_rate
-		Global.melee_equip = false
-		Global.pistol_equip = true
-		Global.smg_equip = false
-		Global.laser_rifle_equip = false
-		Global.grenad_launcher_equip = false
+		$WeaponCooldown.wait_time = 0.8
+		Global.pistol_equip_func()
 		can_shoot = true
 	elif event.is_action_pressed("smg") and can_change and Global.smg_unlock:
 		if not Global.smg_equip:
 			change_weapon_sound.play()
 		$Weapon.texture = Global.smg
-		$WeaponCooldown.wait_time = Global.smg_fire_rate
-		Global.melee_equip = false
-		Global.pistol_equip = false
-		Global.smg_equip = true
-		Global.laser_rifle_equip = false
-		Global.grenad_launcher_equip = false
+		$WeaponCooldown.wait_time = 0.1
+		Global.smg_equip_func()
 		can_shoot = true
 	elif  event.is_action_pressed("laser_rifle") and can_change and Global.laser_rifle_unlock:
 		if not Global.laser_rifle_equip:
 			change_weapon_sound.play()
 		$Weapon.texture = Global.laser_rifle
-		$WeaponCooldown.wait_time = Global.laser_fire_rate
-		Global.melee_equip = false
-		Global.pistol_equip = false
-		Global.smg_equip = false
-		Global.laser_rifle_equip = true
-		Global.grenad_launcher_equip = false
+		$WeaponCooldown.wait_time = 1.2
+		Global.laser_equip_func()
 		can_shoot = true
 	elif event.is_action_pressed("grenade_launcher") and can_change and Global.grenade_launcher_unlock:
 		if not Global.grenad_launcher_equip:
 			change_weapon_sound.play()
 		$Weapon.texture = Global.grenade_launcher
-		$WeaponCooldown.wait_time = Global.explosive_fire_rate
-		Global.melee_equip = false
-		Global.pistol_equip = false
-		Global.smg_equip = false
-		Global.laser_rifle_equip = false
-		Global.grenad_launcher_equip = true
+		$WeaponCooldown.wait_time = 1.6
+		Global.grenad_equip_func()
 		can_shoot = true
 		
 func basic_fire():
@@ -120,7 +96,6 @@ func basic_fire():
 			Global.smg_bullets -= 1
 			add_child(bul)
 	elif  ((Global.pistol_bullets <= 0 and Global.pistol_equip) or (Global.smg_bullets <= 0 and Global.smg_equip)) and is_shooting:
-		print("No ammo sound should play")
 		no_ammo_sound.play()
 		
 func laser_fire():

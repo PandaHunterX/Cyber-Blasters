@@ -63,7 +63,7 @@ func pistol_hit():
 
 func smg_hit():
 	hit.play()
-	health -= (Global.pistol_damage * 0.25) * Global.damage_buff
+	health -= (Global.smg_damage * 0.25) * Global.damage_buff
 	is_hit = true  # Set hit flag to true
 	$AnimationPlayer.play("hit")
 	enemy_health()

@@ -48,10 +48,16 @@ theme_override_font_sizes/font_size = 24
 text = "RESUME
 "
 
+[node name="Main Menu" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MAIN MENU"
+
 [node name="Exit Button" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "QUIT"
 
 [connection signal="pressed" from="GridContainer/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="GridContainer/Main Menu" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GridContainer/Exit Button" to="." method="_on_exit_button_pressed"]
