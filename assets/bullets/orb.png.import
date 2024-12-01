@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bae80rxxlf2t3"
-path="res://.godot/imported/8.png-b04339e03bbea59ff75428c2244c54d6.ctex"
+uid="uid://xkqy8nd5h4qa"
+path="res://.godot/imported/orb.png-cafc78b7bebdf64a4f0b85ab340f0b1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/explosions/8.png"
-dest_files=["res://.godot/imported/8.png-b04339e03bbea59ff75428c2244c54d6.ctex"]
+source_file="res://assets/bullets/orb.png"
+dest_files=["res://.godot/imported/orb.png-cafc78b7bebdf64a4f0b85ab340f0b1e.ctex"]
 
 [params]
 

@@ -20,7 +20,7 @@ bg_color = Color(0.113725, 0.647059, 0.890196, 0.101961)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cenq1"]
 bg_color = Color(0.0363013, 0.239566, 0.541154, 1)
 
-[node name="Control" type="Control"]
+[node name="Game Interface" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -144,8 +144,6 @@ func player_health():
 func respawn():
 	if Global.player_respawn:
 		Global.player_reset()
-		print(Global.player_health)
-		print(Global.max_player_health)
 		weapon_equip = false
 		
 		# Reset position and physics state
@@ -163,8 +161,6 @@ func respawn():
 		ap.play("idle")  # Reset animation to idle
 		idle = true  # Ensure the character state is ready for movement
 		
-		print(Global.player_respawn)
-		print(Global.player_isdead)
 
 func level_up():
 	Global.level_up()

@@ -12,6 +12,8 @@ func _physics_process(delta: float) -> void:
 	else :
 		position.x = position.x
 		$"Enemy Detection/Detection".disabled = true
+	if position.x >= 1600:
+		queue_free()
 
 func _on_enemy_detection_body_entered(body: Node2D) -> void:
 	if body.has_method("explosive_hit"):

@@ -2,6 +2,16 @@ extends Node2D
 
 var speed = 1000
 
+@onready var bullet: Sprite2D = $Bullet
+const BULLET_NORMAL = preload("res://assets/bullets/bullet_normal.png")
+const BULLET_SHORT = preload("res://assets/bullets/bullet_short.png")
+
+func _process(delta: float) -> void:
+	if Global.pistol_equip:
+		bullet.texture = BULLET_NORMAL
+	elif Global.smg_equip:
+		bullet.texture = BULLET_SHORT
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 		position.x += speed * delta
