@@ -1,0 +1,232 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv2kelv36iffl"]
+
+[ext_resource type="Script" path="res://scripts/game_wiki.gd" id="1_txgbt"]
+
+[node name="Game Wiki" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_txgbt")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -852.5
+offset_top = -435.0
+offset_right = 852.5
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+current_tab = 0
+
+[node name="Player Stats" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+metadata/_tab_index = 0
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 86.5
+offset_top = 43.0
+offset_right = 489.5
+offset_bottom = 395.0
+
+[node name="ColorRect2" type="ColorRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 640.5
+offset_top = 42.0
+offset_right = 1043.5
+offset_bottom = 248.0
+
+[node name="ColorRect4" type="ColorRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 643.5
+offset_top = 425.0
+offset_right = 1046.5
+offset_bottom = 625.0
+
+[node name="ColorRect5" type="ColorRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 1207.5
+offset_top = 425.0
+offset_right = 1610.5
+offset_bottom = 625.0
+
+[node name="ColorRect3" type="ColorRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 1210.5
+offset_top = 47.0
+offset_right = 1613.5
+offset_bottom = 253.0
+
+[node name="Name" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 95.5
+offset_top = 408.0
+offset_right = 421.5
+offset_bottom = 475.0
+theme_override_font_sizes/font_size = 48
+text = "PLAYER NAME"
+
+[node name="Pistol" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 647.5
+offset_top = 255.0
+offset_right = 989.5
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 48
+text = "Weapon Name"
+
+[node name="SMG" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 1219.5
+offset_top = 260.0
+offset_right = 1561.5
+offset_bottom = 327.0
+theme_override_font_sizes/font_size = 48
+text = "Weapon Name"
+
+[node name="Laser" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 647.5
+offset_top = 638.0
+offset_right = 989.5
+offset_bottom = 705.0
+theme_override_font_sizes/font_size = 48
+text = "Weapon Name"
+
+[node name="Grenade" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 1219.5
+offset_top = 643.0
+offset_right = 1561.5
+offset_bottom = 710.0
+theme_override_font_sizes/font_size = 48
+text = "Weapon Name"
+
+[node name="Level" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 469.0
+offset_right = 418.0
+offset_bottom = 518.0
+theme_override_font_sizes/font_size = 32
+text = "Level: "
+
+[node name="Health" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 524.0
+offset_right = 419.0
+offset_bottom = 571.0
+theme_override_font_sizes/font_size = 32
+text = "Health:"
+
+[node name="Pistol Dmg" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 659.5
+offset_top = 330.0
+offset_right = 985.5
+offset_bottom = 397.0
+theme_override_font_sizes/font_size = 32
+text = "Damage:"
+
+[node name="Smg Dmg" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 1232.5
+offset_top = 325.0
+offset_right = 1558.5
+offset_bottom = 392.0
+theme_override_font_sizes/font_size = 32
+text = "Damage"
+
+[node name="Laser Dmg" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 653.5
+offset_top = 710.0
+offset_right = 979.5
+offset_bottom = 777.0
+theme_override_font_sizes/font_size = 32
+text = "Damage"
+
+[node name="Grenade Dmg" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 1225.5
+offset_top = 715.0
+offset_right = 1551.5
+offset_bottom = 782.0
+theme_override_font_sizes/font_size = 32
+text = "Damage"
+
+[node name="Speed" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 573.0
+offset_right = 419.0
+offset_bottom = 624.0
+theme_override_font_sizes/font_size = 32
+text = "Speed:"
+
+[node name="Melee Dmg" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 619.0
+offset_right = 416.0
+offset_bottom = 672.0
+theme_override_font_sizes/font_size = 32
+text = "Melee Dmg:"
+
+[node name="Highest Score" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 72.5
+offset_top = 665.0
+offset_right = 557.5
+offset_bottom = 717.0
+theme_override_font_sizes/font_size = 32
+text = "Highest Score:"
+
+[node name="Longest Distance" type="Label" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 75.5
+offset_top = 715.0
+offset_right = 560.5
+offset_bottom = 767.0
+theme_override_font_sizes/font_size = 32
+text = "Longest Distance: "
+
+[node name="Story" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+metadata/_tab_index = 1
+
+[node name="Tutorial" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+metadata/_tab_index = 2
+
+[node name="Enemy Type" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1737.0
+offset_top = 85.0
+offset_right = 1814.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 60
+text = "X"
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhoh24b7vf41t"]
+[gd_scene load_steps=3 format=3 uid="uid://bhoh24b7vf41t"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_0cima"]
+[ext_resource type="PackedScene" uid="uid://cv2kelv36iffl" path="res://scenes/game_wiki.tscn" id="2_i76nc"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -55,5 +56,18 @@ offset_bottom = 827.0
 theme_override_font_sizes/font_size = 64
 text = "EXIT"
 
+[node name="Stats_Tutorial" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 1686.0
+offset_top = 30.0
+offset_right = 1875.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 48
+text = "Tutorial"
+
+[node name="Game Wiki" parent="CanvasLayer" instance=ExtResource("2_i76nc")]
+visible = false
+
 [connection signal="pressed" from="CanvasLayer/ColorRect/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Stats_Tutorial" to="." method="_on_stats_tutorial_pressed"]

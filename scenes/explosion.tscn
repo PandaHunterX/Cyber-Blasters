@@ -1,19 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bk1hx0kj81771"]
+[gd_scene load_steps=10 format=3 uid="uid://bk1hx0kj81771"]
 
-[ext_resource type="Texture2D" uid="uid://flyqb5cxm6s1" path="res://assets/bullets/grenade1.png" id="1_ex5kf"]
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_lp3wv"]
-[ext_resource type="Texture2D" uid="uid://dptavg8og4vnr" path="res://assets/explosions/1.png" id="2_cvwem"]
-[ext_resource type="Texture2D" uid="uid://b1t77bkotbuo4" path="res://assets/explosions/2.png" id="3_p6n7k"]
-[ext_resource type="Texture2D" uid="uid://fdirh56ciun3" path="res://assets/explosions/3.png" id="4_m5vhd"]
-[ext_resource type="Texture2D" uid="uid://u8j7v8vnoq4c" path="res://assets/explosions/4.png" id="5_i2tya"]
-[ext_resource type="Texture2D" uid="uid://byvv0fljw5khm" path="res://assets/explosions/5.png" id="6_6u007"]
-[ext_resource type="Texture2D" uid="uid://r0pp3oruimku" path="res://assets/explosions/6.png" id="7_s74cb"]
-[ext_resource type="Texture2D" uid="uid://2o4bbg12h3xy" path="res://assets/explosions/7.png" id="8_lohkn"]
-[ext_resource type="Texture2D" uid="uid://bae80rxxlf2t3" path="res://assets/explosions/8.png" id="9_g7fsf"]
-[ext_resource type="Texture2D" uid="uid://cx5biqvwmjr5s" path="res://assets/explosions/9.png" id="10_j0gvb"]
-[ext_resource type="Texture2D" uid="uid://bsynkwaausvq0" path="res://assets/explosions/10.png" id="11_sn6cn"]
-[ext_resource type="Texture2D" uid="uid://bhio1adqeh3sm" path="res://assets/explosions/11.png" id="12_r1sak"]
-[ext_resource type="Texture2D" uid="uid://bf0l7qktchcay" path="res://assets/explosions/12.png" id="13_k1msa"]
+[ext_resource type="Texture2D" uid="uid://xkqy8nd5h4qa" path="res://assets/bullets/orb.png" id="2_3g3tc"]
+[ext_resource type="Texture2D" uid="uid://cqv5oyfusaooq" path="res://assets/bullets/orb_explosion.png" id="2_m5ur2"]
 [ext_resource type="AudioStream" uid="uid://bjiooon3630pv" path="res://assets/sounds/explosion.mp3" id="15_nxsdq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w15ai"]
@@ -25,34 +14,22 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Grenade Hit/GrenadeHitbox:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [ExtResource("1_ex5kf"), ExtResource("2_cvwem"), ExtResource("3_p6n7k"), ExtResource("4_m5vhd"), ExtResource("5_i2tya"), ExtResource("6_6u007"), ExtResource("7_s74cb"), ExtResource("8_lohkn"), ExtResource("9_g7fsf"), ExtResource("10_j0gvb"), ExtResource("11_sn6cn"), ExtResource("12_r1sak"), ExtResource("13_k1msa")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Grenade Hit/GrenadeHitbox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.366667),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Explosion Sound")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -60,34 +37,58 @@ tracks/2/keys = {
 }],
 "times": PackedFloat32Array(0)
 }
-tracks/2/use_blend = true
-
-[sub_resource type="Animation" id="Animation_xxyuj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("1_ex5kf")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Grenade Hit/GrenadeHitbox:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [ExtResource("2_m5ur2")]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_xxyuj"]
+length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_41r8v"]
 _data = {
@@ -96,15 +97,15 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y07ft"]
-radius = 317.0
+radius = 592.001
 
 [node name="Grenade" type="Node2D"]
 script = ExtResource("1_lp3wv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3, 6.99998)
-scale = Vector2(0.962891, 0.835809)
-texture = ExtResource("1_ex5kf")
+position = Vector2(15, 10.6597)
+scale = Vector2(1.11932, 1.10608)
+texture = ExtResource("2_3g3tc")
 
 [node name="Enemy Detection" type="Area2D" parent="."]
 
@@ -122,6 +123,7 @@ libraries = {
 [node name="GrenadeHitbox" type="CollisionShape2D" parent="Grenade Hit"]
 position = Vector2(3, 7)
 shape = SubResource("CircleShape2D_y07ft")
+disabled = true
 debug_color = Color(0.612686, 0.371389, 0.97783, 0.42)
 
 [node name="ExplosionTimer" type="Timer" parent="."]

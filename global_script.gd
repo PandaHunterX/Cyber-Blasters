@@ -6,13 +6,20 @@ var player_health = 100
 var player_speed = 300
 var player_isdead = false
 var player_respawn = false
+var player_damage = 1
 var powerup_refill = 0
 
-var meelee_damage = 50
-var pistol_damage = 50
-var smg_damage = 15
-var laser_damage = 25
-var grenade_damage = 500
+var meelee_damage = 50  * player_damage
+var pistol_damage = 50 * player_damage
+var smg_damage = 15 * player_damage
+var laser_damage = 25 * player_damage
+var grenade_damage = 500 * player_damage
+
+#Tutorial
+
+var player_tutorial = true
+var basic_tutorial = false
+
 
 
 #Scoring System
@@ -103,6 +110,7 @@ func level_up():
 	if player_level <= 10:
 		max_player_health += 20
 		player_speed += 10
+		player_damage += 0.1
 	player_health = max_player_health
 	pistol_limit += 20
 	smg_limit += 60
@@ -292,8 +300,8 @@ func powerup():
 	damage_buff = 2
 	power_activate = true
 	powerup_refill = 0
-	if player_health < max_player_health  * 0.8:
-		player_health += max_player_health * 0.2
+	if player_health < max_player_health  * 0.9:
+		player_health += max_player_health * 0.1
 	else:
 		player_health = max_player_health
 

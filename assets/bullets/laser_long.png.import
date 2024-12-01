@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx5biqvwmjr5s"
-path="res://.godot/imported/9.png-34851778d33606c6ff02995d59229a62.ctex"
+uid="uid://xchvn3layomo"
+path="res://.godot/imported/laser_long.png-fe55a9d0d24a4f2b3b4958f63e421fc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/explosions/9.png"
-dest_files=["res://.godot/imported/9.png-34851778d33606c6ff02995d59229a62.ctex"]
+source_file="res://assets/bullets/laser_long.png"
+dest_files=["res://.godot/imported/laser_long.png-fe55a9d0d24a4f2b3b4958f63e421fc2.ctex"]
 
 [params]
 

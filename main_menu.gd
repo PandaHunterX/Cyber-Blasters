@@ -1,10 +1,6 @@
 extends Control
 
-
-func _ready() -> void:
-	pass # Replace with function body.
-
-
+@onready var game_wiki: Control = $"CanvasLayer/Game Wiki"
 
 
 func _on_play_pressed() -> void:
@@ -15,3 +11,7 @@ func _on_play_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_stats_tutorial_pressed() -> void:
+	game_wiki.visible = true

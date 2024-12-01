@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 		$Weapon.texture = null
 		Global.melee_equip_func()
 		can_shoot = false
+		can_change = true
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if not can_change:
@@ -114,6 +115,7 @@ func grenade_fire():
 	if can_shoot and is_shooting and Global.grenad_launcher_equip and Global.explosive_bullets >= 1:
 		grenade_launcher_sound.play()
 		var grenadebul = grenadebullet.instantiate()
+		grenadebul.position = $Grenade.position
 		add_child(grenadebul)
 		$WeaponCooldown.start()
 		can_shoot = false

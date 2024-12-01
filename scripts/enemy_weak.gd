@@ -22,6 +22,8 @@ func _process(delta: float) -> void:
 		$PlayerDetction/CollisionShape2D.disabled = true
 		$Hitbox.disabled = true
 		$PlayerHit/AttackHitbox.disabled = true
+	if Global.player_isdead:
+		queue_free()
 
 func _physics_process(delta):
 	if health <= 0:
@@ -96,9 +98,12 @@ func enemy_health():
 		$AttackCooldown.stop()
 		$AnimationPlayer.play("death")
 		Global.add_ammo()
-		Global.score += 100
+		Global.score += 50
 		if not Global.power_activate and Global.powerup_refill <= 100:
-			Global.powerup_refill += 5
+			if Global.score >= 10000:
+				Global.powerup_refill +=2
+			else:
+				Global.powerup_refill += 5
 		await $AnimationPlayer.animation_finished
 		await death.finished
 		queue_free()
