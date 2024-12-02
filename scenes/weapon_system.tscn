@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dej53gloh8dy5" path="res://assets/sounds/pistol_bullet.mp3" id="3_yyxct"]
 [ext_resource type="AudioStream" uid="uid://cao3aunbcv70" path="res://assets/sounds/smg_bullet.mp3" id="4_ixjoo"]
 [ext_resource type="AudioStream" uid="uid://ca5cyww6mmtpv" path="res://assets/sounds/laser.mp3" id="5_6ckur"]
-[ext_resource type="AudioStream" uid="uid://d0p8wty10kb1p" path="res://assets/sounds/grenade_launcher.mp3" id="6_ccn16"]
+[ext_resource type="AudioStream" uid="uid://cfqqxnr303p3y" path="res://assets/sounds/shockwave.mp3" id="6_xawf4"]
 [ext_resource type="AudioStream" uid="uid://dd6mv2e23hxqj" path="res://assets/sounds/change_weapon.wav" id="7_ly4si"]
 [ext_resource type="AudioStream" uid="uid://mt1vyc6odmcu" path="res://assets/sounds/no_ammo_sound.mp3" id="8_i4adu"]
 
@@ -39,7 +39,8 @@ stream = ExtResource("4_ixjoo")
 stream = ExtResource("5_6ckur")
 
 [node name="Grenade Launcher Sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ccn16")
+stream = ExtResource("6_xawf4")
+volume_db = 8.915
 
 [node name="Change Weapon Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_ly4si")
