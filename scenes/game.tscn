@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1b02trcyeing"]
+[gd_scene load_steps=9 format=3 uid="uid://d1b02trcyeing"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5h3mg"]
 [ext_resource type="PackedScene" uid="uid://bcne1d3p0amrk" path="res://scenes/background.tscn" id="2_kpss6"]
 [ext_resource type="PackedScene" uid="uid://dvqe5yrmnj22t" path="res://scenes/player.tscn" id="3_wedu7"]
-[ext_resource type="PackedScene" uid="uid://cy2ytach2fwsu" path="res://scenes/enemy_weak.tscn" id="4_vjkqh"]
-[ext_resource type="PackedScene" uid="uid://c1yfdfrmpulxv" path="res://scenes/pause.tscn" id="5_iknmg"]
+[ext_resource type="PackedScene" uid="uid://c1yfdfrmpulxv" path="res://pause.tscn" id="5_iknmg"]
 [ext_resource type="PackedScene" uid="uid://fngnr2xexaol" path="res://scenes/respawn_menu.tscn" id="6_uhd64"]
 [ext_resource type="PackedScene" uid="uid://ba5wkbyryd56j" path="res://scenes/tutorial_popup.tscn" id="7_3n8jm"]
 [ext_resource type="AudioStream" uid="uid://bsidpirkadgy" path="res://assets/music/in-game-hustle-cyberpunk-music-230632.mp3" id="7_qxudk"]
@@ -19,7 +18,7 @@ script = ExtResource("1_5h3mg")
 position = Vector2(371, 761)
 
 [node name="Spawner" type="Marker2D" parent="Player"]
-position = Vector2(2588, 157)
+position = Vector2(2588, 152)
 
 [node name="Background Music" type="AudioStreamPlayer2D" parent="Player"]
 process_mode = 3
@@ -49,9 +48,6 @@ offset_right = 3.0
 offset_bottom = -4.0
 
 [node name="Tutorial Popup" parent="CanvasLayer" instance=ExtResource("7_3n8jm")]
-
-[node name="enemyweak" parent="." instance=ExtResource("4_vjkqh")]
-position = Vector2(1660, 923)
 
 [node name="DifficultyTimer" type="Timer" parent="."]
 wait_time = 30.0

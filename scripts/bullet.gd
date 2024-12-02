@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 1000
+var speed = 2000
 
 @onready var bullet: Sprite2D = $Bullet
 const BULLET_NORMAL = preload("res://assets/bullets/bullet_normal.png")
@@ -14,8 +14,8 @@ func _process(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-		position.x += speed * delta
-		if position.x >= 1600:
+		global_position.x += speed * delta
+		if position.x >= 5500:
 			queue_free()
 
 func _on_bullet_hitbox_body_entered(body: Node2D) -> void:

@@ -9,42 +9,51 @@
 [ext_resource type="AudioStream" uid="uid://dd6mv2e23hxqj" path="res://assets/sounds/change_weapon.wav" id="7_ly4si"]
 [ext_resource type="AudioStream" uid="uid://mt1vyc6odmcu" path="res://assets/sounds/no_ammo_sound.mp3" id="8_i4adu"]
 
-[node name="WeaponSystem" type="Node2D"]
-script = ExtResource("1_aw7gr")
-
-[node name="Weapon" type="Sprite2D" parent="."]
+[node name="WeaponSystem" type="Sprite2D"]
 position = Vector2(-139, 42)
 scale = Vector2(0.306152, 0.304199)
 texture = ExtResource("2_jd7im")
+script = ExtResource("1_aw7gr")
+
+[node name="WeaponSystem" type="Node2D" parent="."]
+visible = false
 
 [node name="WeaponCooldown" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="Rifle" type="Marker2D" parent="."]
-position = Vector2(-23, -30)
+position = Vector2(552.013, -239.974)
+scale = Vector2(1, 1)
 
 [node name="Pistol" type="Marker2D" parent="."]
-position = Vector2(-1, -57)
+position = Vector2(591.21, -309.008)
 
 [node name="Grenade" type="Marker2D" parent="."]
-position = Vector2(-4, -38)
+position = Vector2(496.485, -279.422)
+scale = Vector2(1, 1)
 
 [node name="Pistol Sound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
 stream = ExtResource("3_yyxct")
 
 [node name="Smg Sound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
 stream = ExtResource("4_ixjoo")
 
 [node name="Laser Sound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
 stream = ExtResource("5_6ckur")
 
 [node name="Grenade Launcher Sound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
 stream = ExtResource("6_ccn16")
 
 [node name="Change Weapon Sound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
 stream = ExtResource("7_ly4si")
 
 [node name="No Ammo Sound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
 stream = ExtResource("8_i4adu")
 volume_db = 14.095
 

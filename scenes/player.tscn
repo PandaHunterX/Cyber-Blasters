@@ -594,14 +594,14 @@ script = ExtResource("1_iv0u3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-99.8611, 27.5899)
-scale = Vector2(0.195041, 0.353392)
+scale = Vector2(0.287, 0.287)
 texture = ExtResource("2_jcmi7")
 hframes = 3
 vframes = 2
 
 [node name="WeaponSystem" parent="Sprite2D" instance=ExtResource("8_uwpar")]
-position = Vector2(527.381, -137.496)
-scale = Vector2(5.12712, 2.82972)
+position = Vector2(-3.45331, -1.78857)
+scale = Vector2(1, 1)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(-103.5, 17)
@@ -629,6 +629,7 @@ disabled = true
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("8_6dwr8")]
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="PowerupDuration" type="Timer" parent="."]
 wait_time = 5.0

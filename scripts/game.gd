@@ -40,6 +40,8 @@ func spawn_weak_enemy() -> void:
 			var random_x_offset = Global.rng.randi_range(-600, 600)
 			weak.position = $Player/Spawner.global_position + Vector2(random_x_offset, 0)
 			add_child(weak)
+			print($Player/Sprite2D.global_position)
+			print(weak.global_position)
 		
 func spawn_fast_enemy() -> void:
 	if not Global.player_isdead:

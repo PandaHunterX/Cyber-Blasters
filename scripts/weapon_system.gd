@@ -1,4 +1,4 @@
-extends Node2D
+extends Sprite2D
 
 @onready var bullet = preload("res://scenes/bullet.tscn")
 @onready var laserbullet = preload("res://scenes/laser.tscn")
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		
 	if Global.player_respawn:
 		Global.player_respawn = false
-		$Weapon.texture = null
+		texture = null
 		Global.melee_equip_func()
 		can_shoot = false
 		can_change = true
@@ -49,38 +49,38 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("melee") and can_change:
 		if not Global.melee_equip:
 			change_weapon_sound.play()
-		$Weapon.texture = null
+		texture = null
 		Global.melee_equip_func()
 		can_shoot = false
 	elif event.is_action_pressed("pistol") and can_change and Global.pistol_unlock:
 		if not Global.pistol_equip:
 			change_weapon_sound.play()
-		$Weapon.texture = Global.pistol
+		texture = Global.pistol
 		$WeaponCooldown.wait_time = 0.8
 		Global.pistol_equip_func()
 		can_shoot = true
 	elif event.is_action_pressed("smg") and can_change and Global.smg_unlock:
 		if not Global.smg_equip:
 			change_weapon_sound.play()
-		$Weapon.texture = Global.smg
+		texture = Global.smg
 		$WeaponCooldown.wait_time = 0.1
 		Global.smg_equip_func()
 		can_shoot = true
 	elif  event.is_action_pressed("laser_rifle") and can_change and Global.laser_rifle_unlock:
 		if not Global.laser_rifle_equip:
 			change_weapon_sound.play()
-		$Weapon.texture = Global.laser_rifle
+		texture = Global.laser_rifle
 		$WeaponCooldown.wait_time = 1.2
 		Global.laser_equip_func()
 		can_shoot = true
 	elif event.is_action_pressed("grenade_launcher") and can_change and Global.grenade_launcher_unlock:
 		if not Global.grenad_launcher_equip:
 			change_weapon_sound.play()
-		$Weapon.texture = Global.grenade_launcher
+		texture = Global.grenade_launcher
 		$WeaponCooldown.wait_time = 1.6
 		Global.grenad_equip_func()
 		can_shoot = true
-		
+
 func basic_fire():
 	if can_shoot and is_shooting and ((Global.pistol_equip and Global.pistol_bullets >= 1) or (Global.smg_equip and Global.smg_bullets >= 1)):
 		var bul = bullet.instantiate()
