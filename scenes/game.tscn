@@ -13,9 +13,10 @@ size = Vector2(102, 1058)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_5h3mg")
+metadata/_edit_horizontal_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("3_wedu7")]
-position = Vector2(371, 761)
+position = Vector2(371, 713)
 
 [node name="Spawner" type="Marker2D" parent="Player"]
 position = Vector2(2588, 152)

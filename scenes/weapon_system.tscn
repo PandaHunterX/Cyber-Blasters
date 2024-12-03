@@ -23,37 +23,29 @@ wait_time = 0.1
 
 [node name="Rifle" type="Marker2D" parent="."]
 position = Vector2(552.013, -239.974)
-scale = Vector2(1, 1)
 
 [node name="Pistol" type="Marker2D" parent="."]
 position = Vector2(591.21, -309.008)
 
 [node name="Grenade" type="Marker2D" parent="."]
 position = Vector2(496.485, -279.422)
-scale = Vector2(1, 1)
 
 [node name="Pistol Sound" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("3_yyxct")
 
 [node name="Smg Sound" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("4_ixjoo")
 
 [node name="Laser Sound" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("5_6ckur")
 
 [node name="Grenade Launcher Sound" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("6_ccn16")
 
 [node name="Change Weapon Sound" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("7_ly4si")
 
 [node name="No Ammo Sound" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("8_i4adu")
 volume_db = 14.095
 
