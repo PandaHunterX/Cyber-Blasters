@@ -19,7 +19,7 @@ metadata/_edit_horizontal_guides_ = [1080.0]
 position = Vector2(371, 713)
 
 [node name="Spawner" type="Marker2D" parent="Player"]
-position = Vector2(2588, 152)
+position = Vector2(2588, 200)
 
 [node name="Background Music" type="AudioStreamPlayer2D" parent="Player"]
 process_mode = 3

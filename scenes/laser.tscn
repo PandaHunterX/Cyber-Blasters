@@ -7,16 +7,16 @@
 size = Vector2(2860, 29)
 
 [node name="Laser" type="Node2D"]
-position = Vector2(1930, 0)
 scale = Vector2(2, 2)
 script = ExtResource("1_air1d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(452.25, 0)
+position = Vector2(1407.25, 0)
 scale = Vector2(1.44273, 1)
 texture = ExtResource("2_hws1c")
 
 [node name="Laser" type="Area2D" parent="."]
+position = Vector2(915.749, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Laser"]
 position = Vector2(466, 0)

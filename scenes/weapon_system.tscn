@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bpyw4xh44vyhs"]
 
 [ext_resource type="Script" path="res://scripts/weapon_system.gd" id="1_aw7gr"]
-[ext_resource type="Texture2D" uid="uid://ds61n2p7o3i4e" path="res://assets/weapons/weapon_grenade.png" id="2_jd7im"]
+[ext_resource type="Texture2D" uid="uid://dw6uhcokhd7g2" path="res://assets/weapons/weapon_laser.png" id="1_ho4bp"]
 [ext_resource type="AudioStream" uid="uid://dej53gloh8dy5" path="res://assets/sounds/pistol_bullet.mp3" id="3_yyxct"]
 [ext_resource type="AudioStream" uid="uid://cao3aunbcv70" path="res://assets/sounds/smg_bullet.mp3" id="4_ixjoo"]
 [ext_resource type="AudioStream" uid="uid://ca5cyww6mmtpv" path="res://assets/sounds/laser.mp3" id="5_6ckur"]
@@ -12,7 +12,7 @@
 [node name="WeaponSystem" type="Sprite2D"]
 position = Vector2(-139, 42)
 scale = Vector2(0.306152, 0.304199)
-texture = ExtResource("2_jd7im")
+texture = ExtResource("1_ho4bp")
 script = ExtResource("1_aw7gr")
 
 [node name="WeaponSystem" type="Node2D" parent="."]

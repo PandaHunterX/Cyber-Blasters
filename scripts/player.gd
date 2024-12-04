@@ -20,6 +20,10 @@ var weapon_equip = false
 var previous_position: float
 var isdead = Global.player_isdead
 
+const MC_WALK = preload("res://assets/main character/mc_walk.png")
+const MC_WALK_PISTOL = preload("res://assets/main character/mc_walk_pistol.png")
+const MC_WALK_RIFLE = preload("res://assets/main character/mc_walk_rifle.png")
+
 @onready var punch_sound: AudioStreamPlayer2D = $"Punch Sound"
 @onready var player_death: AudioStreamPlayer2D = $"Player Death"
 @onready var power_up_sound: AudioStreamPlayer2D = $"Power Up Sound"
@@ -84,11 +88,16 @@ func update_animations(horizontal_direction):
 		else:
 			can_attack = false
 			if Global.pistol_equip:
-				ap.play("walk_pistol")
+				sprite.texture = MC_WALK_PISTOL
 			elif Global.smg_equip or Global.laser_rifle_equip or Global.grenad_launcher_equip:
-				ap.play("walk_rifle")
+				sprite.texture = MC_WALK_RIFLE
 			else:
+				sprite.texture = MC_WALK
+			
+			if horizontal_direction >= 0:
 				ap.play("walk")
+			else:
+				ap.play("walk", -1, -1.0, false)
 
 func weak_hit():
 	player_hit.play()
