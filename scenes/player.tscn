@@ -651,5 +651,9 @@ stream = ExtResource("16_mawwx")
 stream = ExtResource("17_vm3qu")
 volume_db = 2.115
 
+[node name="Enemy Respwan" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="meleehitbox" to="." method="_on_meleehitbox_body_entered"]
 [connection signal="timeout" from="PowerupDuration" to="." method="_on_powerup_duration_timeout"]
+[connection signal="timeout" from="Enemy Respwan" to="." method="_on_enemy_respwan_timeout"]
