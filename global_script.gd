@@ -15,6 +15,8 @@ var smg_damage = 15 * player_damage
 var laser_damage = 25 * player_damage
 var grenade_damage = 500 * player_damage
 
+var enemy_die = false
+
 #Tutorial
 
 var player_tutorial = true
@@ -310,3 +312,47 @@ func normal():
 	damage_buff = 1
 	fire_rate_buff = 1
 	power_activate = false
+	
+#NEW GAME
+
+func new_game():
+	max_player_health = 100
+	player_health = 100
+	player_speed = 300
+	player_isdead = false
+	player_respawn = false
+	player_damage = 1
+	powerup_refill = 0
+	player_level = 0
+	enemy_die = false
+	
+	player_tutorial = true
+	basic_tutorial = false
+	
+	score = 0
+	highest_score = 0
+	distance_traveled = 0.0
+	current_distance_traveled = ""
+	longest_distance_num = 0
+	longest_distance = ""
+	
+	pistol_unlock = false
+	smg_unlock = false
+	laser_rifle_unlock = false
+	grenade_launcher_unlock = false
+
+	pistol_bullets = 0
+	smg_bullets = 0
+	laser_bullets = 0
+	explosive_bullets = 0
+
+	pistol_limit = 30
+	smg_limit = 120
+	laser_limit = 12
+	explosive_limit = 6
+
+	melee_equip = true
+	pistol_equip = false
+	smg_equip = false
+	laser_rifle_equip = false
+	grenad_launcher_equip = false
