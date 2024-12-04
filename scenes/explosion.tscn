@@ -100,6 +100,7 @@ _data = {
 radius = 592.001
 
 [node name="Grenade" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_lp3wv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

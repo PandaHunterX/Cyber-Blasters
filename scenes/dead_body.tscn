@@ -8,6 +8,7 @@
 size = Vector2(217, 112.5)
 
 [node name="DeadBody" type="Node2D"]
+scale = Vector2(1.4, 1.4)
 script = ExtResource("1_ujiof")
 
 [node name="Detection" type="Area2D" parent="."]
@@ -18,8 +19,8 @@ position = Vector2(8.5, 107.75)
 shape = SubResource("RectangleShape2D_y0h0y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 10)
-scale = Vector2(0.195041, 0.353392)
+position = Vector2(1, 52)
+scale = Vector2(0.210938, 0.210938)
 texture = ExtResource("2_m8epm")
 hframes = 3
 vframes = 2
