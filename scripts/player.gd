@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var camera = $PlayerCamera
 @onready var player_hit: AudioStreamPlayer2D = $"Player Hit"
 
-var camera_left_padding = 300
+const camera_left_padding = 500
 
 var starting_point: float
 var camera_point = null
