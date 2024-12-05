@@ -629,7 +629,6 @@ shape = SubResource("RectangleShape2D_pwefy")
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("8_6dwr8")]
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="PowerupDuration" type="Timer" parent="."]
 wait_time = 5.0
