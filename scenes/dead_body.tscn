@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0h0y"]
 size = Vector2(217, 112.5)
 
-[node name="DeadBody" type="Node2D"]
+[node name="DeadBody" type="Node2D" groups=["dead_bodies"]]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_ujiof")
 
@@ -27,6 +27,7 @@ vframes = 2
 frame = 5
 
 [node name="Dead Body Respawn" type="Timer" parent="."]
+process_mode = 1
 wait_time = 2.0
 
 [node name="Level up Sound" type="AudioStreamPlayer2D" parent="."]

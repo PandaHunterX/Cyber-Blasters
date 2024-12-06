@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba5wkbyryd56j"]
+[gd_scene load_steps=4 format=3 uid="uid://ba5wkbyryd56j"]
 
 [ext_resource type="Script" path="res://scripts/tutorial_popup.gd" id="1_j083v"]
 [ext_resource type="Theme" uid="uid://e54ckui14tau" path="res://ui_theme.tres" id="2_mccyk"]
+[ext_resource type="Texture2D" uid="uid://cw0356sbltq6g" path="res://assets/tutorial/playermovements.png" id="3_1ttvf"]
 
 [node name="Tutorial Popup" type="Control"]
 process_mode = 3
@@ -37,10 +38,12 @@ theme_override_constants/margin_bottom = 100
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Picture" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
-color = Color(0.140447, 0.140447, 0.140447, 1)
+texture = ExtResource("3_1ttvf")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
