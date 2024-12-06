@@ -21,10 +21,10 @@ const GRENADE_ICON = preload("res://assets/ui/grenade_icon.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$ColorRect/Score.text = "Score: " + str(Global.score)
+	$Score.text = "Score: " + str(Global.score)
 	$HealthBar.value = Global.player_health
 	$PowerupBar.value = Global.powerup_refill
-	$ColorRect3/Distance.text = "Distance: " + Global.current_distance_traveled
+	$Distance.text = "Distance: " + Global.current_distance_traveled
 	$HealthBar/Health.text = str(Global.player_health) + "/" + str(Global.max_player_health)
 	player_level.text = "Lvl: " + str(Global.player_level)
 	Global.distance()

@@ -135,4 +135,4 @@ func _on_player_detction_body_exited(body: Node2D) -> void:
 		attack_ready = true
 		player_detected = false
 		$AttackCooldown.stop()
-		$PlayerHit/AttackHitbox.disabled = true
+		$PlayerHit/AttackHitbox.set_deferred("disabled", true)

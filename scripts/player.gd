@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var ap = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var melee = $meleehitbox
-@onready var weapon = find_child("Weapon")
+@onready var weapon_system: Sprite2D = $Sprite2D/WeaponSystem
 @onready var camera = $PlayerCamera
 @onready var player_hit: AudioStreamPlayer2D = $"Player Hit"
 
@@ -32,7 +32,7 @@ const MC_WALK_RIFLE = preload("res://assets/main character/mc_walk_rifle.png")
 
 func _ready() -> void:
 	$meleehitbox/CollisionShape2D.disabled = true
-	weapon.texture = null
+	weapon_system.texture = null
 	previous_position = global_position.x
 	starting_point = global_position.x
 	camera_point = $PlayerCamera.position
@@ -143,7 +143,7 @@ func player_health():
 		Global.prev_grenade_bullet = Global.explosive_bullets
 		player_death.play()
 		isdead = true
-		weapon.texture = null
+		weapon_system.texture = null
 		ap.play("death")
 		await ap.animation_finished
 		Global.player_isdead = true
@@ -164,13 +164,12 @@ func respawn():
 		# Reset camera
 		camera.limit_left = position.x - camera_left_padding
 		camera.position = Vector2(position.x, camera.position.y)  # Align camera horizontally
-		
 		# Reset character state
 		isdead = false
 		Global.player_isdead = false
 		ap.play("idle")  # Reset animation to idle
 		idle = true  # Ensure the character state is ready for movement
-		
+		get_tree().call_group("dead_bodies", "game_restarted")
 
 func level_up():
 	Global.level_up()
