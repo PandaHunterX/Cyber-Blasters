@@ -594,7 +594,7 @@ script = ExtResource("1_iv0u3")
 metadata/_edit_horizontal_guides_ = [917.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-99.861, 75.59)
+position = Vector2(100.139, 75.59)
 scale = Vector2(0.287, 0.287)
 texture = ExtResource("2_jcmi7")
 hframes = 3
@@ -605,7 +605,7 @@ position = Vector2(-3.45331, -1.78857)
 scale = Vector2(1, 1)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(-103.5, 65)
+position = Vector2(100.139, 65)
 shape = SubResource("RectangleShape2D_74jxk")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
@@ -618,7 +618,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="meleehitbox" type="Area2D" parent="."]
-position = Vector2(-131, 41)
+position = Vector2(69, 41)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="meleehitbox"]

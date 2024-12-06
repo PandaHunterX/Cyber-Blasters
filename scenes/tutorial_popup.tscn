@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba5wkbyryd56j"]
+[gd_scene load_steps=3 format=3 uid="uid://ba5wkbyryd56j"]
 
 [ext_resource type="Script" path="res://scripts/tutorial_popup.gd" id="1_j083v"]
+[ext_resource type="Theme" uid="uid://e54ckui14tau" path="res://ui_theme.tres" id="2_mccyk"]
 
 [node name="Tutorial Popup" type="Control"]
 process_mode = 3
@@ -12,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j083v")
 
-[node name="Player Movements" type="ColorRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -20,86 +21,83 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -557.0
-offset_top = -367.0
+offset_top = -364.0
 offset_right = 557.0
-offset_bottom = 361.0
+offset_bottom = 364.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_mccyk")
 
-[node name="ColorRect" type="ColorRect" parent="Player Movements"]
-layout_mode = 0
-offset_left = 81.0
-offset_top = 28.0
-offset_right = 1026.0
-offset_bottom = 445.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
 color = Color(0.140447, 0.140447, 0.140447, 1)
 
-[node name="Title" type="Label" parent="Player Movements"]
-layout_mode = 0
-offset_left = 231.0
-offset_top = 455.0
-offset_right = 880.0
-offset_bottom = 543.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "PLAYER MOVEMENTS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Paragraph" type="Label" parent="Player Movements"]
-layout_mode = 0
-offset_left = 138.0
-offset_top = 564.0
-offset_right = 1012.0
-offset_bottom = 620.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+[node name="Paragraph" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Press A to move back and B to move forward"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Next" type="Button" parent="Player Movements"]
-layout_mode = 0
-offset_left = 1081.0
-offset_top = 307.0
-offset_right = 1180.0
-offset_bottom = 417.0
-theme_override_font_sizes/font_size = 60
-text = ">"
-
-[node name="Previous" type="Button" parent="Player Movements"]
-layout_mode = 0
-offset_left = -41.0
-offset_top = 297.0
-offset_right = 58.0
-offset_bottom = 407.0
+[node name="Previous" type="Button" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 60
 text = "<"
 
-[node name="Done" type="Button" parent="Player Movements"]
-layout_mode = 0
-offset_left = 473.0
-offset_top = 629.0
-offset_right = 642.0
-offset_bottom = 720.0
+[node name="Next" type="Button" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 60
+text = ">"
+
+[node name="Done" type="Button" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_mccyk")
+theme_override_font_sizes/font_size = 50
 text = "OKAY"
 
 [node name="Skip" type="Button" parent="."]
 process_mode = 3
-layout_mode = 0
-offset_left = 1442.0
-offset_top = 5.0
-offset_right = 1917.0
-offset_bottom = 80.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -508.0
+offset_top = 29.0
+offset_right = -33.0
+offset_bottom = 104.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 text = "SKIP TUTORIAL"
 
 [node name="Tutorial Timer" type="Timer" parent="."]
 wait_time = 2.0
 
-[connection signal="pressed" from="Player Movements/Next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="Player Movements/Previous" to="." method="_on_previous_pressed"]
-[connection signal="pressed" from="Player Movements/Done" to="." method="_on_done_pressed"]
+[connection signal="pressed" from="PanelContainer/Previous" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="PanelContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="PanelContainer/Done" to="." method="_on_done_pressed"]
 [connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]
 [connection signal="timeout" from="Tutorial Timer" to="." method="_on_tutorial_timer_timeout"]
