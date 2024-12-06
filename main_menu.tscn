@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhoh24b7vf41t"]
+[gd_scene load_steps=5 format=3 uid="uid://bhoh24b7vf41t"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_0cima"]
 [ext_resource type="PackedScene" uid="uid://cv2kelv36iffl" path="res://scenes/game_wiki.tscn" id="2_i76nc"]
+[ext_resource type="AudioStream" uid="uid://bejpxqy8fn03a" path="res://assets/music/main_menu.mp3" id="3_1fc08"]
+[ext_resource type="PackedScene" uid="uid://cck3tw842bibq" path="res://scenes/new_game.tscn" id="3_isbtt"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -19,15 +21,6 @@ offset_right = 1918.0
 offset_bottom = 1078.0
 color = Color(0.796001, 0.870867, 0.929461, 1)
 
-[node name="Load" type="Button" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_left = 782.0
-offset_top = 483.0
-offset_right = 1139.0
-offset_bottom = 579.0
-theme_override_font_sizes/font_size = 64
-text = "Load Game"
-
 [node name="Play" type="Button" parent="CanvasLayer/ColorRect"]
 process_mode = 3
 layout_mode = 1
@@ -40,10 +33,10 @@ text = "PLAY"
 
 [node name="New Game" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
-offset_left = 785.0
-offset_top = 603.0
-offset_right = 1140.0
-offset_bottom = 699.0
+offset_left = 795.0
+offset_top = 480.0
+offset_right = 1150.0
+offset_bottom = 576.0
 theme_override_font_sizes/font_size = 64
 text = "NEW GAME"
 
@@ -58,16 +51,27 @@ text = "EXIT"
 
 [node name="Stats_Tutorial" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
-offset_left = 1686.0
-offset_top = 30.0
-offset_right = 1875.0
-offset_bottom = 105.0
+offset_left = 880.0
+offset_top = 627.0
+offset_right = 1069.0
+offset_bottom = 702.0
 theme_override_font_sizes/font_size = 48
 text = "Tutorial"
 
 [node name="Game Wiki" parent="CanvasLayer" instance=ExtResource("2_i76nc")]
 visible = false
 
+[node name="New Game" parent="CanvasLayer" instance=ExtResource("3_isbtt")]
+visible = false
+
+[node name="Background Music" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+position = Vector2(-371, -761)
+stream = ExtResource("3_1fc08")
+volume_db = 0.896
+autoplay = true
+
 [connection signal="pressed" from="CanvasLayer/ColorRect/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Stats_Tutorial" to="." method="_on_stats_tutorial_pressed"]

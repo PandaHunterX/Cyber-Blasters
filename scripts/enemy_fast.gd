@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		$PlayerDetction/CollisionShape2D.disabled = true
 		$Hitbox.disabled = true
 		$PlayerHit/AttackHitbox.disabled = true
-	if Global.player_isdead:
+	if Global.enemy_die:
 		queue_free()
 
 func _physics_process(delta):

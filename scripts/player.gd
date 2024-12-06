@@ -139,13 +139,14 @@ func player_health():
 		await ap.animation_finished
 		Global.player_isdead = true
 		Global.player_drop_body = true
+		Global.enemy_die = true
 		Global.set_score_record()
 
 func respawn():
 	if Global.player_respawn:
 		Global.player_reset()
 		weapon_equip = false
-		
+		$"Enemy Respwan".start()
 		# Reset position and physics state
 		position.x = starting_point
 		velocity = Vector2.ZERO  # Clear velocity to ensure no lingering motion
@@ -172,3 +173,7 @@ func _on_meleehitbox_body_entered(body: Node2D) -> void:
 func _on_powerup_duration_timeout() -> void:
 	Global.normal()
 	$PowerupDuration.stop()
+
+
+func _on_enemy_respwan_timeout() -> void:
+	Global.enemy_die = false
