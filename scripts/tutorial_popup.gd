@@ -1,10 +1,10 @@
 extends Control
 
 # Node references
-@onready var title: Label = $"Player Movements/Title"
-@onready var paragraph: Label = $"Player Movements/Paragraph"
-@onready var next: Button = $"Player Movements/Next"
-@onready var previous: Button = $"Player Movements/Previous"
+@onready var title: Label = $"PanelContainer/MarginContainer/VBoxContainer/Title"
+@onready var paragraph: Label = $"PanelContainer/MarginContainer/VBoxContainer/Paragraph"
+@onready var next: Button = $"PanelContainer/Next"
+@onready var previous: Button = $"PanelContainer/Previous"
 @onready var tutorial_popup: Control = $"."
 @onready var tutorial_timer: Timer = $"Tutorial Timer"
 

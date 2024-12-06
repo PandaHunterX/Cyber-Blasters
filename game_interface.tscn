@@ -121,7 +121,7 @@ vertical_alignment = 1
 
 [node name="ColorRect4" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 1545.0
+offset_left = 1518.0
 offset_top = 212.0
 offset_right = 1898.0
 offset_bottom = 573.0
@@ -133,9 +133,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -17.0
+offset_top = 7.0
+offset_right = -12.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -169,8 +169,10 @@ text = "TAB"
 
 [node name="Label" type="Label" parent="ColorRect4/VBoxContainer/Melee"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="Pistol" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
 visible = false
@@ -203,6 +205,7 @@ text = "1"
 
 [node name="Pistol Ammo" type="Label" parent="ColorRect4/VBoxContainer/Pistol"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
 horizontal_alignment = 2
@@ -238,8 +241,10 @@ text = "2"
 
 [node name="SMG Ammo" type="Label" parent="ColorRect4/VBoxContainer/SMG"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="Laser Rifle" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
 visible = false
@@ -272,8 +277,10 @@ text = "3"
 
 [node name="Laser Ammo" type="Label" parent="ColorRect4/VBoxContainer/Laser Rifle"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="Grenade Launcher" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
 visible = false
@@ -306,8 +313,10 @@ text = "4"
 
 [node name="Grenade Ammo" type="Label" parent="ColorRect4/VBoxContainer/Grenade Launcher"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
