@@ -4,11 +4,11 @@ extends CharacterBody2D
 @onready var ap = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var melee = $meleehitbox
-@onready var weapon = find_child("Weapon")
+@onready var weapon_system: Sprite2D = $Sprite2D/WeaponSystem
 @onready var camera = $PlayerCamera
 @onready var player_hit: AudioStreamPlayer2D = $"Player Hit"
 
-var camera_left_padding = 300
+const camera_left_padding = 500
 
 var starting_point: float
 var camera_point = null
@@ -20,6 +20,10 @@ var weapon_equip = false
 var previous_position: float
 var isdead = Global.player_isdead
 
+const MC_WALK = preload("res://assets/main character/mc_walk.png")
+const MC_WALK_PISTOL = preload("res://assets/main character/mc_walk_pistol.png")
+const MC_WALK_RIFLE = preload("res://assets/main character/mc_walk_rifle.png")
+
 @onready var punch_sound: AudioStreamPlayer2D = $"Punch Sound"
 @onready var player_death: AudioStreamPlayer2D = $"Player Death"
 @onready var power_up_sound: AudioStreamPlayer2D = $"Power Up Sound"
@@ -28,7 +32,7 @@ var isdead = Global.player_isdead
 
 func _ready() -> void:
 	$meleehitbox/CollisionShape2D.disabled = true
-	weapon.texture = null
+	weapon_system.texture = null
 	previous_position = global_position.x
 	starting_point = global_position.x
 	camera_point = $PlayerCamera.position
@@ -84,11 +88,16 @@ func update_animations(horizontal_direction):
 		else:
 			can_attack = false
 			if Global.pistol_equip:
-				ap.play("walk_pistol")
+				sprite.texture = MC_WALK_PISTOL
 			elif Global.smg_equip or Global.laser_rifle_equip or Global.grenad_launcher_equip:
-				ap.play("walk_rifle")
+				sprite.texture = MC_WALK_RIFLE
 			else:
+				sprite.texture = MC_WALK
+			
+			if horizontal_direction >= 0:
 				ap.play("walk")
+			else:
+				ap.play("walk", -1, -1.0, false)
 
 func weak_hit():
 	player_hit.play()
@@ -134,7 +143,7 @@ func player_health():
 		Global.prev_grenade_bullet = Global.explosive_bullets
 		player_death.play()
 		isdead = true
-		weapon.texture = null
+		weapon_system.texture = null
 		ap.play("death")
 		await ap.animation_finished
 		Global.player_isdead = true
@@ -155,13 +164,12 @@ func respawn():
 		# Reset camera
 		camera.limit_left = position.x - camera_left_padding
 		camera.position = Vector2(position.x, camera.position.y)  # Align camera horizontally
-		
 		# Reset character state
 		isdead = false
 		Global.player_isdead = false
 		ap.play("idle")  # Reset animation to idle
 		idle = true  # Ensure the character state is ready for movement
-		
+		get_tree().call_group("dead_bodies", "game_restarted")
 
 func level_up():
 	Global.level_up()

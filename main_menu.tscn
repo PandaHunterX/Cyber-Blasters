@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhoh24b7vf41t"]
+[gd_scene load_steps=9 format=3 uid="uid://bhoh24b7vf41t"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_0cima"]
+[ext_resource type="Theme" uid="uid://e54ckui14tau" path="res://ui_theme.tres" id="2_5bl00"]
 [ext_resource type="PackedScene" uid="uid://cv2kelv36iffl" path="res://scenes/game_wiki.tscn" id="2_i76nc"]
 [ext_resource type="AudioStream" uid="uid://bejpxqy8fn03a" path="res://assets/music/main_menu.mp3" id="3_1fc08"]
 [ext_resource type="PackedScene" uid="uid://cck3tw842bibq" path="res://scenes/new_game.tscn" id="3_isbtt"]
+[ext_resource type="PackedScene" uid="uid://bcne1d3p0amrk" path="res://scenes/background.tscn" id="6_fg1gi"]
+[ext_resource type="Script" path="res://scenes/scroll_background.gd" id="7_qvhtf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_20vxo"]
+line_spacing = -50.0
+font_size = 150
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.466667)
+shadow_offset = Vector2(5, 5)
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -17,46 +27,63 @@ script = ExtResource("1_0cima")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 1918.0
-offset_bottom = 1078.0
-color = Color(0.796001, 0.870867, 0.929461, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.203922, 0.270588, 0.501961)
 
-[node name="Play" type="Button" parent="CanvasLayer/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -469.0
+offset_top = -461.5
+offset_right = 467.0
+offset_bottom = 459.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5bl00")
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "CYBER
+BLASTERS"
+label_settings = SubResource("LabelSettings_20vxo")
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="CanvasLayer/VBoxContainer"]
 process_mode = 3
-layout_mode = 1
-offset_left = 887.0
-offset_top = 353.0
-offset_right = 1049.0
-offset_bottom = 449.0
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "PLAY"
 
-[node name="New Game" type="Button" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_left = 795.0
-offset_top = 480.0
-offset_right = 1150.0
-offset_bottom = 576.0
+[node name="New Game" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "NEW GAME"
 
-[node name="Exit" type="Button" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_left = 892.0
-offset_top = 731.0
-offset_right = 1031.0
-offset_bottom = 827.0
+[node name="Stats_Tutorial" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "TUTORIAL"
+
+[node name="Exit" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
 text = "EXIT"
-
-[node name="Stats_Tutorial" type="Button" parent="CanvasLayer/ColorRect"]
-layout_mode = 0
-offset_left = 880.0
-offset_top = 627.0
-offset_right = 1069.0
-offset_bottom = 702.0
-theme_override_font_sizes/font_size = 48
-text = "Tutorial"
 
 [node name="Game Wiki" parent="CanvasLayer" instance=ExtResource("2_i76nc")]
 visible = false
@@ -71,7 +98,10 @@ stream = ExtResource("3_1fc08")
 volume_db = 0.896
 autoplay = true
 
-[connection signal="pressed" from="CanvasLayer/ColorRect/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="CanvasLayer/ColorRect/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/ColorRect/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="CanvasLayer/ColorRect/Stats_Tutorial" to="." method="_on_stats_tutorial_pressed"]
+[node name="Parallax2D" parent="." instance=ExtResource("6_fg1gi")]
+script = ExtResource("7_qvhtf")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Stats_Tutorial" to="." method="_on_stats_tutorial_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -30,6 +30,14 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Cyberpunk Game"
 
+[global_group]
+
+dead_bodies=""
+
+[gui]
+
+theme/custom_font="res://assets/Audiowide-Regular.ttf"
+
 [input]
 
 right={

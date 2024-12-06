@@ -47,7 +47,7 @@ func move_enemy():
 func melee_hit():
 	hit.play()
 	if health > 0:
-		$PlayerHit/AttackHitbox.disabled = true
+		$PlayerHit/AttackHitbox.set_deferred("disabled", true)
 		health -= Global.meelee_damage * Global.damage_buff
 		is_hit = true
 		$AnimationPlayer.play("hit")
@@ -137,4 +137,4 @@ func _on_player_detction_body_exited(body: Node2D) -> void:
 		attack_ready = true
 		player_detected = false
 		$AttackCooldown.stop()
-		$PlayerHit/AttackHitbox.disabled = true
+		$PlayerHit/AttackHitbox.set_deferred("disabled", true)

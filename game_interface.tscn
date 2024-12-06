@@ -1,24 +1,46 @@
-[gd_scene load_steps=12 format=3 uid="uid://1eiawil14myx"]
+[gd_scene load_steps=15 format=3 uid="uid://1eiawil14myx"]
 
 [ext_resource type="Script" path="res://ingame_interface.gd" id="1_wtixd"]
 [ext_resource type="Texture2D" uid="uid://dri4wxcrpjjhg" path="res://assets/weapons/AK_full.png" id="2_va673"]
 [ext_resource type="Texture2D" uid="uid://d111uegdhq1tf" path="res://assets/weapons/fist.png" id="3_0wy4k"]
-[ext_resource type="Texture2D" uid="uid://brpetv03fpaxq" path="res://assets/weapons/pistol_full.png" id="4_tltl0"]
-[ext_resource type="Texture2D" uid="uid://dapqtv8n3yuvx" path="res://assets/weapons/Assault rifle_full.png" id="5_enc5c"]
-[ext_resource type="Texture2D" uid="uid://bqbvvswv3haa" path="res://assets/weapons/Shootgun_full.png" id="6_u6i5l"]
-[ext_resource type="Texture2D" uid="uid://be0sknlb2158y" path="res://assets/main character/player_avatar.png" id="7_htd3m"]
+[ext_resource type="Theme" uid="uid://e54ckui14tau" path="res://ui_theme.tres" id="3_ya7dc"]
+[ext_resource type="Texture2D" uid="uid://d4ab1eyoln7dk" path="res://assets/ui/pistol_icon.png" id="4_5n6fs"]
+[ext_resource type="Texture2D" uid="uid://b05wf7q383cho" path="res://assets/ui/smg_icon.png" id="5_d2h61"]
+[ext_resource type="Texture2D" uid="uid://cis6svuxlrjel" path="res://assets/ui/laser_icon.png" id="6_dbrgh"]
+[ext_resource type="Texture2D" uid="uid://7hreo0ghfrd" path="res://assets/ui/player_icon.png" id="7_35rhp"]
+[ext_resource type="Texture2D" uid="uid://sdwo3jth1d35" path="res://assets/ui/grenade_icon.png" id="7_g8ff5"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_b0qwp"]
-color = Color(0.340339, 0.340339, 0.340339, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tksrx"]
+bg_color = Color(0, 0, 0, 0.278431)
+corner_radius_top_right = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sruer"]
 bg_color = Color(0.937255, 0, 0, 1)
+corner_radius_top_right = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6npd"]
-bg_color = Color(0.113725, 0.647059, 0.890196, 0.101961)
+bg_color = Color(0.0745098, 0.0862745, 0.0901961, 0.368627)
+corner_radius_bottom_right = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cenq1"]
-bg_color = Color(0.0363013, 0.239566, 0.541154, 1)
+bg_color = Color(0.204707, 0.509154, 0.96087, 1)
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ayi2"]
+content_margin_left = 20.0
+content_margin_top = 50.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.238866, 0.678261, 0.66997, 0.419608)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.388235, 0.890196, 0.980392, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 5
 
 [node name="Game Interface" type="Control"]
 layout_mode = 3
@@ -29,49 +51,33 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wtixd")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1296.0
-offset_top = 15.0
-offset_right = 1905.0
-offset_bottom = 108.0
-color = Color(1, 1, 1, 0.105882)
-
-[node name="Score" type="Label" parent="ColorRect"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 7.0
-offset_right = 452.0
-offset_bottom = 95.0
+offset_left = 1302.0
+offset_top = 22.0
+offset_right = 1748.0
+offset_bottom = 110.0
 theme_override_font_sizes/font_size = 60
 text = "SCORE:"
 
-[node name="ColorRect3" type="ColorRect" parent="."]
+[node name="Distance" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1296.0
-offset_top = 121.0
-offset_right = 1905.0
-offset_bottom = 196.0
-color = Color(1, 1, 1, 0.105882)
-
-[node name="Distance" type="Label" parent="ColorRect3"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 3.0
-offset_right = 576.0
-offset_bottom = 73.0
+offset_left = 1303.0
+offset_top = 112.0
+offset_right = 1866.0
+offset_bottom = 182.0
 theme_override_font_sizes/font_size = 48
 text = "DISTANCE:"
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 258.0
-offset_top = 16.0
-offset_right = 889.0
-offset_bottom = 86.0
-theme_override_styles/background = SubResource("StyleBoxLine_b0qwp")
+offset_left = 204.0
+offset_top = 56.0
+offset_right = 835.0
+offset_bottom = 126.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tksrx")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sruer")
-value = 100.0
+value = 99.0
 show_percentage = false
 
 [node name="Health" type="Label" parent="HealthBar"]
@@ -85,62 +91,58 @@ text = "100/100"
 
 [node name="PowerupBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 254.0
-offset_top = 98.0
-offset_right = 889.0
-offset_bottom = 132.0
+offset_left = 200.0
+offset_top = 138.0
+offset_right = 835.0
+offset_bottom = 172.0
 theme_override_font_sizes/font_size = 24
 theme_override_styles/background = SubResource("StyleBoxFlat_l6npd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cenq1")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 927.0
-offset_right = 863.0
-offset_bottom = 1053.0
-color = Color(1, 1, 1, 0.211765)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -120.0
+offset_right = 833.0
+offset_bottom = -21.0
+grow_vertical = 0
+theme_override_constants/separation = 24
 
-[node name="Weapon" type="TextureRect" parent="ColorRect2"]
+[node name="Weapon" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-offset_left = 21.0
-offset_top = -10.0
-offset_right = 201.0
-offset_bottom = 141.0
 texture = ExtResource("2_va673")
-expand_mode = 1
+expand_mode = 3
 
-[node name="Ammo" type="Label" parent="ColorRect2"]
-layout_mode = 0
-offset_left = 240.0
-offset_top = 15.0
-offset_right = 763.0
-offset_bottom = 103.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
+[node name="Ammo" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
 text = "Ammo: 
 "
+vertical_alignment = 1
 
-[node name="ColorRect4" type="ColorRect" parent="."]
+[node name="ColorRect4" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 1638.0
+offset_left = 1518.0
 offset_top = 212.0
 offset_right = 1898.0
-offset_bottom = 586.0
-color = Color(0, 0.930042, 0.952927, 0.521569)
+offset_bottom = 573.0
+theme = ExtResource("3_ya7dc")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ayi2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect4"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -235.0
-offset_top = -182.0
-offset_right = 9.0
-offset_bottom = 234.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = -12.0
+offset_bottom = -13.0
+grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Melee" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
@@ -151,7 +153,7 @@ theme_override_constants/separation = 16
 [node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/Melee"]
 layout_mode = 2
 texture = ExtResource("3_0wy4k")
-expand_mode = 2
+expand_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/Melee/TextureRect"]
 layout_mode = 1
@@ -173,8 +175,10 @@ text = "TAB"
 
 [node name="Label" type="Label" parent="ColorRect4/VBoxContainer/Melee"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="Pistol" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
 visible = false
@@ -184,8 +188,8 @@ theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/Pistol"]
 layout_mode = 2
-texture = ExtResource("4_tltl0")
-expand_mode = 2
+texture = ExtResource("4_5n6fs")
+expand_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/Pistol/TextureRect"]
 layout_mode = 1
@@ -207,8 +211,10 @@ text = "1"
 
 [node name="Pistol Ammo" type="Label" parent="ColorRect4/VBoxContainer/Pistol"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="SMG" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
 visible = false
@@ -218,8 +224,8 @@ theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/SMG"]
 layout_mode = 2
-texture = ExtResource("5_enc5c")
-expand_mode = 2
+texture = ExtResource("5_d2h61")
+expand_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/SMG/TextureRect"]
 layout_mode = 1
@@ -241,8 +247,10 @@ text = "2"
 
 [node name="SMG Ammo" type="Label" parent="ColorRect4/VBoxContainer/SMG"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="Laser Rifle" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
 visible = false
@@ -252,8 +260,8 @@ theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/Laser Rifle"]
 layout_mode = 2
-texture = ExtResource("2_va673")
-expand_mode = 2
+texture = ExtResource("6_dbrgh")
+expand_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/Laser Rifle/TextureRect"]
 layout_mode = 1
@@ -275,8 +283,10 @@ text = "3"
 
 [node name="Laser Ammo" type="Label" parent="ColorRect4/VBoxContainer/Laser Rifle"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="Grenade Launcher" type="HBoxContainer" parent="ColorRect4/VBoxContainer"]
 visible = false
@@ -286,8 +296,8 @@ theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect4/VBoxContainer/Grenade Launcher"]
 layout_mode = 2
-texture = ExtResource("6_u6i5l")
-expand_mode = 2
+texture = ExtResource("7_g8ff5")
+expand_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect4/VBoxContainer/Grenade Launcher/TextureRect"]
 layout_mode = 1
@@ -309,31 +319,33 @@ text = "4"
 
 [node name="Grenade Ammo" type="Label" parent="ColorRect4/VBoxContainer/Grenade Launcher"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "∞"
+horizontal_alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = 269.0
-offset_bottom = 261.0
-texture = ExtResource("7_htd3m")
+offset_left = 17.0
+offset_top = 14.0
+offset_right = 230.0
+offset_bottom = 218.0
+texture = ExtResource("7_35rhp")
 expand_mode = 1
 
 [node name="ColorRect5" type="ColorRect" parent="TextureRect"]
 layout_mode = 0
-offset_left = 165.0
-offset_top = 206.0
-offset_right = 247.0
-offset_bottom = 235.0
+offset_left = 171.0
+offset_top = 163.0
+offset_right = 261.0
+offset_bottom = 192.0
 color = Color(0.223103, 0.223103, 0.223103, 1)
 
 [node name="Player_Level" type="Label" parent="TextureRect"]
 layout_mode = 0
-offset_left = 168.0
-offset_top = 202.0
-offset_right = 208.0
-offset_bottom = 236.0
+offset_left = 176.0
+offset_top = 164.0
+offset_right = 259.0
+offset_bottom = 195.0
 theme_override_font_sizes/font_size = 24
 text = "Lvl"

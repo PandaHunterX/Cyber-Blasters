@@ -3,9 +3,11 @@ extends Node
 @onready var weak_enemy = preload("res://scenes/enemy_weak.tscn")
 @onready var fast_enemy = preload("res://scenes/enemy_fast.tscn")
 @onready var hard_enemy = preload("res://scenes/enemy_hard.tscn")
-@onready var player_position = preload("res://scenes/player.tscn")
 @onready var dead_body = preload("res://scenes/dead_body.tscn")
 @onready var background_music: AudioStreamPlayer2D = $"Player/Background Music"
+@onready var boundary: StaticBody2D = $Boundary
+@onready var player: CharacterBody2D = $Player
+@onready var camera: Camera2D = $Player/PlayerCamera
 
 var body_ready =  false
 
@@ -24,13 +26,12 @@ func _process(delta: float) -> void:
 		Global.player_drop_body = false
 
 func _physics_process(delta: float) -> void:
-		# Ensure the boundary only updates when the player is moving right
-	if $Player.velocity.x > 0:
-		$Boundary.position.x = $Player.global_position.x - 300
-	else:
-		# Optional: Handle cases when the player is not moving right
-		pass
-	
+	var boundary_pos = boundary.position.x
+	var border = camera.get_screen_center_position().x - 950
+	# Move boundary on left end of camera
+	if boundary_pos < border or boundary_pos > player.position.x:
+		boundary.position.x = border
+
 func spawn_weak_enemy() -> void:
 	if not Global.player_isdead: 
 		var num_enemies = Global.rng.randi_range(Global.easy_spawn_min, Global.easy_spawn_max)
@@ -40,7 +41,7 @@ func spawn_weak_enemy() -> void:
 			var random_x_offset = Global.rng.randi_range(-600, 600)
 			weak.position = $Player/Spawner.global_position + Vector2(random_x_offset, 0)
 			add_child(weak)
-		
+
 func spawn_fast_enemy() -> void:
 	if not Global.player_isdead:
 		var num_enemies = Global.rng.randi_range(Global.fast_spawn_min, Global.fast_spawn_max)
