@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cv2kelv36iffl"]
+[gd_scene load_steps=23 format=3 uid="uid://cv2kelv36iffl"]
 
 [ext_resource type="Script" path="res://scripts/game_wiki.gd" id="1_txgbt"]
 [ext_resource type="Theme" uid="uid://e54ckui14tau" path="res://ui_theme.tres" id="2_dxjg1"]
@@ -7,10 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b05wf7q383cho" path="res://assets/ui/smg_icon.png" id="4_st6dt"]
 [ext_resource type="Texture2D" uid="uid://cis6svuxlrjel" path="res://assets/ui/laser_icon.png" id="5_eq6q1"]
 [ext_resource type="Texture2D" uid="uid://sdwo3jth1d35" path="res://assets/ui/grenade_icon.png" id="6_c6k5h"]
-[ext_resource type="Texture2D" uid="uid://tquivf56hpkf" path="res://assets/background/bg1.png" id="7_fe1am"]
-[ext_resource type="Texture2D" uid="uid://8182223qp72c" path="res://assets/background/bg2.png" id="8_wadj2"]
-[ext_resource type="Texture2D" uid="uid://sd7n0sxrwyce" path="res://assets/background/bg3.png" id="9_tsupd"]
-[ext_resource type="Texture2D" uid="uid://djmexi31jyf7o" path="res://assets/background/bg4.png" id="10_c5hqa"]
+[ext_resource type="Texture2D" uid="uid://b242gqg8kkr67" path="res://assets/Game_poster.jpg" id="8_pf37q"]
 [ext_resource type="Texture2D" uid="uid://cw0356sbltq6g" path="res://assets/tutorial/playermovements.png" id="11_4vi7v"]
 [ext_resource type="Texture2D" uid="uid://dwt31388vtqk0" path="res://assets/tutorial/score.png" id="12_ad5mc"]
 [ext_resource type="Texture2D" uid="uid://cifmwg1dvjxom" path="res://assets/tutorial/energy.png" id="13_d1u0w"]
@@ -252,48 +249,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 metadata/_tab_index = 1
 
-[node name="TextureRect3" type="TextureRect" parent="TabContainer/Story"]
-layout_mode = 0
-offset_left = 17.5
-offset_top = 14.0
-offset_right = 781.5
-offset_bottom = 454.0
-texture = ExtResource("7_fe1am")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Story"]
-layout_mode = 0
-offset_left = 17.5
-offset_top = 14.0
-offset_right = 781.5
-offset_bottom = 454.0
-texture = ExtResource("8_wadj2")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="TabContainer/Story"]
-layout_mode = 0
-offset_left = 17.5
-offset_top = 14.0
-offset_right = 781.5
-offset_bottom = 454.0
-texture = ExtResource("9_tsupd")
-expand_mode = 1
-
 [node name="TextureRect4" type="TextureRect" parent="TabContainer/Story"]
 layout_mode = 0
-offset_left = 17.5
-offset_top = 14.0
-offset_right = 781.5
-offset_bottom = 454.0
-texture = ExtResource("10_c5hqa")
-expand_mode = 1
+offset_left = 70.5
+offset_top = 84.0
+offset_right = 528.81
+offset_bottom = 732.0
+texture = ExtResource("8_pf37q")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Title" type="Label" parent="TabContainer/Story"]
 layout_mode = 0
-offset_left = 832.5
-offset_top = 19.0
-offset_right = 1630.5
-offset_bottom = 102.0
+offset_left = 650.5
+offset_top = 25.0
+offset_right = 1448.5
+offset_bottom = 108.0
 theme_override_font_sizes/font_size = 64
 text = "GAME STORY"
 horizontal_alignment = 1
@@ -302,10 +273,10 @@ vertical_alignment = 1
 [node name="Paragraph" type="Label" parent="TabContainer/Story"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 0
-offset_left = 803.5
-offset_top = 123.0
-offset_right = 1652.5
-offset_bottom = 460.0
+offset_left = 566.5
+offset_top = 115.0
+offset_right = 1647.5
+offset_bottom = 452.0
 theme_override_font_sizes/font_size = 24
 text = "In the year 2102, an unknown corporation introduced androids to the world. These androids quickly became an essential part of daily life, handling tasks like household chores and office work. 
 
@@ -317,10 +288,10 @@ autowrap_mode = 3
 [node name="Paragraph2" type="Label" parent="TabContainer/Story"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 0
-offset_left = 22.0
-offset_top = 476.0
-offset_right = 1690.0
-offset_bottom = 813.0
+offset_left = 554.5
+offset_top = 396.0
+offset_right = 1658.5
+offset_bottom = 733.0
 theme_override_font_sizes/font_size = 24
 text = "Over the years, some individuals began exploiting android technology, creating faster versions used for illegal activities like theft and smuggling.
 
