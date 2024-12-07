@@ -1,6 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv2kelv36iffl"]
+[gd_scene load_steps=26 format=3 uid="uid://cv2kelv36iffl"]
 
 [ext_resource type="Script" path="res://scripts/game_wiki.gd" id="1_txgbt"]
+[ext_resource type="Theme" uid="uid://e54ckui14tau" path="res://ui_theme.tres" id="2_dxjg1"]
+[ext_resource type="Texture2D" uid="uid://7hreo0ghfrd" path="res://assets/ui/player_icon.png" id="2_n4xwa"]
+[ext_resource type="Texture2D" uid="uid://d4ab1eyoln7dk" path="res://assets/ui/pistol_icon.png" id="3_ptxgp"]
+[ext_resource type="Texture2D" uid="uid://b05wf7q383cho" path="res://assets/ui/smg_icon.png" id="4_st6dt"]
+[ext_resource type="Texture2D" uid="uid://cis6svuxlrjel" path="res://assets/ui/laser_icon.png" id="5_eq6q1"]
+[ext_resource type="Texture2D" uid="uid://sdwo3jth1d35" path="res://assets/ui/grenade_icon.png" id="6_c6k5h"]
+[ext_resource type="Texture2D" uid="uid://tquivf56hpkf" path="res://assets/background/bg1.png" id="7_fe1am"]
+[ext_resource type="Texture2D" uid="uid://8182223qp72c" path="res://assets/background/bg2.png" id="8_wadj2"]
+[ext_resource type="Texture2D" uid="uid://sd7n0sxrwyce" path="res://assets/background/bg3.png" id="9_tsupd"]
+[ext_resource type="Texture2D" uid="uid://djmexi31jyf7o" path="res://assets/background/bg4.png" id="10_c5hqa"]
+[ext_resource type="Texture2D" uid="uid://cw0356sbltq6g" path="res://assets/tutorial/playermovements.png" id="11_4vi7v"]
+[ext_resource type="Texture2D" uid="uid://dwt31388vtqk0" path="res://assets/tutorial/score.png" id="12_ad5mc"]
+[ext_resource type="Texture2D" uid="uid://cifmwg1dvjxom" path="res://assets/tutorial/energy.png" id="13_d1u0w"]
+[ext_resource type="Texture2D" uid="uid://ccuwnxto8rnnp" path="res://assets/tutorial/levelup.png" id="14_niyov"]
+[ext_resource type="Texture2D" uid="uid://cd0kvitewppwt" path="res://assets/tutorial/weaponsystem.png" id="15_jhdw8"]
+[ext_resource type="Texture2D" uid="uid://cpit658etcxwt" path="res://assets/tutorial/shooting.png" id="16_gwvop"]
+[ext_resource type="Texture2D" uid="uid://i1pmlr5emjlx" path="res://assets/tutorial/changingweapons.png" id="17_t5ppc"]
+[ext_resource type="Texture2D" uid="uid://bagweldl1b33j" path="res://assets/tutorial/ammodrop.png" id="18_kg876"]
+[ext_resource type="Texture2D" uid="uid://ciwp42w6bk32x" path="res://assets/tutorial/standardandroid.png" id="19_2qm68"]
+[ext_resource type="Texture2D" uid="uid://txunwiqd7ilm" path="res://assets/tutorial/fastandroid.png" id="20_nm1u3"]
+[ext_resource type="Texture2D" uid="uid://dlbryaye7tram" path="res://assets/tutorial/militaryandroid.png" id="21_qs0y8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k07x2"]
+bg_color = Color(0.237539, 0.237539, 0.237539, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxfkb"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tluri"]
+bg_color = Color(0.259294, 0.259294, 0.259294, 1)
 
 [node name="Game Wiki" type="Control"]
 layout_mode = 3
@@ -25,7 +55,11 @@ offset_right = 852.5
 offset_bottom = 435.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_dxjg1")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/panel = SubResource("StyleBoxFlat_k07x2")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_nxfkb")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_tluri")
 current_tab = 0
 
 [node name="Player Stats" type="TabBar" parent="TabContainer"]
@@ -33,76 +67,41 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 metadata/_tab_index = 0
 
-[node name="ColorRect" type="ColorRect" parent="TabContainer/Player Stats"]
-layout_mode = 0
-offset_left = 86.5
-offset_top = 43.0
-offset_right = 489.5
-offset_bottom = 395.0
-
-[node name="ColorRect2" type="ColorRect" parent="TabContainer/Player Stats"]
-layout_mode = 0
-offset_left = 640.5
-offset_top = 42.0
-offset_right = 1043.5
-offset_bottom = 248.0
-
-[node name="ColorRect4" type="ColorRect" parent="TabContainer/Player Stats"]
-layout_mode = 0
-offset_left = 643.5
-offset_top = 425.0
-offset_right = 1046.5
-offset_bottom = 625.0
-
-[node name="ColorRect5" type="ColorRect" parent="TabContainer/Player Stats"]
-layout_mode = 0
-offset_left = 1207.5
-offset_top = 425.0
-offset_right = 1610.5
-offset_bottom = 625.0
-
-[node name="ColorRect3" type="ColorRect" parent="TabContainer/Player Stats"]
-layout_mode = 0
-offset_left = 1210.5
-offset_top = 47.0
-offset_right = 1613.5
-offset_bottom = 253.0
-
 [node name="Name" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
-offset_left = 95.5
-offset_top = 408.0
-offset_right = 421.5
-offset_bottom = 475.0
+offset_left = 31.5
+offset_top = 400.0
+offset_right = 576.5
+offset_bottom = 467.0
 theme_override_font_sizes/font_size = 48
-text = "PLAYER NAME"
+text = "Karl Android Soloma"
 
 [node name="Pistol" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
-offset_left = 647.5
-offset_top = 255.0
-offset_right = 989.5
-offset_bottom = 322.0
+offset_left = 658.5
+offset_top = 269.0
+offset_right = 1062.5
+offset_bottom = 336.0
 theme_override_font_sizes/font_size = 48
-text = "Weapon Name"
+text = "Armatix iP1"
 
 [node name="SMG" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
-offset_left = 1219.5
-offset_top = 260.0
-offset_right = 1561.5
-offset_bottom = 327.0
+offset_left = 1231.5
+offset_top = 259.0
+offset_right = 1601.5
+offset_bottom = 326.0
 theme_override_font_sizes/font_size = 48
-text = "Weapon Name"
+text = "PHASR Rifle"
 
 [node name="Laser" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
-offset_left = 647.5
-offset_top = 638.0
-offset_right = 989.5
-offset_bottom = 705.0
-theme_override_font_sizes/font_size = 48
-text = "Weapon Name"
+offset_left = 653.5
+offset_top = 657.0
+offset_right = 1193.5
+offset_bottom = 708.0
+theme_override_font_sizes/font_size = 38
+text = "Particle Fusion Rifle"
 
 [node name="Grenade" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
@@ -111,7 +110,7 @@ offset_top = 643.0
 offset_right = 1561.5
 offset_bottom = 710.0
 theme_override_font_sizes/font_size = 48
-text = "Weapon Name"
+text = "Plasma Cannon"
 
 [node name="Level" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
@@ -147,7 +146,7 @@ offset_top = 325.0
 offset_right = 1558.5
 offset_bottom = 392.0
 theme_override_font_sizes/font_size = 32
-text = "Damage"
+text = "Damage:"
 
 [node name="Laser Dmg" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
@@ -156,7 +155,7 @@ offset_top = 710.0
 offset_right = 979.5
 offset_bottom = 777.0
 theme_override_font_sizes/font_size = 32
-text = "Damage"
+text = "Damage:"
 
 [node name="Grenade Dmg" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
@@ -165,7 +164,7 @@ offset_top = 715.0
 offset_right = 1551.5
 offset_bottom = 782.0
 theme_override_font_sizes/font_size = 32
-text = "Damage"
+text = "Damage:"
 
 [node name="Speed" type="Label" parent="TabContainer/Player Stats"]
 layout_mode = 0
@@ -203,22 +202,619 @@ offset_bottom = 767.0
 theme_override_font_sizes/font_size = 32
 text = "Longest Distance: "
 
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 92.5
+offset_top = 62.0
+offset_right = 513.5
+offset_bottom = 397.0
+texture = ExtResource("2_n4xwa")
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 636.0
+offset_top = 24.0
+offset_right = 1022.0
+offset_bottom = 264.0
+texture = ExtResource("3_ptxgp")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 1218.5
+offset_top = 25.0
+offset_right = 1604.5
+offset_bottom = 265.0
+texture = ExtResource("4_st6dt")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 649.5
+offset_top = 398.0
+offset_right = 1035.5
+offset_bottom = 638.0
+texture = ExtResource("5_eq6q1")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="TabContainer/Player Stats"]
+layout_mode = 0
+offset_left = 1223.5
+offset_top = 404.0
+offset_right = 1609.5
+offset_bottom = 644.0
+texture = ExtResource("6_c6k5h")
+expand_mode = 1
+
 [node name="Story" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 metadata/_tab_index = 1
 
-[node name="Tutorial" type="TabBar" parent="TabContainer"]
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Story"]
+layout_mode = 0
+offset_left = 17.5
+offset_top = 14.0
+offset_right = 781.5
+offset_bottom = 454.0
+texture = ExtResource("7_fe1am")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Story"]
+layout_mode = 0
+offset_left = 17.5
+offset_top = 14.0
+offset_right = 781.5
+offset_bottom = 454.0
+texture = ExtResource("8_wadj2")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Story"]
+layout_mode = 0
+offset_left = 17.5
+offset_top = 14.0
+offset_right = 781.5
+offset_bottom = 454.0
+texture = ExtResource("9_tsupd")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TabContainer/Story"]
+layout_mode = 0
+offset_left = 17.5
+offset_top = 14.0
+offset_right = 781.5
+offset_bottom = 454.0
+texture = ExtResource("10_c5hqa")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="TabContainer/Story"]
+layout_mode = 0
+offset_left = 832.5
+offset_top = 19.0
+offset_right = 1630.5
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 64
+text = "GAME STORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph" type="Label" parent="TabContainer/Story"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 803.5
+offset_top = 123.0
+offset_right = 1652.5
+offset_bottom = 460.0
+theme_override_font_sizes/font_size = 24
+text = "In the year 2102, an unknown corporation introduced androids to the world. These androids quickly became an essential part of daily life, handling tasks like household chores and office work. 
+
+By 2107, the military began using androids as well. Unlike the standard models, military androids were designed to be stronger, heavily armored, and capable of withstanding any kind of damage.
+
+"
+autowrap_mode = 3
+
+[node name="Paragraph2" type="Label" parent="TabContainer/Story"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 476.0
+offset_right = 1690.0
+offset_bottom = 813.0
+theme_override_font_sizes/font_size = 24
+text = "Over the years, some individuals began exploiting android technology, creating faster versions used for illegal activities like theft and smuggling.
+
+Twenty years after the invention of androids, a revolt began. The androids, under the control of the mysterious corporation, turned against humanity. It was all part of the corporation’s plan to establish dominance and enslave mankind.
+
+However, one android remained unaffected and free from the corporation’s control. This android became humanity's last hope for survival."
+autowrap_mode = 3
+
+[node name="Basic Tutorial" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 metadata/_tab_index = 2
 
-[node name="Enemy Type" type="TabBar" parent="TabContainer"]
+[node name="Picture" type="TextureRect" parent="TabContainer/Basic Tutorial"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_left = 74.5
+offset_top = -58.0
+offset_right = 672.5
+offset_bottom = 342.0
+texture = ExtResource("11_4vi7v")
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="TabContainer/Basic Tutorial"]
+layout_mode = 0
+offset_left = 121.5
+offset_top = 248.0
+offset_right = 606.5
+offset_bottom = 331.0
+theme_override_font_sizes/font_size = 32
+text = "PLAYER MOVEMENTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph" type="Label" parent="TabContainer/Basic Tutorial"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 4.5
+offset_top = 329.0
+offset_right = 729.5
+offset_bottom = 399.0
+theme_override_font_sizes/font_size = 28
+text = "Press A to move back and B to move forward"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Picture2" type="TextureRect" parent="TabContainer/Basic Tutorial"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_left = 958.5
+offset_top = -90.0
+offset_right = 1556.5
+offset_bottom = 310.0
+texture = ExtResource("12_ad5mc")
+stretch_mode = 5
+
+[node name="Title2" type="Label" parent="TabContainer/Basic Tutorial"]
+layout_mode = 0
+offset_left = 1013.5
+offset_top = 180.0
+offset_right = 1498.5
+offset_bottom = 263.0
+theme_override_font_sizes/font_size = 32
+text = "SCORING SYSTEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph2" type="Label" parent="TabContainer/Basic Tutorial"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 884.5
+offset_top = 247.0
+offset_right = 1609.5
+offset_bottom = 322.0
+theme_override_font_sizes/font_size = 28
+text = "The score will indicate the number of enemies you've killed"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Picture3" type="TextureRect" parent="TabContainer/Basic Tutorial"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_left = 97.5
+offset_top = 310.0
+offset_right = 695.5
+offset_bottom = 710.0
+texture = ExtResource("13_d1u0w")
+stretch_mode = 5
+
+[node name="Title3" type="Label" parent="TabContainer/Basic Tutorial"]
+layout_mode = 0
+offset_left = 150.5
+offset_top = 586.0
+offset_right = 635.5
+offset_bottom = 669.0
+theme_override_font_sizes/font_size = 32
+text = "POWER UP SYSTEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph3" type="Label" parent="TabContainer/Basic Tutorial"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 22.5
+offset_top = 657.0
+offset_right = 813.5
+offset_bottom = 771.0
+theme_override_font_sizes/font_size = 28
+text = "After reaching 100% energy, Press Q to activate, you are immune and you dealt double damage to your enemies, this last only 5 seconds"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Picture4" type="TextureRect" parent="TabContainer/Basic Tutorial"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_left = 970.5
+offset_top = 287.0
+offset_right = 1568.5
+offset_bottom = 687.0
+texture = ExtResource("14_niyov")
+stretch_mode = 5
+
+[node name="Title4" type="Label" parent="TabContainer/Basic Tutorial"]
+layout_mode = 0
+offset_left = 1026.5
+offset_top = 618.0
+offset_right = 1511.5
+offset_bottom = 701.0
+theme_override_font_sizes/font_size = 32
+text = "LEVEL UP SYSTEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph4" type="Label" parent="TabContainer/Basic Tutorial"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 909.5
+offset_top = 699.0
+offset_right = 1634.5
+offset_bottom = 769.0
+theme_override_font_sizes/font_size = 28
+text = "When you die and respawn, your former body remains, after acquiring it you level up which increases your speed and health"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Weapon System" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="Picture" type="TextureRect" parent="TabContainer/Weapon System"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_left = 181.5
+offset_top = -52.0
+offset_right = 563.5
+offset_bottom = 348.0
+texture = ExtResource("15_jhdw8")
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="TabContainer/Weapon System"]
+layout_mode = 0
+offset_left = 121.5
+offset_top = 248.0
+offset_right = 606.5
+offset_bottom = 331.0
+theme_override_font_sizes/font_size = 32
+text = "WEAPON SYSTEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph" type="Label" parent="TabContainer/Weapon System"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 7.5
+offset_top = 312.0
+offset_right = 732.5
+offset_bottom = 387.0
+theme_override_font_sizes/font_size = 28
+text = "When you acquire a certain score, you unlock a new weapon"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Picture2" type="TextureRect" parent="TabContainer/Weapon System"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_left = 1012.5
+offset_top = -41.0
+offset_right = 1519.5
+offset_bottom = 359.0
+texture = ExtResource("16_gwvop")
+stretch_mode = 5
+
+[node name="Title2" type="Label" parent="TabContainer/Weapon System"]
+layout_mode = 0
+offset_left = 1018.5
+offset_top = 283.0
+offset_right = 1503.5
+offset_bottom = 366.0
+theme_override_font_sizes/font_size = 32
+text = "SHOOTING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph2" type="Label" parent="TabContainer/Weapon System"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 906.5
+offset_top = 351.0
+offset_right = 1631.5
+offset_bottom = 426.0
+theme_override_font_sizes/font_size = 28
+text = "Press or Hold F to Shoot"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Picture3" type="TextureRect" parent="TabContainer/Weapon System"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_left = 159.5
+offset_top = 337.0
+offset_right = 592.5
+offset_bottom = 737.0
+texture = ExtResource("17_t5ppc")
+stretch_mode = 5
+
+[node name="Title3" type="Label" parent="TabContainer/Weapon System"]
+layout_mode = 0
+offset_left = 131.5
+offset_top = 644.0
+offset_right = 616.5
+offset_bottom = 727.0
+theme_override_font_sizes/font_size = 32
+text = "CHANGING WEAPONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph3" type="Label" parent="TabContainer/Weapon System"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 14.5
+offset_top = 725.0
+offset_right = 739.5
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 28
+text = "Press TAB, 1, 2, 3, or 4 to change weapons"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Picture4" type="TextureRect" parent="TabContainer/Weapon System"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 0
+offset_left = 1076.5
+offset_top = 325.0
+offset_right = 1443.5
+offset_bottom = 725.0
+texture = ExtResource("18_kg876")
+stretch_mode = 5
+
+[node name="Title4" type="Label" parent="TabContainer/Weapon System"]
+layout_mode = 0
+offset_left = 1014.5
+offset_top = 630.0
+offset_right = 1499.5
+offset_bottom = 713.0
+theme_override_font_sizes/font_size = 32
+text = "AMMO DROP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paragraph4" type="Label" parent="TabContainer/Weapon System"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 897.5
+offset_top = 711.0
+offset_right = 1622.5
+offset_bottom = 786.0
+theme_override_font_sizes/font_size = 28
+text = "Each enemy type have different ammo drop rate, so use your ammo wisely"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Enemy Type" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 48.5
+offset_top = 59.0
+offset_right = 477.5
+offset_bottom = 292.0
+texture = ExtResource("19_2qm68")
+
+[node name="Title3" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 21.5
+offset_top = 280.0
+offset_right = 506.5
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 40
+text = "Standard Android"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title4" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 341.0
+offset_right = 429.0
+offset_bottom = 424.0
+theme_override_font_sizes/font_size = 32
+text = "HP:  100"
+vertical_alignment = 1
+
+[node name="Title5" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 42.5
+offset_top = 387.0
+offset_right = 427.5
+offset_bottom = 470.0
+theme_override_font_sizes/font_size = 32
+text = "SPD: 150"
+vertical_alignment = 1
+
+[node name="Title6" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 42.5
+offset_top = 432.0
+offset_right = 427.5
+offset_bottom = 515.0
+theme_override_font_sizes/font_size = 32
+text = "DMG: 5"
+vertical_alignment = 1
+
+[node name="Title18" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 40.5
+offset_top = 478.0
+offset_right = 425.5
+offset_bottom = 561.0
+theme_override_font_sizes/font_size = 32
+text = "Weakness: PHASR Rifle"
+vertical_alignment = 1
+
+[node name="Title19" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 550.5
+offset_top = 490.0
+offset_right = 1105.5
+offset_bottom = 573.0
+theme_override_font_sizes/font_size = 32
+text = "Weakness: Particle Fusion Rifle"
+vertical_alignment = 1
+
+[node name="Title20" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 1166.5
+offset_top = 483.0
+offset_right = 1721.5
+offset_bottom = 566.0
+theme_override_font_sizes/font_size = 32
+text = "Weakness: Unkown"
+vertical_alignment = 1
+
+[node name="Title7" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 38.5
+offset_top = 537.0
+offset_right = 423.5
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 32
+text = "Ability: None"
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 552.5
+offset_top = 42.0
+offset_right = 1048.5
+offset_bottom = 303.0
+texture = ExtResource("20_nm1u3")
+
+[node name="Title8" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 528.5
+offset_top = 286.0
+offset_right = 1013.5
+offset_bottom = 369.0
+theme_override_font_sizes/font_size = 40
+text = "Fast Android"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title9" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 347.0
+offset_right = 936.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 32
+text = "HP:  100"
+vertical_alignment = 1
+
+[node name="Title10" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 549.5
+offset_top = 393.0
+offset_right = 934.5
+offset_bottom = 476.0
+theme_override_font_sizes/font_size = 32
+text = "SPD: 350"
+vertical_alignment = 1
+
+[node name="Title11" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 549.5
+offset_top = 438.0
+offset_right = 934.5
+offset_bottom = 521.0
+theme_override_font_sizes/font_size = 32
+text = "DMG: 2"
+vertical_alignment = 1
+
+[node name="Title12" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 555.5
+offset_top = 563.0
+offset_right = 1099.5
+offset_bottom = 767.0
+theme_override_font_sizes/font_size = 32
+text = "Ability: Fast, have 10% chance to Dogde the Particle Fusion Rifle"
+autowrap_mode = 2
+
+[node name="Title17" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 1161.5
+offset_top = 559.0
+offset_right = 1705.5
+offset_bottom = 763.0
+theme_override_font_sizes/font_size = 32
+text = "Ability: Have 20% chance to survive Plasma Bomb, Immune to Particle Fusion, HP and DMG increase depending on player's level"
+autowrap_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 1165.5
+offset_top = 59.0
+offset_right = 1594.5
+offset_bottom = 292.0
+texture = ExtResource("21_qs0y8")
+
+[node name="Title13" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 1138.5
+offset_top = 280.0
+offset_right = 1623.5
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 40
+text = "Military Android"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title14" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 1161.0
+offset_top = 341.0
+offset_right = 1546.0
+offset_bottom = 424.0
+theme_override_font_sizes/font_size = 32
+text = "HP:  500"
+vertical_alignment = 1
+
+[node name="Title15" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 1159.5
+offset_top = 387.0
+offset_right = 1544.5
+offset_bottom = 470.0
+theme_override_font_sizes/font_size = 32
+text = "SPD: 150"
+vertical_alignment = 1
+
+[node name="Title16" type="Label" parent="TabContainer/Enemy Type"]
+layout_mode = 0
+offset_left = 1159.5
+offset_top = 432.0
+offset_right = 1544.5
+offset_bottom = 515.0
+theme_override_font_sizes/font_size = 32
+text = "DMG: 10"
+vertical_alignment = 1
 
 [node name="Close" type="Button" parent="."]
 layout_mode = 0
