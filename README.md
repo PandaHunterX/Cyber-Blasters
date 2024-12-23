@@ -66,7 +66,7 @@
   - Particle Rifle: 2,000 points
   - Plasma Grenade Launcher: 5,000 points
 - **Ammo Drop Rates**:
-  - Drop rates vary by enemy type (details below).
+  - Drop rates vary by enemy type.
 
 ---
 
@@ -85,7 +85,50 @@
 
 ---
 
-## The Game Developers
+## How to Install?
+
+### Step 1: Download the Installer  
+![Step 1](https://github.com/user-attachments/assets/93ba3dce-178a-485b-90ce-c4ceed559882)  
+- Visit [Cyber Blasters Releases](https://github.com/h1tmd/cyberpunk-game/releases/tag/godot-engine).  
+- Click **cyber-blasters-setup.exe** to download the installer.  
+
+---
+
+### Step 2: Run the Installer  
+![Step 2](https://github.com/user-attachments/assets/7315a1a4-c575-43a1-9248-86da116901cd)  
+- Open **cyber-blasters-setup.exe** from your Downloads folder.
+
+---
+
+### Step 3: Choose Installation Directory  
+![Step 3](https://github.com/user-attachments/assets/1beb273d-dd7e-4d38-b121-c3b4c439937f)  
+- Select your preferred installation directory or leave it as the default.  
+- Click **Next** to proceed.  
+
+---
+
+### Step 4: Create a Desktop Shortcut  
+![Step 4](https://github.com/user-attachments/assets/38fc55ba-ea51-44d0-88a0-1d322cddf7e9)  
+- Ensure the **Create desktop shortcut** option is checked.  
+- Click **Next** to continue.
+
+---
+
+### Step 5: Install the Game  
+![Step 5](https://github.com/user-attachments/assets/3f2111c1-aacf-4f15-88b1-bbef22f343b4)  
+- Click **Install** to begin the installation process.  
+
+---
+
+### Step 6: Enjoy the Game!  
+![Step 6](https://github.com/user-attachments/assets/aa1fa7f5-66e8-485f-9e8d-ca5714d24ef3)  
+- Once the installation is complete, you’re ready to play **Cyber Blasters**.  
+- Launch the game and enjoy! 🎮  
+
+   
+---
+
+## Meet The Game Developers
 
 ### 🖌️ Leader/Artist: [h1tmd](https://github.com/h1tmd)  
 <img src="https://github.com/user-attachments/assets/6add836a-6c0e-42a8-8808-e77bed458865" alt="Leader/Artist" width="150">
