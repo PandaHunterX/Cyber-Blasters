@@ -89,7 +89,7 @@
 
 ### Step 1: Download the Installer  
 ![Step 1](https://github.com/user-attachments/assets/93ba3dce-178a-485b-90ce-c4ceed559882)  
-- Visit [Cyber Blasters Releases](https://github.com/h1tmd/cyberpunk-game/releases/tag/godot-engine).  
+- Visit [Cyber Blasters Releases](https://github.com/PandaHunterX/cyber-blasters/releases/tag/godot-engine).  
 - Click **cyber-blasters-setup.exe** to download the installer.  
 
 ---
