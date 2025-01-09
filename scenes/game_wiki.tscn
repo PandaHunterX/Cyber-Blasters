@@ -787,6 +787,131 @@ theme_override_font_sizes/font_size = 32
 text = "DMG: 10"
 vertical_alignment = 1
 
+[node name="Credits" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 5
+
+[node name="Title3" type="Label" parent="TabContainer/Credits"]
+offset_left = 533.5
+offset_top = -7.0
+offset_right = 1155.5
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 60
+text = "Meet The Developers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title4" type="Label" parent="TabContainer/Credits"]
+offset_left = 530.5
+offset_top = 79.0
+offset_right = 1152.5
+offset_bottom = 202.0
+theme_override_font_sizes/font_size = 48
+text = "Leader/Artist:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title4" type="LinkButton" parent="TabContainer/Credits/Title4"]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 84.0
+offset_right = 378.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 40
+text = "h1tmd"
+uri = "https://github.com/h1tmd"
+
+[node name="Title5" type="Label" parent="TabContainer/Credits"]
+offset_left = 475.5
+offset_top = 185.0
+offset_right = 1231.5
+offset_bottom = 308.0
+theme_override_font_sizes/font_size = 48
+text = "Game Director/Game Developer:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title4" type="LinkButton" parent="TabContainer/Credits/Title5"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 82.0
+offset_right = 504.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 40
+text = "PandaHunterX"
+uri = "https://github.com/PandaHunterX"
+
+[node name="Title6" type="Label" parent="TabContainer/Credits"]
+offset_left = 488.5
+offset_top = 288.0
+offset_right = 1244.5
+offset_bottom = 411.0
+theme_override_font_sizes/font_size = 48
+text = "Assistant Programmer:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title4" type="LinkButton" parent="TabContainer/Credits/Title6"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 82.0
+offset_right = 445.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 40
+text = "HiroS404"
+uri = "https://github.com/HiroS404"
+
+[node name="Title7" type="Label" parent="TabContainer/Credits"]
+offset_left = 457.5
+offset_top = 432.0
+offset_right = 1213.5
+offset_bottom = 555.0
+theme_override_font_sizes/font_size = 60
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title6" type="Label" parent="TabContainer/Credits/Title7"]
+offset_left = 37.0
+offset_top = 76.0
+offset_right = 793.0
+offset_bottom = 199.0
+theme_override_font_sizes/font_size = 48
+text = "Menu Background Music:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title4" type="LinkButton" parent="TabContainer/Credits/Title7/Title6"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 83.0
+offset_right = 724.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 40
+text = "DarkShadow Cyberpunk - Dark_NS"
+uri = "https://pixabay.com/music/upbeat-darkshadow-cyberpunk-206176/"
+
+[node name="Title8" type="Label" parent="TabContainer/Credits"]
+offset_left = 464.5
+offset_top = 625.0
+offset_right = 1220.5
+offset_bottom = 748.0
+theme_override_font_sizes/font_size = 48
+text = "Gameplay Music:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title4" type="LinkButton" parent="TabContainer/Credits/Title8"]
+layout_mode = 0
+offset_left = -105.0
+offset_top = 83.0
+offset_right = 872.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 40
+text = "in game hustle (Cyberpunk music) - RibhavAgrawal"
+uri = "https://pixabay.com/music/upbeat-in-game-hustle-cyberpunk-music-230632/"
+
 [node name="Close" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1737.0
